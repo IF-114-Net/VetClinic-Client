@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppointmentComponent } from './modules/appointment/appointment/appointment.component';
 
-const routes: Routes = [
-  { path: 'appointments', component: AppointmentComponent },
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
