@@ -125,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "vet-clinic-client"
+  "defaultProject": "vet-clinic-client",
+  "cli": {
+    "analytics": false
+  }
 }
