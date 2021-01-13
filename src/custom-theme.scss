@@ -9,6 +9,17 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
+// Create a config with the default typography levels.
+$config: mat-typography-config(
+  $font-family: '"Montserrat", sans-serif;'
+);
+
+// Custom header that uses only the Material `font-size` and `font-family`.
+.unicorn-header {  
+  font-family: mat-font-family($config);
+}
+
+@include mat-core($config);
 
 $vet-clinic-green: (
   50: #f1f8e9,
