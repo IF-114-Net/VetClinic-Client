@@ -1,0 +1,29 @@
+mat-card{
+    height: 300px;
+    width: 600px;
+    margin: 40px auto;
+    background-color: #686868;
+    color:white;
+}
+
+ul {
+    padding-left:0px;
+    height: 100%;
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+}
+li {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    word-wrap: break-word;
+}
+
+#left{
+    text-align: left;
+}
+
+#right{
+    text-align: right;
+}
