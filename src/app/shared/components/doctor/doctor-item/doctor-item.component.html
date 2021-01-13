@@ -1,0 +1,37 @@
+<mat-card class="doctor_card light_grey">
+    <div  class="doctor_card">
+        <div class="doctor_img_container">
+            <div *ngIf="doctor.photo">
+                <img  [src]="doctor?.photo" [alt]="doctor.user.firstName +' '+ doctor.user.lastName" class="doctor_img">
+            </div>
+        </div>
+        <mat-card-content class="doctor_content">
+            <mat-card-title>{{doctor.user.firstName}} {{doctor.user.lastName}}</mat-card-title>
+            <div class="doctor_position">{{doctor.positionName}}</div>
+            <div class="doctor_content_about">
+            <div class="doctor_content_about_name">
+                <p>
+                    Освіта:
+                </p>
+                <p>
+                    Досвід роботи:
+                </p>
+                <p>
+                    Біографія:
+                </p>
+            </div>
+            <div>
+                <p>
+                    {{doctor.education}}
+                </p>
+                <p>
+                    {{doctor.experience}}
+                </p>
+                <p>
+                    {{doctor.biography}}
+                </p>
+            </div>
+            </div>
+          </mat-card-content>
+    </div>            
+</mat-card>
