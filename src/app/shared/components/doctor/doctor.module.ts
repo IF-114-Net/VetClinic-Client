@@ -5,6 +5,7 @@ import { DoctorPageComponent } from './doctor-page/doctor-page.component';
 import { DoctorItemComponent } from './doctor-item/doctor-item.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { MaterialModule } from 'src/app/material/material.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 const appRoutes: Routes=[  
   {path:'doctor',component:DoctorListComponent},  
@@ -14,6 +15,7 @@ const appRoutes: Routes=[
 @NgModule({
   declarations: [DoctorListComponent, DoctorItemComponent, DoctorPageComponent],
   imports: [
+    BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     MaterialModule
