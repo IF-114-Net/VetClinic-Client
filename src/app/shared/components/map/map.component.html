@@ -1,0 +1,51 @@
+<div class="container">
+    <mat-card class="mat-card">
+        <div class="map_content">
+            <div class="map_content_text">
+                <h1 class="text_title mat-display-1">We are here</h1>
+                <div class="test_item mat-h3">
+                    <b>Street: </b>
+                    <p>Green Avenue</p>
+                </div>
+                <div class="test_item mat-h">
+                    <b>City: </b>
+                    <p>San Francisco</p>
+                </div>
+                <div class="test_item mat-h">
+                    <b>State</b>
+                    <p>CA</p>
+                </div>
+                <div class="test_item mat-h">
+                    <b>State Full</b>
+                    <p>California</p>
+                </div>
+                <div class="test_item mat-h">
+                    <b>Zip Code</b>
+                    <p>94107</p>
+                </div>
+                <div class="test_item mat-h">
+                    <b>Phone Number</b>
+                    <p>510-842-1619</p>
+                </div>
+                <div class="test_item mat-h"> 
+                    <b>Number</b>                
+                    <p>415-361-7029</p>
+                </div>
+            </div>
+        </div>
+        <div class="map">
+            <google-map   height="300px" width="100%"    
+            [zoom]="zoom"
+            [center]="center"
+            [options]="options">
+                <map-marker
+                *ngFor="let marker of markers"
+                [position]="marker.position"
+                [label]="marker.label"
+                [title]="marker.title"        
+                [options]="marker.options">
+                </map-marker>
+            </google-map>
+        </div>
+    </mat-card>
+</div>

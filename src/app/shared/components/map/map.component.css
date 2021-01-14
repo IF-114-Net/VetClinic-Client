@@ -1,0 +1,29 @@
+.mat-card{
+    display: flex;
+    justify-content: center;
+}
+.map{
+    width: 70%; 
+}
+
+.map_content{
+  width: 30%;
+  height: 300px;  
+}
+
+.map_content_text{
+    margin: 15px;
+}
+
+.text_title{
+    margin-bottom: 15px;
+}
+
+.test_item {
+    display: flex;
+    margin: 0;
+}
+
+.test_item b{
+    margin-right: 10px;
+}
