@@ -4,7 +4,7 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item [routerLink]='["/"]'>Services</a>
       <a mat-list-item [routerLink]='["/"]'>Doctors</a>
@@ -38,8 +38,8 @@
       <span class="spacer"></span>
       <div  *ngIf="!(isHandset$ | async)">
 
-      <a *ngIf ='!authService.isLogedIn()' (click)="authService.login()">Login</a>
-      <a *ngIf ='!authService.isLogedIn()' [routerLink]='["/"]'>Register</a>
+        <button mat-raised-button color='warn' *ngIf ='!authService.isLogedIn()' (click)="authService.login()">Login</button>   
+        <button mat-raised-button color='warn' *ngIf ='!authService.isLogedIn()' [routerLink]='["/"]'>Register</button>
       <button mat-button [matMenuTriggerFor]="beforeMenu" *ngIf ='authService.isLogedIn() && authService.userData != null'>{{authService.userData['preferred_username']}}</button>
             <mat-menu #beforeMenu="matMenu" xPosition="before">
               <button mat-menu-item>My Cabinet</button>

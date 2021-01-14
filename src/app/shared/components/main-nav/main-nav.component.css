@@ -32,6 +32,16 @@ img{
 mat-toolbar a{
   display: inline-block;
   margin:0 10px;
+  font-size: 15px;
+  color: white;
+  text-decoration: none;
+}
+
+
+mat-toolbar button{
+  display: inline-block;
+  margin:0 10px;
+  font-size: 15px;
   color: white;
   text-decoration: none;
 }

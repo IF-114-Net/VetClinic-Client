@@ -22,10 +22,13 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
       redirectUrl: window.location.origin,
       postLogoutRedirectUri: window.location.origin,
       clientId: 'angular_client',
-      scope: 'openid profile ApiOne',
+      scope: 'openid profile ApiOne offline_access',
       responseType: 'code',
-      //silentRenew: true,
-      //silentRenewUrl: `${window.location.origin}/silent-renew.html`,
+      silentRenew: true, 
+      tokenRefreshInSeconds: 60,  
+       
+      silentRenewUrl: `${window.location.origin}/silent-renew.html`,
+      useRefreshToken: true,
       logLevel: LogLevel.Debug,
     });
 }
