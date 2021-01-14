@@ -13,6 +13,6 @@ export class AppComponent {
   constructor(public oidcSecurityService: OidcSecurityService,public authService: AuthService) { }
 
   ngOnInit() {
-    this.oidcSecurityService.checkAuth().subscribe((auth) => console.log('is authenticated', auth));
+    this.oidcSecurityService.checkAuth().subscribe((auth: any) => console.log('is authenticated', auth));
   }
 }

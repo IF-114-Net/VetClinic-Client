@@ -37,7 +37,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
 }
 
 @NgModule({
-  declarations: [AppComponent, MainNavComponent, HomeComponent, LandingMakeAppointmentComponent, FooterComponent],
+  declarations: [AppComponent, MainNavComponent, HomeComponent, LandingMakeAppointmentComponent, FooterComponent, MapComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -46,10 +46,10 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     MaterialModule,
     HttpClientModule,
     DoctorModule,
-    GoogleMapsModule
+    GoogleMapsModule,
     AuthConfigModule,
     LayoutModule,
-  ],
+    ],
   providers: [
     OidcConfigService,
     {
