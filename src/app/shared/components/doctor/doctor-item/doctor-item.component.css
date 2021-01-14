@@ -40,12 +40,5 @@ mat-card-content{
 
 .doctor_content_about
 {
-    display: flex;
-    justify-content: right;
-}
-
-.doctor_content_about_name
-{
-    font-weight: 500;
-    padding-right: 20px;
+    display: inline;
 }

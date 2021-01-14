@@ -6,6 +6,7 @@ import { DoctorItemComponent } from './doctor-item/doctor-item.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { MaterialModule } from 'src/app/material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { DoctorDescriptionItemComponent } from './doctor-item/doctor-description-item/doctor-description-item.component';
 
 const appRoutes: Routes=[  
   {path:'doctor',component:DoctorListComponent},  
@@ -13,7 +14,7 @@ const appRoutes: Routes=[
 ]
 
 @NgModule({
-  declarations: [DoctorListComponent, DoctorItemComponent, DoctorPageComponent],
+  declarations: [DoctorListComponent, DoctorItemComponent, DoctorPageComponent, DoctorDescriptionItemComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

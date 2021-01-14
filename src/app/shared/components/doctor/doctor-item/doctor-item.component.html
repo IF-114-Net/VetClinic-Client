@@ -9,28 +9,9 @@
             <mat-card-title>{{doctor.user.firstName}} {{doctor.user.lastName}}</mat-card-title>
             <div class="doctor_position">{{doctor.positionName}}</div>
             <div class="doctor_content_about">
-            <div class="doctor_content_about_name">
-                <p>
-                    Освіта:
-                </p>
-                <p>
-                    Досвід роботи:
-                </p>
-                <p>
-                    Біографія:
-                </p>
-            </div>
-            <div>
-                <p>
-                    {{doctor.education}}
-                </p>
-                <p>
-                    {{doctor.experience}}
-                </p>
-                <p>
-                    {{doctor.biography}}
-                </p>
-            </div>
+                <app-doctor-description-item [name]="'Education'" [description]="doctor.education"></app-doctor-description-item>
+                <app-doctor-description-item [name]="'Experience'" [description]="doctor.experience"></app-doctor-description-item>
+                <app-doctor-description-item [name]="'Biography'" [description]="doctor.biography"></app-doctor-description-item>                
             </div>
           </mat-card-content>
     </div>            
