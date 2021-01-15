@@ -7,7 +7,7 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item [routerLink]='["/"]'>Services</a>
-      <a mat-list-item [routerLink]='["/"]'>Doctors</a>
+      <a mat-list-item [routerLink]='["/doctor"]'>Doctors</a>
       <a mat-list-item  [routerLink]='["/"]'>Contacts</a>
       <a mat-list-item *ngIf ='!authService.isLogedIn()' (click)="authService.login()">Login</a>
       <a mat-list-item *ngIf ='!authService.isLogedIn()' [routerLink]='["/"]'>Register</a>
