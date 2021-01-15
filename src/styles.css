@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Montserrat', sans-serif;}
+body { margin: 0; 
+    font-family: 'Montserrat', sans-serif;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */}
 
 .container{
     max-width: 1200px;
@@ -16,3 +19,7 @@ body { margin: 0; font-family: 'Montserrat', sans-serif;}
 .grey{
     background-color: #C4C4C4;
 }
+
+body::-webkit-scrollbar {
+    display: none;
+  }
