@@ -5,7 +5,7 @@ import { DoctorPageComponent } from './shared/components/doctor/doctor-page/doct
 import { HomeComponent } from './shared/components/home/home.component';
 
 const routes: Routes = [{path:'doctor',component:DoctorListComponent},  
-{path:'doctor/:id',component:DoctorPageComponent},];
+  {path:'doctor/:id',component:DoctorPageComponent},
   { path: '', component: HomeComponent, pathMatch: 'full' },
 ];
 
