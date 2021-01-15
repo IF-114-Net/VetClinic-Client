@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DoctorListComponent } from './shared/components/doctor/doctor-list/doctor-list.component';
+import { DoctorPageComponent } from './shared/components/doctor/doctor-page/doctor-page.component';
 import { AuthGuard } from './guards/auth-guard.service';
 import { RoleGuard } from './guards/role-guard.service';
 import { ForbiddenComponent } from './shared/components/forbidden/forbidden.component';
@@ -8,7 +10,8 @@ import { LandingMakeAppointmentComponent } from './shared/components/landing-mak
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { UnauthorizedComponent } from './shared/components/unauthorized/unauthorized.component';
 
-const routes: Routes = [
+const routes: Routes = [{path:'doctor',component:DoctorListComponent},  
+  {path:'doctor/:id',component:DoctorPageComponent},
   { path: '', component: HomeComponent, pathMatch: 'full' },
   
   // { path: 'testAdmin', component: LandingMakeAppointmentComponent, canActivate: [AuthGuard, RoleGuard],

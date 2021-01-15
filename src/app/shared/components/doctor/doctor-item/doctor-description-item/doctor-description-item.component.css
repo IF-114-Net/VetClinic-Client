@@ -1,0 +1,9 @@
+.description_item
+{
+    display: flex;    
+}
+
+.name{
+    font-weight: 500;
+    padding-right: 20px;
+}

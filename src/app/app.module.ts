@@ -7,6 +7,7 @@ import { AuthModule, LogLevel, OidcConfigService } from 'angular-auth-oidc-clien
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DoctorModule } from './shared/components/doctor/doctor.module';
 import { AuthConfigModule } from './auth/auth-config.module';
 import { MainNavComponent } from './shared/components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -50,6 +51,8 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     HttpClientModule,
     AuthConfigModule,
     LayoutModule,
+    HttpClientModule,
+    DoctorModule
   ],
   providers: [
     OidcConfigService,
