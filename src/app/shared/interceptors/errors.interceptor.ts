@@ -28,6 +28,6 @@ export class TokenInterceptor implements HttpInterceptor {
 
           return throwError(error.message);
         })
-      ) as Observable<HttpEvent<any>>;
+      );
   }
 }
