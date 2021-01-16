@@ -1,4 +1,6 @@
-<mat-card class="doctor_card light_grey">
+<h2 *ngIf ="!doctor">Loading...</h2>
+
+<mat-card *ngIf ="doctor" class="doctor_card light_grey">
     <div  class="doctor_card">
         <div class="doctor_img_container">            
             <img *ngIf="!doctor.photo" src="https://tanzolymp.com/images/default-non-user-no-photo-1.jpg" [alt]="doctor.user.firstName +' '+ doctor.user.lastName" class="doctor_img">

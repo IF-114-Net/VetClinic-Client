@@ -1,4 +1,4 @@
-.edit_card {
+.card {
   width: 500px;
   margin: 0 auto;
 }
@@ -18,26 +18,20 @@ form {
   width: 100px;
 }
 
-select {
-  width: 328px;
-}
-
 input {
   font-family: "Montserrat", sans-serif;
+  width: 320px;
 }
 
 textarea {
   font-family: "Montserrat", sans-serif;
-}
-
-textarea {
   resize: none;
   height: 100px;
   width: 320px;
 }
 
-input {
-  width: 320px;
+select {
+  width: 328px;
 }
 
 .form_buttons button {

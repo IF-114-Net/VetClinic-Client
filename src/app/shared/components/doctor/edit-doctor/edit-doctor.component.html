@@ -1,40 +1,112 @@
 <div *ngIf="closedInformation" class="edit_card">
     <mat-card *ngIf="doctor">       
         <form [formGroup]="editDoctorForm">
+            <app-doctor-validation-exseption 
+                *ngIf="editDoctorForm.get(['firstName'])?.invalid 
+                    && (editDoctorForm.get(['firstName'])?.dirty 
+                    || editDoctorForm.get(['firstName'])?.touched)"
+                [exeption]="editDoctorForm.get(['firstName'])?.errors"
+                [name]="'First Name'">                
+            </app-doctor-validation-exseption>
             <div class="form_item">                
                  <span>First Name:</span>
                 <input type="text" formControlName="firstName">                
-            </div>  
+            </div> 
+
+            <app-doctor-validation-exseption 
+                *ngIf="editDoctorForm.get(['lastName'])?.invalid 
+                    && (editDoctorForm.get(['lastName'])?.dirty 
+                    || editDoctorForm.get(['lastName'])?.touched)"
+                [exeption]="editDoctorForm.get(['lastName'])?.errors"
+                [name]="'Last Name'">
+            </app-doctor-validation-exseption>
             <div class="form_item">                
                 <span>Last Name: </span>
                 <input type="text" formControlName="lastName">                
             </div> 
+
+            <app-doctor-validation-exseption
+                *ngIf="editDoctorForm.get(['email'])?.invalid 
+                    && (editDoctorForm.get(['email'])?.dirty 
+                    || editDoctorForm.get(['email'])?.touched)"
+                [exeption]="editDoctorForm.get(['email'])?.errors" 
+                [name]="'Last Name'">
+                </app-doctor-validation-exseption>
             <div class="form_item">
                 <span>Email:</span>
                 <input type="text" formControlName="email">                
             </div> 
+
+            <app-doctor-validation-exseption
+                *ngIf="editDoctorForm.get(['phoneNumber'])?.invalid 
+                    && (editDoctorForm.get(['phoneNumber'])?.dirty 
+                    || editDoctorForm.get(['phoneNumber'])?.touched)"
+                [exeption]="editDoctorForm.get(['phoneNumber'])?.errors" 
+                [name]="'Phone number'">
+                </app-doctor-validation-exseption>                
             <div class="form_item">                
                 <span>Phone number:</span>
                 <input type="text" formControlName="phoneNumber">
             </div> 
+            <div *ngIf="authService.isInRole('admin')">
+                <app-doctor-validation-exseption *ngIf="editDoctorForm.get(['positionId'])?.invalid"
+                    [exeption]="editDoctorForm.get(['positionId'])?.errors" [name]="'Position'">
+                </app-doctor-validation-exseption>
+                <div class="form_item">
+                    <span>Position:</span>
+                    <select formControlName="positionId">
+                        <option value="" disabled>Choose position</option>
+                        <option *ngFor="let position of positions" [ngValue]="position.id">
+                            {{position.positionName}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <app-doctor-validation-exseption *ngIf="editDoctorForm.get(['education'])?.invalid 
+                                && (editDoctorForm.get(['education'])?.dirty 
+                                || editDoctorForm.get(['education'])?.touched)"
+                [exeption]="editDoctorForm.get(['education'])?.errors"
+                [name]="'Education'">
+            </app-doctor-validation-exseption>
             <div class="form_item">
                 <span>Education:</span>
                 <textarea type="text" formControlName="education"></textarea>                
             </div> 
+
+            <app-doctor-validation-exseption *ngIf="editDoctorForm.get(['biography'])?.invalid 
+                                && (editDoctorForm.get(['biography'])?.dirty 
+                                || editDoctorForm.get(['biography'])?.touched)"
+                [exeption]="editDoctorForm.get(['biography'])?.errors"
+                [name]="'Biography'">
+            </app-doctor-validation-exseption>
             <div class="form_item">                
                 <span>Biography:</span>
                 <textarea type="text" formControlName="biography"></textarea>
             </div> 
+
+            <app-doctor-validation-exseption *ngIf="editDoctorForm.get(['experience'])?.invalid 
+                                && (editDoctorForm.get(['experience'])?.dirty 
+                                || editDoctorForm.get(['experience'])?.touched)"
+                [exeption]="editDoctorForm.get(['experience'])?.errors"
+                [name]="'Experience'">
+            </app-doctor-validation-exseption>
             <div class="form_item">                
                 <span>Experience:</span>
                 <textarea type="text" formControlName="experience"></textarea>
             </div> 
+
+            <app-doctor-validation-exseption *ngIf="editDoctorForm.get(['photo'])?.invalid 
+                                && (editDoctorForm.get(['photo'])?.dirty 
+                                || editDoctorForm.get(['photo'])?.touched)"
+                [exeption]="editDoctorForm.get(['photo'])?.errors"
+                [name]="'Photo'">
+            </app-doctor-validation-exseption>
             <div class="form_item">
                 <span>Photo:</span>
                 <input type="text" formControlName="photo">
             </div> 
             <div class="form_buttons">
-                <button mat-raised-button color="primary" (click)="updateProfile()">Update Profile</button>
+                <button mat-raised-button [disabled]="!editDoctorForm.valid" color="primary" (click)="updateProfile()">Update Profile</button>
                 <button mat-raised-button (click)="fillProfile()">Recover data</button>
                 <button mat-raised-button color="warn" *ngIf="authService.isInRole('admin')" (click)="deleteDoctor()">Delete doctor</button>
             </div>
