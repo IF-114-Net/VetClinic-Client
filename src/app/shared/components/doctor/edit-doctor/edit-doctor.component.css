@@ -24,19 +24,13 @@ select {
 
 input {
   font-family: "Montserrat", sans-serif;
+  width: 320px;
 }
 
 textarea {
   font-family: "Montserrat", sans-serif;
-}
-
-textarea {
   resize: none;
   height: 100px;
-  width: 320px;
-}
-
-input {
   width: 320px;
 }
 

@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Doctor } from 'src/app/models/doctor/doctor';
+import { Router } from '@angular/router';
 import { Position } from 'src/app/models/doctor/position';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { DoctorService } from 'src/app/services/doctor.service';
 
 @Component({
   selector: 'app-create-doctor',
