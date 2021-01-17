@@ -1,4 +1,7 @@
-export interface Service{
-    id:number | null;
-    serviceName:string;
+export class Service{
+
+  constructor(
+   public id?: number,
+   public serviceName?: string){}
+
 }

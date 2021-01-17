@@ -1,23 +1,39 @@
 import { NgModule } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button'
+import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
 
-const MaterialComponenets=[
+const MaterialComponents = [
   MatButtonModule,
   MatToolbarModule,
   MatIconModule,
-  MatCardModule    
-]
+  MatCardModule,
+  MatGridListModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSnackBarModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatDialogModule,
+];
 
 @NgModule({
   declarations: [],
   imports: [
-    MaterialComponenets
+    MaterialComponents
   ],
-  exports:[
-    MaterialComponenets
+  exports: [
+    MaterialComponents
   ]
 })
 export class MaterialModule { }
