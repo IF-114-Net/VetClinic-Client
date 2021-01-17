@@ -6,7 +6,7 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item [routerLink]='["/"]'>Services</a>
+      <a mat-list-item [routerLink]='["/services"]'>Services</a>
       <a mat-list-item [routerLink]='["/doctor"]'>Doctors</a>
       <a mat-list-item  [routerLink]='["/"]'>Contacts</a>
       <a mat-list-item *ngIf ='!authService.isLogedIn()' (click)="authService.login()">Login</a>
@@ -31,21 +31,21 @@
        </a>
        </div >
       <div *ngIf="!(isHandset$ | async)">
-        <a [routerLink]='["/"]'>Services</a>
+        <a [routerLink]='["/services"]'>Services</a>
         <a [routerLink]='["/doctor"]'>Doctors</a>
         <a [routerLink]='["/"]'>Contacts</a>
       </div>
       <span class="spacer"></span>
       <div  *ngIf="!(isHandset$ | async)">
 
-        <button mat-raised-button color='warn' *ngIf ='!authService.isLogedIn()' (click)="authService.login()">Login</button>   
+        <button mat-raised-button color='warn' *ngIf ='!authService.isLogedIn()' (click)="authService.login()">Login</button>
         <button mat-raised-button color='warn' *ngIf ='!authService.isLogedIn()' [routerLink]='["/"]'>Register</button>
       <button mat-button [matMenuTriggerFor]="beforeMenu" *ngIf ='authService.isLogedIn() && authService.userData != null'>{{authService.userData['preferred_username']}}</button>
             <mat-menu #beforeMenu="matMenu" xPosition="before">
               <button mat-menu-item>My Cabinet</button>
               <button mat-menu-item *ngIf ='authService.isLogedIn()'(click)="authService.logout()">Logout</button>
             </mat-menu>
-      
+
     </div>
     </mat-toolbar>
     <!-- Add Content Here -->

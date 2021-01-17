@@ -21,6 +21,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ServiceService} from './services/service.service';
 import {MatDialogRef} from '@angular/material/dialog';
 import { MatConfirmDialogComponent } from './shared/components/mat-confirm-dialog/mat-confirm-dialog.component';
+import { ServicesListComponent } from './shared/components/services/services-list/services-list.component';
 
 export function configureAuth(oidcConfigService: OidcConfigService) {
   return () =>
@@ -42,7 +43,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
 
 @NgModule({
   declarations: [AppComponent, MainNavComponent, HomeComponent, LandingMakeAppointmentComponent, FooterComponent,
-        ServicesComponent, ServiceComponent, MatConfirmDialogComponent],
+        ServicesComponent, ServiceComponent, MatConfirmDialogComponent, ServicesListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

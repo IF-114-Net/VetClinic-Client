@@ -4,11 +4,13 @@ import { DoctorListComponent } from './shared/components/doctor/doctor-list/doct
 import { DoctorPageComponent } from './shared/components/doctor/doctor-page/doctor-page.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import {ServicesComponent} from './shared/components/services/services.component';
+import {ServicesListComponent} from './shared/components/services/services-list/services-list.component';
 
 const routes: Routes = [
   {path: 'doctor', component: DoctorListComponent},
   {path: 'doctor/:id', component: DoctorPageComponent},
-  {path: 'services', component: ServicesComponent},
+  {path: 'admin/services', component: ServicesComponent},
+  {path: 'services', component: ServicesListComponent},
   { path: '', component: HomeComponent, pathMatch: 'full' },
 ];
 
