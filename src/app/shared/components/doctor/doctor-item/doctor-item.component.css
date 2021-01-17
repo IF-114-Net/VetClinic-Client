@@ -1,0 +1,44 @@
+.doctor_card{    
+    min-height: 220px;
+    margin: 20px;
+}
+
+.doctor_list_item{
+    padding: 10px;    
+    position: relative;
+}
+
+.doctor_img_container{
+    position: absolute;
+    height: 210px;
+    width: 210px;    
+    border-radius: 50%;    
+    overflow: hidden;       
+}
+
+.doctor_img{
+    position: absolute;
+    width: auto;
+    height: 100%;
+    min-width: 100px;
+}
+
+mat-card-content{    
+    width: auto;    
+    color: #252525;
+    padding-left: 250px;
+    max-width: 900px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.doctor_position{
+    color: #252525;
+    margin: 15px 0;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.doctor_content_about
+{
+    display: inline;
+}

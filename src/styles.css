@@ -10,11 +10,16 @@ body { margin: 0; font-family: 'Montserrat', sans-serif;}
   padding: 10px;
 }
 
+.container{
+    max-width: 1200px;
+    width: 100%;    
+    margin: 0 auto;
+}
 
+.light_grey{
+    background-color: #F3F3F3;
+}
 
-
-
-
-
-
-
+.grey{
+    background-color: #C4C4C4;
+}
