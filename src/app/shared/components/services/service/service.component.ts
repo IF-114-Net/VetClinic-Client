@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ServiceService} from '../../../services/service.service';
-import {NotificationService} from '../../../services/notification.service';
-import {Service} from '../../../models/service';
+import {ServiceService} from '../../../../services/service.service';
+import {NotificationService} from '../../../../services/notification.service';
+import {Service} from '../../../../models/service';
 import { NgForm } from '@angular/forms';
 import {MatDialogRef} from '@angular/material/dialog';
 

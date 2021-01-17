@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ServicesComponent} from './shared/services/services.component';
+import {ServicesComponent} from './shared/components/services/services.component';
 
 const routes: Routes = [
   {path: 'services', component: ServicesComponent}

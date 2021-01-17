@@ -1,13 +1,13 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Service} from '../../models/service';
-import {ServiceService} from '../../services/service.service';
+import {Service} from '../../../models/service';
+import {ServiceService} from '../../../services/service.service';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ServiceComponent} from './service/service.component';
-import {NotificationService} from '../../services/notification.service';
-import {DialogService} from '../../services/dialog.service';
+import {NotificationService} from '../../../services/notification.service';
+import {DialogService} from '../../../services/dialog.service';
 
 @Component({
   selector: 'app-services',
