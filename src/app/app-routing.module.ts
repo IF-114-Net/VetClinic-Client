@@ -5,9 +5,10 @@ import { DoctorPageComponent } from './shared/components/doctor/doctor-page/doct
 import { HomeComponent } from './shared/components/home/home.component';
 import {ServicesComponent} from './shared/components/services/services.component';
 
-const routes: Routes = [{path:'doctor',component:DoctorListComponent},  
-  {path:'doctor/:id',component:DoctorPageComponent},
-  {path: 'services', component: ServicesComponent}
+const routes: Routes = [
+  {path: 'doctor', component: DoctorListComponent},
+  {path: 'doctor/:id', component: DoctorPageComponent},
+  {path: 'services', component: ServicesComponent},
   { path: '', component: HomeComponent, pathMatch: 'full' },
 ];
 

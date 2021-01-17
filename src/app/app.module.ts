@@ -31,9 +31,9 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
       clientId: 'angular_client',
       scope: 'openid profile ApiOne offline_access',
       responseType: 'code',
-      silentRenew: true, 
-      tokenRefreshInSeconds: 60,  
-       
+      silentRenew: true,
+      tokenRefreshInSeconds: 60,
+
       silentRenewUrl: `${window.location.origin}/silent-renew.html`,
       useRefreshToken: true,
       logLevel: LogLevel.Debug,
@@ -41,8 +41,8 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
 }
 
 @NgModule({
-  declarations: [AppComponent, MainNavComponent, HomeComponent, LandingMakeAppointmentComponent, FooterComponent],
-  declarations: [AppComponent, ServicesComponent, ServiceComponent, MatConfirmDialogComponent],
+  declarations: [AppComponent, MainNavComponent, HomeComponent, LandingMakeAppointmentComponent, FooterComponent,
+        ServicesComponent, ServiceComponent, MatConfirmDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,17 +51,18 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
     AuthConfigModule,
     LayoutModule,
     DoctorModule
   ],
-  providers: [ServiceService,
-  {
+  providers: [
+    ServiceService,
     OidcConfigService,
-    provide: MatDialogRef,
-    useValue: {}
-  }
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: configureAuth,

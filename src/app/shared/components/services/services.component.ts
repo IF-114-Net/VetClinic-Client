@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Service} from '../../../models/service';
+import {Service} from '../../../models/service/service';
 import {ServiceService} from '../../../services/service.service';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
