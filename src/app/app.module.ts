@@ -27,7 +27,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
       redirectUrl: window.location.origin,
       postLogoutRedirectUri: window.location.origin,
       clientId: 'angular_client',
-      scope: 'openid profile email phone ApiOne offline_access',
+      scope: 'openid profile ApiOne offline_access',
       responseType: 'code',
       silentRenew: true, 
       tokenRefreshInSeconds: 60,  
