@@ -66,11 +66,10 @@ export class EditDoctorComponent implements OnInit {
     this.apiService.getEntity('doctor',this.id).subscribe((data: Doctor)=>{
       this.doctor=data; 
       this.fillProfile();  
-      this.closedInformationCheck();},
-      () => this.router.navigate(["**"]));
-
-    this.apiService.getEntity('position').subscribe((data: Position[])=>{
-    this.positions=data;
+      this.closedInformationCheck();
+      });
+      this.apiService.getEntity('position').subscribe((data: Position[])=>{
+      this.positions=data;
     })
   }
 
