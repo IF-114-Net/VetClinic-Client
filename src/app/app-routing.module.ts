@@ -1,20 +1,33 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CreateDoctorComponent } from './shared/components/doctor/create-doctor/create-doctor.component';
-import { DoctorListComponent } from './shared/components/doctor/doctor-list/doctor-list.component';
-import { DoctorPageComponent } from './shared/components/doctor/doctor-page/doctor-page.component';
-import { EditDoctorComponent } from './shared/components/doctor/edit-doctor/edit-doctor.component';
-import { HomeComponent } from './shared/components/home/home.component';
+import { ForbiddenComponent } from './shared/components/forbidden/forbidden.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { UnauthorizedComponent } from './shared/components/unauthorized/unauthorized.component';
 
-const routes: Routes = [{path:'doctor',component:DoctorListComponent},  
-  {path:'doctor/create-doctor',component:CreateDoctorComponent},
-  {path:'doctor/:id',component:DoctorPageComponent},
-  {path:'doctor/:id/:edit-doctor',component:EditDoctorComponent},
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () =>
+      import('../app/modules/client/client.module').then((m) => m.ClientModule),
+  },
+  {
+    path: 'doctor',
+    loadChildren: () =>
+      import('../app/modules/doctor/doctor.module').then((m) => m.DoctorModule),
+  },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('../app/modules/admin/admin.module').then((m) => m.AdminModule),
+  },
+  { path: 'forbidden', component: ForbiddenComponent, pathMatch: 'full' },
+  { path: 'unauthorized', component: UnauthorizedComponent, pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
