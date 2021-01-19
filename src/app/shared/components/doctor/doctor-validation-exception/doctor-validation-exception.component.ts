@@ -2,11 +2,11 @@ import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-doctor-validation-exseption',
-  templateUrl: './doctor-validation-exseption.component.html',
-  styleUrls: ['./doctor-validation-exseption.component.css']
+  selector: 'app-doctor-validation-exception',
+  templateUrl: './doctor-validation-exception.component.html',
+  styleUrls: ['./doctor-validation-exception.component.css']
 })
-export class DoctorValidationExseptionComponent implements OnInit {
+export class DoctorValidationExceptionComponent implements OnInit {
 
   @Input() exeption: any;
   @Input() name!: string;

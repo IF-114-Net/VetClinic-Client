@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DoctorValidationExseptionComponent } from './doctor-validation-exseption.component';
+import { DoctorValidationExceptionComponent } from './doctor-validation-exception.component';
 
 describe('DoctorValidationExseptionComponent', () => {
-  let component: DoctorValidationExseptionComponent;
-  let fixture: ComponentFixture<DoctorValidationExseptionComponent>;
+  let component: DoctorValidationExceptionComponent;
+  let fixture: ComponentFixture<DoctorValidationExceptionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DoctorValidationExseptionComponent ]
+      declarations: [ DoctorValidationExceptionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DoctorValidationExseptionComponent);
+    fixture = TestBed.createComponent(DoctorValidationExceptionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

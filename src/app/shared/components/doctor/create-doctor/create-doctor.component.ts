@@ -46,7 +46,7 @@ doctorForm:FormGroup=new FormGroup({
     phoneNumber:new FormControl('',[
       Validators.required,
       Validators.minLength(8),
-      Validators.maxLength(15),
+      Validators.maxLength(12),
       this.notNumberValidator()
     ]),
     positionId:new FormControl('',
@@ -126,12 +126,12 @@ doctorForm:FormGroup=new FormGroup({
     console.log("doctor:", doctor.positionId);  
     this.apiService.addEntity('doctor',doctor).subscribe(data=>console.log(data),
     error => console.log('oops', error));
-    alert(`Doctor created ,${doctor.user.userName},${doctor.user.password}`)   
-   // this.router.navigate(["admin"])   
+    alert(`Doctor created ,${doctor.user.userName},${doctor.user.password}`)   ;
+   this.router.navigate(["doctor/list"]) ;   
   }
 
   cancel(){    
-    this.router.navigate(["doctor"]) 
+    this.router.navigate(["doctor/list"]) ;
   }
 
 }

@@ -32,7 +32,7 @@ export class EditDoctorComponent implements OnInit {
     phoneNumber:new FormControl('',[
       Validators.required,
       Validators.minLength(8),
-      Validators.maxLength(15),
+      Validators.maxLength(12),
       this.notNumberValidator()
     ]),
     positionId:new FormControl('',),
@@ -130,7 +130,7 @@ export class EditDoctorComponent implements OnInit {
     {
       this.apiService.deleteEntity("doctor",this.id).subscribe();
 
-      this.router.navigate(["doctor"]) 
+      this.router.navigate(["doctor/list"]) 
     }
   }
 }
