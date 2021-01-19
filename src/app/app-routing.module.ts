@@ -1,16 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DoctorListComponent } from './shared/components/doctor/doctor-list/doctor-list.component';
-import { DoctorPageComponent } from './shared/components/doctor/doctor-page/doctor-page.component';
-import { HomeComponent } from './shared/components/home/home.component';
 
-const routes: Routes = [{path:'doctor',component:DoctorListComponent},  
-  {path:'doctor/:id',component:DoctorPageComponent},
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () =>
+      import('../app/modules/client/client.module').then((m) => m.ClientModule),
+  },
+  {
+    path: 'doctor',
+    loadChildren: () =>
+      import('../app/modules/doctor/doctor.module').then((m) => m.DoctorModule),
+  },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('../app/modules/admin/admin.module').then((m) => m.AdminModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
