@@ -3,7 +3,10 @@
 @import url("notification.css");
 
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Montserrat', sans-serif;}
+body { margin: 0; 
+    font-family: 'Montserrat', sans-serif;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */}
 
 
 .add-bottom-padding{
@@ -23,3 +26,7 @@ body { margin: 0; font-family: 'Montserrat', sans-serif;}
 .grey{
     background-color: #C4C4C4;
 }
+
+body::-webkit-scrollbar {
+    display: none;
+  }
