@@ -4,22 +4,27 @@
   <button class="btn-dialog-close" mat-stroked-button (click)="onClose()"
           tabIndex="-1"><mat-icon>clear</mat-icon></button>
 </mat-toolbar>
-<form novalidate class="normal-form" #form="ngForm" (submit)="onSubmit(form)">
+<form novalidate [formGroup]="myForm" class="normal-form" #form="ngForm" (submit)="onSubmit(form)">
   <mat-grid-list cols="2" rowHeight="300px" >
     <mat-grid-tile>
       <div class="controlers-container">
         <input type="hidden" name="id" [value]="service.formData.id">
         <mat-form-field>
-          <input name="serviceName" #serviceName="ngModel" [(ngModel)]="service.formData.serviceName"
-                 matInput placeholder="Service Name" required>
-          <mat-error>This field is mandatory</mat-error>
+          <input name="serviceName" [(ngModel)]="service.formData.serviceName"
+                 matInput placeholder="Service Name"  [formControl]="serviceNameFC">
+          <mat-error *ngIf="serviceNameFC.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field style="padding-top: 20px;">
+          <textarea class="textArea"  name="description" [(ngModel)]="service.formData.description"
+                 matInput placeholder="Service Description"  [formControl]="descriptionFC"></textarea>
+          <mat-error *ngIf="descriptionFC.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
       </div>
     </mat-grid-tile>
     <mat-grid-tile>
       <div class="button-row">
         <button mat-raised-button color="primary" type="submit"
-                [disabled]="form.invalid">Submit</button>
+                [disabled]="form.invalid || serviceNameFC.invalid || descriptionFC.invalid">Submit</button>
         <button mat-raised-button color="warn" (click)="resetForm(form)">Clear</button>
       </div>
     </mat-grid-tile>

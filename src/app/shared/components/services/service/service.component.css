@@ -16,7 +16,6 @@ form.normal-form{
 
 .controlers-container{
   width: 100%;
-  padding: 5%;
 }
 
 .controlers-container > *{
@@ -25,4 +24,10 @@ form.normal-form{
 
 .button-row button{
   margin: 5px;
+}
+
+.textArea{
+  resize: none;
+  height: 150px;
+  /*border-left: 1px solid #5cb85c;*/
 }

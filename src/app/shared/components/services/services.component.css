@@ -16,6 +16,36 @@ mat-footer-row mat-footer-cell{
   font-style: italic;
 }
 
+.truncate{
+  width: 700px;
+  min-height: 48px;
+  text-align: justify;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.truncate:hover{
+  /*white-space: normal;*/
+  background: #f5f5f5;
+  /*text-decoration: underline;*/
+  cursor: pointer ;
+}
+
+.opened{
+  white-space: normal;
+}
+
+.closed{
+  white-space: nowrap;
+}
+
+.element-row:hover{
+  background: #f5f5f5;
+}
+
 /* filter controls */
 .search-div{
   margin: 10px;
@@ -40,4 +70,6 @@ mat-footer-row mat-footer-cell{
   height: 32px;
   width: 32px;
 }
+
+
 

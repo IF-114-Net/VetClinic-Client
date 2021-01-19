@@ -14,13 +14,19 @@
     </div>
     <div>
       <mat-accordion>
-        <div *ngFor="let service of servicesDemo" style="margin: 10px">
+        <div *ngFor="let service of services" style="margin: 10px">
           <mat-expansion-panel>
             <mat-expansion-panel-header>
-              <h2 class="material-icons"><mat-icon>arrow_drop_down_circle</mat-icon><span>{{service.serviceName}}</span></h2>
+              <h2 class="material-icons"><mat-icon>arrow_drop_down_circle</mat-icon><span id="header">{{service.serviceName}}</span></h2>
             </mat-expansion-panel-header>
             <p>{{service.description}}</p>
           </mat-expansion-panel>
+        </div>
+        <div [ngClass]="{'hide':services != null}">
+          <h2> Loading data...</h2>
+        </div>
+        <div [ngClass]="{'hide':!(services !=null && services.length == 0)}">
+          <h2>  No data.</h2>
         </div>
       </mat-accordion>
     </div>

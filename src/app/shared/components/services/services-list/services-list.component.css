@@ -6,3 +6,11 @@
 .inner-container{
   width: 67%; text-align: justify; margin-left: 200px
 }
+
+span#header:hover{
+    text-decoration: underline;
+}
+
+.hide{
+  display: none;
+}

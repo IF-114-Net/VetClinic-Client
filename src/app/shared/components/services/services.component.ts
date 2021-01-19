@@ -16,14 +16,16 @@ import {DialogService} from '../../../services/dialog.service';
 })
 export class ServicesComponent implements OnInit {
 
+  openStatus = false;
+  // @ts-ignore
+  dataSource: MatTableDataSource<Service>;
+
   constructor(public service: ServiceService, public dialog: MatDialog,
               public notificationService: NotificationService,
               public dialogService: DialogService) { }
 
-  // @ts-ignore
-  dataSource: MatTableDataSource<Service>;
 
-  displayedColumns: string[] = ['id', 'serviceName', 'actions'];
+  displayedColumns: string[] = ['serviceName', 'description', 'actions'];
   @ViewChild(MatSort) sort: MatSort | undefined;
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   searchKey: string | undefined;
@@ -95,6 +97,19 @@ export class ServicesComponent implements OnInit {
             );
         }
     });
+  }
+
+  expandDescription(element: any): void{
+    this.openStatus = !this.openStatus;
+    const elem = document.getElementById(element.id);
+    if (!this.openStatus){
+      // @ts-ignore
+      elem.classList.add('opened');
+    }
+    else{
+      // @ts-ignore
+      elem.classList.remove('opened');
+    }
   }
 
 }
