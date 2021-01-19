@@ -115,7 +115,8 @@ export class EditDoctorComponent implements OnInit {
     this.doctor.education=this.editDoctorForm.value.education;
     this.doctor.biography=this.editDoctorForm.value.biography;
     this.doctor.experience=this.editDoctorForm.value.experience;
-    this.doctor.photo=this.editDoctorForm.value.photo;     
+    this.doctor.photo=this.editDoctorForm.value.photo;
+    this.doctor.positionId=this.editDoctorForm.value.positionId;   
     
     this.apiService.updateEntity('doctor',this.id,this.doctor).subscribe();
     alert("Changes is saved");
