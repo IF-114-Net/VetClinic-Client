@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ForbiddenComponent } from './shared/components/forbidden/forbidden.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { UnauthorizedComponent } from './shared/components/unauthorized/unauthorized.component';
 
 const routes: Routes = [
   {
@@ -17,6 +20,9 @@ const routes: Routes = [
     loadChildren: () =>
       import('../app/modules/admin/admin.module').then((m) => m.AdminModule),
   },
+  { path: 'forbidden', component: ForbiddenComponent, pathMatch: 'full' },
+  { path: 'unauthorized', component: UnauthorizedComponent, pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
