@@ -34,4 +34,11 @@ export class MainNavComponent {
     this.router.navigate(navigationDetails);
   }
 
+  moveToCabinet(){
+    if(this.authService.isInRole("doctor"))
+    {
+      this.router.navigate(["doctor"])
+    }
+  }
+
 }

@@ -1,4 +1,10 @@
+import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Doctor } from 'src/app/models/doctor/doctor';
+import { DoctorData } from 'src/app/models/doctor/doctorData';
+import { AuthService } from 'src/app/services/auth.service';
+import { DoctorService } from 'src/app/services/doctor.service';
 
 @Component({
   selector: 'app-doctor',
@@ -7,9 +13,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoctorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+    private doctorService:DoctorService,
+    private authService:AuthService
+    ) { }
+
+    doctor!:Doctor;
 
   ngOnInit(): void {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');    
+    let params:HttpParams = new HttpParams().append("UserId",this.authService.userData.sub) 
+    this.doctorService.getDoctorByQuery(params).subscribe(
+      (data:DoctorData)=> {this.doctor=data.data[0];
+      this.router.navigate(["doctor",this.doctor.id]);}
+    );    
   }
 
 }
