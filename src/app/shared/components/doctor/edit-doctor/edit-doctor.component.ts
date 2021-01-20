@@ -63,7 +63,7 @@ export class EditDoctorComponent implements OnInit {
     this.doctorService.currDoctor.subscribe(doc=>this.doctor=doc)    
     let id= this.activatedRoute.snapshot.paramMap.get('id') ;
     this.id = id ? parseInt(id) : 0; 
-    this.apiService.getEntity('doctor',this.id).subscribe((data: Doctor)=>{
+    this.apiService.getEntityById('doctor',this.id).subscribe((data: Doctor)=>{
       this.doctor=data; 
       this.fillProfile();  
       this.closedInformationCheck();
