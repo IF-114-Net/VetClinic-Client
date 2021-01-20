@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject} from 'rxjs';
 import { Doctor } from '../models/doctor/doctor';
 
 
@@ -9,7 +9,7 @@ import { Doctor } from '../models/doctor/doctor';
 export class DoctorService {
 
   doctor!:Doctor;
-  
+
   constructor() { } 
 
   private doctorSource = new BehaviorSubject<Doctor>(this.doctor);

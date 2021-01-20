@@ -1,4 +1,4 @@
-import { HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpHeaders} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Doctor } from 'src/app/models/doctor/doctor';
@@ -6,7 +6,6 @@ import { DoctorData } from 'src/app/models/doctor/doctorData';
 import { Filter } from 'src/app/models/queries/filter';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { DoctorService } from 'src/app/services/doctor.service';
 
 @Component({
   selector: 'app-doctor',
