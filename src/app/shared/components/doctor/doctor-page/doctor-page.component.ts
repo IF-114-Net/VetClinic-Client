@@ -23,7 +23,7 @@ export class DoctorPageComponent implements OnInit {
   ngOnInit(): void {  
     let id= this.activatedRoute.snapshot.paramMap.get('id') ;
     this.id = id ? parseInt(id) : 0;
-    this.doctorService.getEntity('doctor',this.id).subscribe((data: Doctor)=>{
+    this.doctorService.getEntityById('doctor',this.id).subscribe((data: Doctor)=>{
     this.doctor=data;      
     });
 
