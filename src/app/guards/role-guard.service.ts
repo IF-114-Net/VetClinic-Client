@@ -13,9 +13,16 @@ export class RoleGuard implements CanActivate{
   private router:Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
-    let role = route.data["role"] as string;
+    let roles = route.data["roles"] as Array<string>;
+    let counter = 0;
 
-  	if(this.authService.isInRole(role)){
+    roles.forEach(element => {
+      if(this.authService.isInRole(element)){
+        counter++;
+      }
+    });
+
+  	if(counter > 0){
   	  return true;
   	}
 
