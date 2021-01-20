@@ -13,8 +13,7 @@ export class DoctorValidationExceptionComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void { 
-    console.log(this.exeption)   
+  ngOnInit(): void {      
   }
 
 }
