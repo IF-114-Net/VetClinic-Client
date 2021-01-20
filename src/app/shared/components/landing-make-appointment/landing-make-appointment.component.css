@@ -1,9 +1,9 @@
 mat-card{
     height: 300px;
-    width: 600px;
+    width: 595px;
     margin: 40px auto;
-    background-color: #686868;
     color:white;
+    background-image: url("src\assets\img\mainMakeAppointment.jpg");
 }
 
 ul {
@@ -18,12 +18,4 @@ li {
     text-align: center;
     vertical-align: middle;
     word-wrap: break-word;
-}
-
-#left{
-    text-align: left;
-}
-
-#right{
-    text-align: right;
 }
