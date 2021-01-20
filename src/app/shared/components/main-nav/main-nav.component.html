@@ -17,6 +17,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
+      <div class="toolbar container">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -37,16 +38,16 @@
       </div>
       <span class="spacer"></span>
       <div  *ngIf="!(isHandset$ | async)">
-
-        <button mat-raised-button color='warn' *ngIf ='!authService.isLogedIn()' (click)="authService.login()">Login</button>   
-        <button mat-raised-button color='warn' *ngIf ='!authService.isLogedIn()' [routerLink]='["/"]'>Register</button>
-      <button mat-button [matMenuTriggerFor]="beforeMenu" *ngIf ='authService.isLogedIn() && authService.userData != null'>{{authService.userData['preferred_username']}}</button>
+          <button mat-raised-button color='warn' *ngIf ='!authService.isLogedIn()' (click)="authService.login()" class='authButtons'>Login</button>   
+          <button mat-raised-button color='warn' *ngIf ='!authService.isLogedIn()' [routerLink]='["/"]' class='authButtons'>Register</button>
+        <button mat-button [matMenuTriggerFor]="beforeMenu" *ngIf ='authService.isLogedIn() && authService.userData != null'>{{authService.userData['preferred_username']}}</button>
             <mat-menu #beforeMenu="matMenu" xPosition="before">
               <button mat-menu-item>My Cabinet</button>
               <button mat-menu-item *ngIf ='authService.isLogedIn()'(click)="authService.logout()">Logout</button>
             </mat-menu>
       
-    </div>
+      </div>
+  </div>
     </mat-toolbar>
     <!-- Add Content Here -->
     <ng-content></ng-content>

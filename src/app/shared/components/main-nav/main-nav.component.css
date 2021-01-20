@@ -26,22 +26,28 @@ img{
 
 .spacer{
   flex: 1 1 auto;
-
 }
 
-mat-toolbar a{
+.toolbar a{
   display: inline-block;
   margin:0 10px;
-  font-size: 15px;
+  font-size: 18px;
   color: white;
   text-decoration: none;
 }
 
+.toolbar{
+  display: flex;
+}
 
-mat-toolbar button{
-  display: inline-block;
-  margin:0 10px;
-  font-size: 15px;
-  color: white;
-  text-decoration: none;
+.toolbar div{
+  margin:auto;
+}
+
+mat-icon{
+  margin-top: 15px;
+}
+
+.authButtons{
+  margin: 0 10px;
 }
