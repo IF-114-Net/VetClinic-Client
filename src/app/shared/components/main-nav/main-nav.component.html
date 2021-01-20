@@ -7,11 +7,11 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item [routerLink]='["/"]'>Services</a>
-      <a mat-list-item [routerLink]='["/doctor"]'>Doctors</a>
+      <a mat-list-item [routerLink]='["/doctor/list"]'>Doctors</a>
       <a mat-list-item  [routerLink]='["/"]'>Contacts</a>
       <a mat-list-item *ngIf ='!authService.isLogedIn()' (click)="authService.login()">Login</a>
       <a mat-list-item *ngIf ='!authService.isLogedIn()' [routerLink]='["/"]'>Register</a>
-      <a mat-list-item *ngIf ='authService.isLogedIn()'>My Cabinet</a>
+      <a mat-list-item *ngIf ='authService.isLogedIn()' (click)="moveToCabinet()">My Cabinet</a>
       <a mat-list-item *ngIf ='authService.isLogedIn()'(click)="authService.logout()">Logout</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -32,7 +32,7 @@
        </div >
       <div *ngIf="!(isHandset$ | async)">
         <a [routerLink]='["/"]'>Services</a>
-        <a [routerLink]='["/doctor"]'>Doctors</a>
+        <a [routerLink]='["/doctor/list"]'>Doctors</a>
         <a [routerLink]='["/"]'>Contacts</a>
       </div>
       <span class="spacer"></span>
@@ -42,7 +42,7 @@
         <button mat-raised-button color='warn' *ngIf ='!authService.isLogedIn()' [routerLink]='["/"]'>Register</button>
       <button mat-button [matMenuTriggerFor]="beforeMenu" *ngIf ='authService.isLogedIn() && authService.userData != null'>{{authService.userData['preferred_username']}}</button>
             <mat-menu #beforeMenu="matMenu" xPosition="before">
-              <button mat-menu-item>My Cabinet</button>
+              <button mat-menu-item (click)="moveToCabinet()">My Cabinet</button>
               <button mat-menu-item *ngIf ='authService.isLogedIn()'(click)="authService.logout()">Logout</button>
             </mat-menu>
       

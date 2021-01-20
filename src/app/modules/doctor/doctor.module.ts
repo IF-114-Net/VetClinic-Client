@@ -1,50 +1,43 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DoctorComponent } from './doctor.component';
-
-import { MatButtonModule } from '@angular/material/button';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatListModule } from '@angular/material/list';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatChipsModule } from '@angular/material/chips';
-
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCardModule } from '@angular/material/card';
-import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { DoctorListComponent } from 'src/app/shared/components/doctor/doctor-list/doctor-list.component';
+
+import { DoctorPageComponent } from 'src/app/shared/components/doctor/doctor-page/doctor-page.component';
+import { DoctorItemComponent } from 'src/app/shared/components/doctor/doctor-item/doctor-item.component';
+import { DoctorDescriptionItemComponent } from 'src/app/shared/components/doctor/doctor-item/doctor-description-item/doctor-description-item.component';
+import { CreateDoctorComponent } from 'src/app/shared/components/doctor/create-doctor/create-doctor.component';
+import { EditDoctorComponent } from 'src/app/shared/components/doctor/edit-doctor/edit-doctor.component';
+import { DoctorValidationExceptionComponent } from 'src/app/shared/components/doctor/doctor-validation-exception/doctor-validation-exception.component';
+import { MaterialModule } from '../material/material.module';
+
 
 const routes: Routes = [
-  {path: '', component: DoctorComponent},
+  {path:'',component:DoctorComponent},
+  {path:'list',component:DoctorListComponent},
+  {path:'create-doctor',component:CreateDoctorComponent},
+  {path:':id',component:DoctorPageComponent},
+  {path:':id/edit-doctor',component:EditDoctorComponent},
 ];
 
 @NgModule({
-  declarations: [DoctorComponent],
+  declarations: [DoctorListComponent,
+    DoctorComponent,
+    DoctorItemComponent, 
+    DoctorPageComponent, 
+    DoctorDescriptionItemComponent, 
+    EditDoctorComponent, 
+    DoctorValidationExceptionComponent, 
+    CreateDoctorComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    MatButtonModule,
-    MatExpansionModule,
-    MatListModule,
-    MatDividerModule,
-    MatChipsModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    MatIconModule,
-    MatAutocompleteModule,
+    MaterialModule
   ],
-  providers: [MatDatepickerModule],
 })
 export class DoctorModule {
 }
