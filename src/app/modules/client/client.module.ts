@@ -16,9 +16,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ServicesListComponent} from '../../shared/components/services/services-list/services-list.component';
+import {HomeComponent} from '../../shared/components/home/home.component';
 
 const routes: Routes = [
-  {path: '', component: ClientComponent},
+  {path: 'services', component: ServicesListComponent},
+  {path: '', component: HomeComponent},
 ];
 
 @NgModule({

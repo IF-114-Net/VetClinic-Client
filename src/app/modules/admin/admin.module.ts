@@ -16,9 +16,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { AdminComponent } from './admin.component';
+import {ServicesComponent} from '../../shared/components/services/services.component';
 
 const routes: Routes = [
-  {path: '', component: AdminComponent},
+  {path: '', component: AdminComponent,
+    children: [
+      {path: 'services', component: ServicesComponent},
+    ]},
 ];
 
 @NgModule({
