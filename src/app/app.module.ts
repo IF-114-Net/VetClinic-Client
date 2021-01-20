@@ -5,9 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule, LogLevel, OidcConfigService } from 'angular-auth-oidc-client';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material/material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { DoctorModule } from './shared/components/doctor/doctor.module';
 import { AuthConfigModule } from './auth/auth-config.module';
 import { MainNavComponent } from './shared/components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -26,6 +24,7 @@ import {ServiceService} from './services/service.service';
 import {MatDialogRef} from '@angular/material/dialog';
 import { MatConfirmDialogComponent } from './shared/components/mat-confirm-dialog/mat-confirm-dialog.component';
 import { ServicesListComponent } from './shared/components/services/services-list/services-list.component';
+import { MaterialModule } from './modules/material/material.module';
 
 export function configureAuth(oidcConfigService: OidcConfigService) {
   return () =>
@@ -43,7 +42,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
 
       silentRenewUrl: `${window.location.origin}/silent-renew.html`,
       useRefreshToken: true,
-      logLevel: LogLevel.Debug,
+      logLevel: LogLevel.Warn,
     });
 }
 
@@ -61,7 +60,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     FormsModule,
     AuthConfigModule,
     LayoutModule,
-    DoctorModule
+    HttpClientModule,
   ],
   providers: [
     ServiceService,

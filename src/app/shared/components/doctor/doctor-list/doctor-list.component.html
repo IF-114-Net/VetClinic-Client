@@ -1,3 +1,7 @@
 <div class="container">
-    <app-doctor-item  *ngFor="let doctor of doctors" [doctor]="doctor" (click)="onSelect(doctor)"></app-doctor-item>
+    <app-doctor-item  *ngFor="let doctor of doctors" 
+    [doctor]="doctor"
+    [notListItem]="false" 
+    (click)="onSelect(doctor)" 
+    class="doctor_item"></app-doctor-item>
 </div>
