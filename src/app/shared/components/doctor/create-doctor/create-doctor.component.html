@@ -1,0 +1,165 @@
+<div *ngIf="authService.isInRole('admin')">
+    <div  class="card">
+        <mat-card>
+            <form [formGroup]="doctorForm">
+                <app-doctor-validation-exception *ngIf="doctorForm.get(['userName'])?.invalid 
+                            && (doctorForm.get(['userName'])?.dirty 
+                            || doctorForm.get(['userName'])?.touched)"
+                    [exeption]="doctorForm.get(['userName'])?.errors"
+                    [name]="'Username'">
+                </app-doctor-validation-exception>
+                <div class="form_item">
+                    <span>Username:</span>
+                    <input type="text" 
+                    [attr.disabled]="mainInformationCreated ? '' : null"
+                    formControlName="userName">
+                </div>
+        
+                <app-doctor-validation-exception *ngIf="doctorForm.get(['password'])?.invalid 
+                            && (doctorForm.get(['password'])?.dirty 
+                            || doctorForm.get(['password'])?.touched)"
+                    [exeption]="doctorForm.get(['password'])?.errors"
+                    [name]="'Password'">
+                </app-doctor-validation-exception>
+                <div class="form_item">
+                    <span>Password: </span>
+                    <input type="password" 
+                    [attr.disabled]="mainInformationCreated ? '' : null"
+                    formControlName="password">
+                </div>
+
+                <div class="form_item">
+                    <span>Repeat password</span>
+                    <input type="password" 
+                    [attr.disabled]="mainInformationCreated ? '' : null"
+                    formControlName="repeatedPassword">
+                </div>
+
+                <div class="form_buttons">
+                    <button mat-raised-button 
+                    [disabled]="!(doctorForm.get(['password'])?.valid
+                    && doctorForm.get(['userName'])?.valid
+                    && (doctorForm.get(['password'])?.value==doctorForm.get(['repeatedPassword'])?.value))" 
+                    color="primary"
+                        (click)="continue()">
+                        <span *ngIf="mainInformationCreated">Edit</span>
+                        <span *ngIf="!mainInformationCreated">Continue</span>
+                    </button>
+                    <button *ngIf="!mainInformationCreated" mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+                </div>
+            </form>
+        </mat-card>
+
+        <mat-card *ngIf="mainInformationCreated">
+            <form [formGroup]="doctorForm">
+                <app-doctor-validation-exception *ngIf="doctorForm.get(['firstName'])?.invalid 
+                        && (doctorForm.get(['firstName'])?.dirty 
+                        || doctorForm.get(['firstName'])?.touched)"
+                    [exeption]="doctorForm.get(['firstName'])?.errors"
+                    [name]="'First Name'">
+                </app-doctor-validation-exception>
+                <div class="form_item">
+                    <span>First Name:</span>
+                    <input type="text" formControlName="firstName">
+                </div>
+
+                <app-doctor-validation-exception *ngIf="doctorForm.get(['lastName'])?.invalid 
+                        && (doctorForm.get(['lastName'])?.dirty 
+                        || doctorForm.get(['lastName'])?.touched)"
+                    [exeption]="doctorForm.get(['lastName'])?.errors"
+                    [name]="'Last Name'">
+                </app-doctor-validation-exception>
+                <div class="form_item">
+                    <span>Last Name: </span>
+                    <input type="text" formControlName="lastName">
+                </div>
+
+                <app-doctor-validation-exception *ngIf="doctorForm.get(['email'])?.invalid 
+                        && (doctorForm.get(['email'])?.dirty 
+                        || doctorForm.get(['email'])?.touched)"
+                    [exeption]="doctorForm.get(['email'])?.errors"
+                    [name]="'Last Name'">
+                </app-doctor-validation-exception>
+                <div class="form_item">
+                    <span>Email:</span>
+                    <input type="text" formControlName="email">
+                </div>
+
+                <app-doctor-validation-exception *ngIf="doctorForm.get(['phoneNumber'])?.invalid 
+                        && (doctorForm.get(['phoneNumber'])?.dirty 
+                        || doctorForm.get(['phoneNumber'])?.touched)"
+                    [exeption]="doctorForm.get(['phoneNumber'])?.errors"
+                    [name]="'Phone number'">
+                </app-doctor-validation-exception>
+                <div class="form_item">
+                    <span>Phone number:</span>
+                    <input type="text" formControlName="phoneNumber">
+                </div>
+                
+                <app-doctor-validation-exception *ngIf="doctorForm.get(['positionId'])?.invalid"
+                    [exeption]="doctorForm.get(['positionId'])?.errors"
+                    [name]="'Position'">
+                </app-doctor-validation-exception>
+                <div class="form_item">
+                    <span>Position:</span>                
+                    <select formControlName="positionId" >
+                        <option value="" disabled>Choose position</option>
+                        <option *ngFor="let position of positions" [ngValue]="position.id">{{position.positionName}}</option>
+                    </select>
+                </div>
+
+                <app-doctor-validation-exception *ngIf="doctorForm.get(['education'])?.invalid 
+                                    && (doctorForm.get(['education'])?.dirty 
+                                    || doctorForm.get(['education'])?.touched)"
+                    [exeption]="doctorForm.get(['education'])?.errors"
+                    [name]="'Education'">
+                </app-doctor-validation-exception>
+                <div class="form_item">
+                    <span>Education:</span>
+                    <textarea type="text" formControlName="education"></textarea>
+                </div>
+
+                <app-doctor-validation-exception *ngIf="doctorForm.get(['biography'])?.invalid 
+                                    && (doctorForm.get(['biography'])?.dirty 
+                                    || doctorForm.get(['biography'])?.touched)"
+                    [exeption]="doctorForm.get(['biography'])?.errors"
+                    [name]="'Biography'">
+                </app-doctor-validation-exception>
+                <div class="form_item">
+                    <span>Biography:</span>
+                    <textarea type="text" formControlName="biography"></textarea>
+                </div>
+
+                <app-doctor-validation-exception
+                    *ngIf="doctorForm.get(['experience'])?.invalid 
+                                    && (doctorForm.get(['experience'])?.dirty 
+                                    || doctorForm.get(['experience'])?.touched)"
+                    [exeption]="doctorForm.get(['experience'])?.errors"
+                    [name]="'Experience'">
+                </app-doctor-validation-exception>
+                <div class="form_item">
+                    <span>Experience:</span>
+                    <textarea type="text" formControlName="experience"></textarea>
+                </div>
+
+                <app-doctor-validation-exception *ngIf="doctorForm.get(['photo'])?.invalid 
+                                    && (doctorForm.get(['photo'])?.dirty 
+                                    || doctorForm.get(['photo'])?.touched)"
+                    [exeption]="doctorForm.get(['photo'])?.errors"
+                    [name]="'Photo'">
+                </app-doctor-validation-exception>
+                <div class="form_item">
+                    <span>Photo:</span>
+                    <input type="text" formControlName="photo">
+                </div>
+                <div class="form_buttons">
+                    <button mat-raised-button [disabled]="!doctorForm.valid"
+                        color="primary" (click)="createProfile()">Create Profile
+                    </button>                
+                    <button mat-raised-button color="warn"                    
+                        (click)="cancel()">Cancel</button>                    
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</div>
