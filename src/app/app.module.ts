@@ -5,9 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule, LogLevel, OidcConfigService } from 'angular-auth-oidc-client';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material/material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { DoctorModule } from './shared/components/doctor/doctor.module';
 import { AuthConfigModule } from './auth/auth-config.module';
 import { MainNavComponent } from './shared/components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -19,6 +17,7 @@ import { ForbiddenComponent } from './shared/components/forbidden/forbidden.comp
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { UnauthorizedComponent } from './shared/components/unauthorized/unauthorized.component';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
+import { MaterialModule } from './modules/material/material.module';
 
 export function configureAuth(oidcConfigService: OidcConfigService) {
   return () =>
@@ -52,7 +51,6 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     AuthConfigModule,
     LayoutModule,
     HttpClientModule,
-    DoctorModule
   ],
   providers: [
     OidcConfigService,
