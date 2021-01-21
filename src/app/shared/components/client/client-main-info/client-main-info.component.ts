@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { ApiService} from 'src/app/services/api.service'
-import { Filter } from 'src/app/models/queries/filter';
+
 
 @Component({
   selector: 'app-client-main-info',
