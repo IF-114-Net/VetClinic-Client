@@ -1,0 +1,34 @@
+
+<div class="container">
+    <mat-card class="card">
+        <div *ngIf="animal" class="card">
+            <div class="img_container">
+                <img *ngIf="!animal.photo"
+                    src="https://tanzolymp.com/images/default-non-user-no-photo-1.jpg"
+                    [alt]="animal.name"
+                    class="img">
+                <img *ngIf="animal.photo" [src]="animal?.photo"
+                    [alt]="animal.name"
+                    class="img">
+            </div>
+            <mat-card-content>
+                <div class="content">
+                    <mat-card-title>
+                        {{animal.name}}
+                    </mat-card-title>                
+                    <div class="doctor_position">
+                        {{animalType.animalTypeName}}
+                    </div>   
+                </div>
+                <div *ngIf='closedInformation' class="settings"
+                    (click)="goToSettings()">
+                    <span class="mat-body-2"> Settings </span>
+                    <button mat-mini-fab color="primary" class="settings_btn"
+                        aria-label="Example icon button with a heart icon">
+                        <mat-icon>settings</mat-icon>
+                    </button>
+                </div>
+            </mat-card-content> 
+        </div>
+    </mat-card>
+</div>

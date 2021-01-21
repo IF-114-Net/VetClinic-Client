@@ -1,0 +1,61 @@
+h2 {
+  text-align: center;
+}
+
+.card {
+  min-height: 220px;
+  margin: 20px 0;
+}
+
+.list_item {
+  padding: 10px;
+  position: relative;
+}
+
+mat-card-title {
+  display: inline;
+  margin-right: 20px;
+}
+
+.img_container {
+  position: absolute;
+  height: 210px;
+  width: 210px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.img {
+  position: absolute;
+  width: auto;
+  height: 100%;
+  min-width: 100px;
+}
+
+mat-card-content {
+  width: auto;
+  color: #252525;
+  padding-left: 270px;
+  max-width: 900px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.position {
+  color: #252525;
+  margin: 15px 0;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.settings {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+}
