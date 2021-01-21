@@ -122,10 +122,9 @@ doctorForm:FormGroup=new FormGroup({
         "email":this.doctorForm.value.email,
         "password":this.doctorForm.value.password,
       }  
-    }   
-    console.log("doctor:", doctor.positionId);  
+    }  
     this.apiService.addEntity('doctor',doctor).subscribe(data=>console.log(data),
-    error => console.log('oops', error));
+    error => console.error('oops', error));
     alert(`Doctor created ,${doctor.user.userName},${doctor.user.password}`)   ;
    this.router.navigate(["doctor/list"]) ;   
   }
