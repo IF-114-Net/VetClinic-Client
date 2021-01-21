@@ -19,9 +19,9 @@ import { UnauthorizedComponent } from './shared/components/unauthorized/unauthor
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { ServicesComponent } from './shared/components/services/services.component';
 import { ServiceComponent } from './shared/components/services/service/service.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ServiceService} from './services/service.service';
-import {MatDialogRef} from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ServiceService} from './services/service.service';
+import { MatDialogRef} from '@angular/material/dialog';
 import { MatConfirmDialogComponent } from './shared/components/mat-confirm-dialog/mat-confirm-dialog.component';
 import { ServicesListComponent } from './shared/components/services/services-list/services-list.component';
 import { MaterialModule } from './modules/material/material.module';
