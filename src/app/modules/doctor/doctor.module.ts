@@ -8,18 +8,18 @@ import { DoctorListComponent } from 'src/app/shared/components/doctor/doctor-lis
 import { DoctorPageComponent } from 'src/app/shared/components/doctor/doctor-page/doctor-page.component';
 import { DoctorItemComponent } from 'src/app/shared/components/doctor/doctor-item/doctor-item.component';
 import { DoctorDescriptionItemComponent } from 'src/app/shared/components/doctor/doctor-item/doctor-description-item/doctor-description-item.component';
-import { CreateDoctorComponent } from 'src/app/shared/components/doctor/create-doctor/create-doctor.component';
 import { EditDoctorComponent } from 'src/app/shared/components/doctor/edit-doctor/edit-doctor.component';
-import { DoctorValidationExceptionComponent } from 'src/app/shared/components/doctor/doctor-validation-exception/doctor-validation-exception.component';
 import { MaterialModule } from '../material/material.module';
+import { SharedModule } from '../shared/shared.module';
+import { AuthGuard } from 'src/app/guards/auth-guard.service';
+import { RoleGuard } from 'src/app/guards/role-guard.service';
 
 
 const routes: Routes = [
   {path:'',component:DoctorComponent},
   {path:'list',component:DoctorListComponent},
-  {path:'create-doctor',component:CreateDoctorComponent},
   {path:':id',component:DoctorPageComponent},
-  {path:':id/edit-doctor',component:EditDoctorComponent},
+  {path:':id/edit-doctor',component:EditDoctorComponent,canActivate:[AuthGuard, RoleGuard], data:{roles:['admin','doctor']}},
 ];
 
 @NgModule({
@@ -28,15 +28,15 @@ const routes: Routes = [
     DoctorItemComponent, 
     DoctorPageComponent, 
     DoctorDescriptionItemComponent, 
-    EditDoctorComponent, 
-    DoctorValidationExceptionComponent, 
-    CreateDoctorComponent],
+    EditDoctorComponent,
+    ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ],
 })
 export class DoctorModule {

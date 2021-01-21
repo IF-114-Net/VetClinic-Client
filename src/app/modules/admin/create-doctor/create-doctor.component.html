@@ -1,6 +1,7 @@
 <div *ngIf="authService.isInRole('admin')">
     <div  class="card">
         <mat-card>
+            <strong>* required field</strong>            
             <form [formGroup]="doctorForm">
                 <app-doctor-validation-exception *ngIf="doctorForm.get(['userName'])?.invalid 
                             && (doctorForm.get(['userName'])?.dirty 
@@ -9,10 +10,12 @@
                     [name]="'Username'">
                 </app-doctor-validation-exception>
                 <div class="form_item">
-                    <span>Username:</span>
-                    <input type="text" 
-                    [attr.disabled]="mainInformationCreated ? '' : null"
-                    formControlName="userName">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Username:</mat-label>
+                        <input matInput required type="text" 
+                            [attr.disabled]="mainInformationCreated ? '' : null"
+                            formControlName="userName">                        
+                        </mat-form-field>
                 </div>
         
                 <app-doctor-validation-exception *ngIf="doctorForm.get(['password'])?.invalid 
@@ -22,17 +25,21 @@
                     [name]="'Password'">
                 </app-doctor-validation-exception>
                 <div class="form_item">
-                    <span>Password: </span>
-                    <input type="password" 
-                    [attr.disabled]="mainInformationCreated ? '' : null"
-                    formControlName="password">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Password: </mat-label>
+                        <input matInput required type="password" 
+                            [attr.disabled]="mainInformationCreated ? '' : null"
+                            formControlName="password">
+                    </mat-form-field>
                 </div>
 
                 <div class="form_item">
-                    <span>Repeat password</span>
-                    <input type="password" 
-                    [attr.disabled]="mainInformationCreated ? '' : null"
-                    formControlName="repeatedPassword">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Repeat password</mat-label>
+                            <input matInput required type="password" 
+                                [attr.disabled]="mainInformationCreated ? '' : null"
+                                formControlName="repeatedPassword">
+                    </mat-form-field>
                 </div>
 
                 <div class="form_buttons">
@@ -59,8 +66,10 @@
                     [name]="'First Name'">
                 </app-doctor-validation-exception>
                 <div class="form_item">
-                    <span>First Name:</span>
-                    <input type="text" formControlName="firstName">
+                    <mat-form-field appearance="fill">
+                        <mat-label>First Name:</mat-label>
+                        <input matInput required type="text" formControlName="firstName">
+                    </mat-form-field>
                 </div>
 
                 <app-doctor-validation-exception *ngIf="doctorForm.get(['lastName'])?.invalid 
@@ -70,8 +79,10 @@
                     [name]="'Last Name'">
                 </app-doctor-validation-exception>
                 <div class="form_item">
-                    <span>Last Name: </span>
-                    <input type="text" formControlName="lastName">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Last Name: </mat-label>
+                        <input matInput required type="text" formControlName="lastName">
+                    </mat-form-field>
                 </div>
 
                 <app-doctor-validation-exception *ngIf="doctorForm.get(['email'])?.invalid 
@@ -81,8 +92,10 @@
                     [name]="'Last Name'">
                 </app-doctor-validation-exception>
                 <div class="form_item">
-                    <span>Email:</span>
-                    <input type="text" formControlName="email">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email:</mat-label>
+                        <input matInput type="text" formControlName="email">
+                    </mat-form-field>
                 </div>
 
                 <app-doctor-validation-exception *ngIf="doctorForm.get(['phoneNumber'])?.invalid 
@@ -92,8 +105,10 @@
                     [name]="'Phone number'">
                 </app-doctor-validation-exception>
                 <div class="form_item">
-                    <span>Phone number:</span>
-                    <input type="text" formControlName="phoneNumber">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Phone number:</mat-label>
+                        <input matInput required type="text" formControlName="phoneNumber">
+                    </mat-form-field>
                 </div>
                 
                 <app-doctor-validation-exception *ngIf="doctorForm.get(['positionId'])?.invalid"
@@ -101,11 +116,14 @@
                     [name]="'Position'">
                 </app-doctor-validation-exception>
                 <div class="form_item">
-                    <span>Position:</span>                
-                    <select formControlName="positionId" >
-                        <option value="" disabled>Choose position</option>
-                        <option *ngFor="let position of positions" [ngValue]="position.id">{{position.positionName}}</option>
-                    </select>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Position:</mat-label>
+                        <mat-select matInput formControlName="positionId">
+                            <mat-option value="" disabled>Choose position</mat-option>
+                            <mat-option *ngFor="let position of positions" [value]="position.id">
+                                {{position.positionName}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
 
                 <app-doctor-validation-exception *ngIf="doctorForm.get(['education'])?.invalid 
@@ -115,8 +133,10 @@
                     [name]="'Education'">
                 </app-doctor-validation-exception>
                 <div class="form_item">
-                    <span>Education:</span>
-                    <textarea type="text" formControlName="education"></textarea>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Education:</mat-label>
+                        <textarea matInput type="text" formControlName="education"></textarea>
+                    </mat-form-field>
                 </div>
 
                 <app-doctor-validation-exception *ngIf="doctorForm.get(['biography'])?.invalid 
@@ -126,8 +146,10 @@
                     [name]="'Biography'">
                 </app-doctor-validation-exception>
                 <div class="form_item">
-                    <span>Biography:</span>
-                    <textarea type="text" formControlName="biography"></textarea>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Biography:</mat-label>
+                        <textarea matInput type="text" formControlName="biography"></textarea>
+                    </mat-form-field>
                 </div>
 
                 <app-doctor-validation-exception
@@ -138,8 +160,10 @@
                     [name]="'Experience'">
                 </app-doctor-validation-exception>
                 <div class="form_item">
-                    <span>Experience:</span>
-                    <textarea type="text" formControlName="experience"></textarea>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Experience:</mat-label>
+                        <textarea matInput type="text" formControlName="experience"></textarea>
+                    </mat-form-field>
                 </div>
 
                 <app-doctor-validation-exception *ngIf="doctorForm.get(['photo'])?.invalid 
@@ -149,8 +173,10 @@
                     [name]="'Photo'">
                 </app-doctor-validation-exception>
                 <div class="form_item">
-                    <span>Photo:</span>
-                    <input type="text" formControlName="photo">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Photo:</mat-label>
+                        <input matInput type="text" formControlName="photo">
+                    </mat-form-field>
                 </div>
                 <div class="form_buttons">
                     <button mat-raised-button [disabled]="!doctorForm.valid"
