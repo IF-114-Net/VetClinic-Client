@@ -21,7 +21,7 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () =>
       import('../app/modules/admin/admin.module').then((m) => m.AdminModule),
-    canActivate: [AuthGuard, RoleGuard], data: {role: 'admin'}
+    canActivate: [AuthGuard, RoleGuard], data: {roles: ['admin']}
   },
   { path: 'forbidden', component: ForbiddenComponent, pathMatch: 'full' },
   { path: 'unauthorized', component: UnauthorizedComponent, pathMatch: 'full' },
