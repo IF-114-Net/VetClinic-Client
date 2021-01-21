@@ -22,7 +22,7 @@ export class ApiService {
     return this.http.get(`${environment.BASEURL}/${entity}${filter ? filterString : ''}`);
   }
 
-  getEntityById(entity: string, id: number): Observable<any> {
+  getEntityById(entity: string, id: number|string): Observable<any> {
     return this.http.get(`${environment.BASEURL}/${entity}/${id}`);
   }
 
@@ -30,11 +30,11 @@ export class ApiService {
     return this.http.post(`${environment.BASEURL}/${entity}`, payload);
   }
 
-  updateEntity(entity: string, id: number, payload: any): Observable<any> {
+  updateEntity(entity: string, id: number|string, payload: any): Observable<any> {
     return this.http.put(`${environment.BASEURL}/${entity}/${id}`, payload);
   }
 
-  deleteEntity(entity: string, id: number): Observable<any> {
+  deleteEntity(entity: string, id: number|string): Observable<any> {
     return this.http.delete(`${environment.BASEURL}/${entity}/${id}`);
   }
 }
