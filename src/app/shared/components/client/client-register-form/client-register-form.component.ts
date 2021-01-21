@@ -103,7 +103,6 @@ export class ClientRegisterFormComponent implements OnInit {
 
   cancel()
   {
-    alert("cancelled");
     console.log("cancelled");
     this.clientService.mainAppPage();
   }
