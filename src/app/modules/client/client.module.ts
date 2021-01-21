@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ServicesListComponent} from '../../shared/components/services/services-list/services-list.component';
 import {HomeComponent} from '../../shared/components/home/home.component';
 import { MaterialModule } from '../material/material.module';
+import { HomeComponent } from 'src/app/shared/components/home/home.component';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   {path: 'services', component: ServicesListComponent},
@@ -23,6 +25,7 @@ const routes: Routes = [
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
 })
 export class ClientModule {
