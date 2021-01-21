@@ -3,7 +3,7 @@ mat-card{
     width: 595px;
     margin: 40px auto;
     color:white;
-    background-image: url("src\assets\img\mainMakeAppointment.jpg");
+    background-image: url("src/assets/img/mainMakeAppointment.jpg");
 }
 
 ul {

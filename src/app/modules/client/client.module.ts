@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClientComponent } from './client.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ServicesListComponent} from '../../shared/components/services/services-list/services-list.component';
-import {HomeComponent} from '../../shared/components/home/home.component';
 import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from 'src/app/shared/components/home/home.component';
 import { SharedModule } from '../shared/shared.module';
