@@ -1,4 +1,4 @@
 export interface Service{
-    id:number | null;
-    serviceName:string;
+  id:number | null;
+  serviceName:string;
 }
