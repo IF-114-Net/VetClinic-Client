@@ -1,1 +1,17 @@
-<p>client-cabinet works!</p>
+    <div *ngIf ='authService.isLogedIn()'>
+<mat-card>
+<h1>Client's cabinet</h1>
+<div id="maininfo-div">
+<app-client-main-info  
+[client] = 'client' >
+</app-client-main-info>
+</div>
+
+<div id="animals-div">
+<h2>Animals</h2>
+</div>
+<div id="appointments-div">
+<h2>Appointments</h2>
+</div>
+</mat-card>
+</div>

@@ -39,6 +39,8 @@ export class MainNavComponent {
     {
       this.router.navigate(["doctor"])
     }
+    else
+      this.router.navigate(["client"]);
   }
 
 }

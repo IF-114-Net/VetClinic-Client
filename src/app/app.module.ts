@@ -19,6 +19,7 @@ import { UnauthorizedComponent } from './shared/components/unauthorized/unauthor
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { MaterialModule } from './modules/material/material.module';
 
+
 export function configureAuth(oidcConfigService: OidcConfigService) {
   return () =>
     oidcConfigService.withConfig({
@@ -40,7 +41,8 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
 }
 
 @NgModule({
-  declarations: [AppComponent, MainNavComponent, HomeComponent, LandingMakeAppointmentComponent, FooterComponent, ForbiddenComponent, NotFoundComponent, UnauthorizedComponent],
+  declarations: [AppComponent, MainNavComponent, HomeComponent, LandingMakeAppointmentComponent, FooterComponent, ForbiddenComponent, NotFoundComponent, UnauthorizedComponent, ClientRegisterFormComponent, 
+  ClientMainInfoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

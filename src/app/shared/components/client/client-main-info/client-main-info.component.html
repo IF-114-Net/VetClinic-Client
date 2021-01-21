@@ -1,17 +1,19 @@
-<div id="main-info-div" *ngIf ='authService.isLogedIn()'>
+<div id="main-info-div" >
+    <mat-card>
     <table>
         <tr>
-            <td>First name</td>
-            <td>Last name</td>
-            <td>
-                <button>Edit</button>
+            <td><h1>{{client.firstName}}</h1> </td>
+            <td><h1>{{client.lastName}}</h1></td>
+            <td id="tablecell-button" colspan="2">
+                <button id="edit-button" mat-raised-button color="accent">Edit</button>
             </td>
         </tr>
         <tr>
-            <td> Email </td>
+            <td><h3>{{client.email}}</h3></td>
         </tr>
         <tr>
-            Phone
+            <td><h3>{{client.phoneNumber}}</h3></td>
         </tr>
     </table>
+    </mat-card>
 </div>
