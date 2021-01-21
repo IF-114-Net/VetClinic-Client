@@ -16,9 +16,10 @@ const routes: Routes = [
   {path: '', component: AdminComponent,
     children: [
       {path: 'services', component: ServicesComponent},
+      { path: 'role', component: RoleListComponent},
     ]},
   {path:'create-doctor',component:CreateDoctorComponent, canActivate:[AuthGuard, RoleGuard], data:{roles:['admin']}},
-  { path: 'role', component: RoleListComponent},
+ 
   {path: 'role/create', component: CreateRoleComponent},
   {path: 'role/edit/:id', component: CreateRoleComponent},
 ];
