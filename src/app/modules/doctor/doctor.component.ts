@@ -1,4 +1,3 @@
-import { HttpHeaders} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Doctor } from 'src/app/models/doctor/doctor';
