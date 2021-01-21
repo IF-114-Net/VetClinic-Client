@@ -1,33 +1,38 @@
 .card {
-  width: 500px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
 mat-card {
   margin: 20px 0;
 }
+
+strong {
+  color: #f44336;
+}
+
 form {
-  padding-left: 20px;
+  margin-top: 10px;
 }
 
 .form_item {
-  display: flex;
-  margin-bottom: 10px;
+  width: auto;
 }
-.form_item span {
-  width: 100px;
+
+mat-form-field {
+  width: 100%;
 }
 
 input {
   font-family: "Montserrat", sans-serif;
-  width: 320px;
+  width: 100%;
 }
 
 textarea {
   font-family: "Montserrat", sans-serif;
   resize: none;
-  height: 100px;
-  width: 320px;
+  max-height: 100px;
+  width: 100%;
 }
 
 select {

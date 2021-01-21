@@ -1,4 +1,3 @@
-import { HttpHeaders} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Doctor } from 'src/app/models/doctor/doctor';
@@ -21,9 +20,7 @@ export class DoctorComponent implements OnInit {
 
     doctor!:Doctor;
 
-  ngOnInit(): void {
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');    
+  ngOnInit(): void {      
     let params:Filter = {"UserId":this.authService.userData.sub}
     this.doctorService.getEntity("doctor",params).subscribe(
       (data:DoctorData)=> {this.doctor=data.data[0];
