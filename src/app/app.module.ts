@@ -17,6 +17,13 @@ import { ForbiddenComponent } from './shared/components/forbidden/forbidden.comp
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { UnauthorizedComponent } from './shared/components/unauthorized/unauthorized.component';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
+import { ServicesComponent } from './shared/components/services/services.component';
+import { ServiceComponent } from './shared/components/services/service/service.component';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ServiceService} from './services/service.service';
+import { MatDialogRef} from '@angular/material/dialog';
+import { MatConfirmDialogComponent } from './shared/components/mat-confirm-dialog/mat-confirm-dialog.component';
+import { ServicesListComponent } from './shared/components/services/services-list/services-list.component';
 import { MaterialModule } from './modules/material/material.module';
 
 export function configureAuth(oidcConfigService: OidcConfigService) {
@@ -28,11 +35,11 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
       clientId: 'angular_client',
       scope: 'openid profile ApiOne offline_access',
       responseType: 'code',
-      silentRenew: true, 
-      tokenRefreshInSeconds: 60,  
+      silentRenew: true,
+      tokenRefreshInSeconds: 60,
       unauthorizedRoute: 'unauthorized',
       forbiddenRoute: 'forbidden',
-       
+
       silentRenewUrl: `${window.location.origin}/silent-renew.html`,
       useRefreshToken: true,
       logLevel: LogLevel.Warn,
@@ -40,7 +47,8 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
 }
 
 @NgModule({
-  declarations: [AppComponent, MainNavComponent, HomeComponent, LandingMakeAppointmentComponent, FooterComponent, ForbiddenComponent, NotFoundComponent, UnauthorizedComponent],
+  declarations: [AppComponent, MainNavComponent, HomeComponent, LandingMakeAppointmentComponent, FooterComponent, ForbiddenComponent,
+    NotFoundComponent, UnauthorizedComponent, ServicesComponent, ServiceComponent, MatConfirmDialogComponent, ServicesListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -48,12 +56,19 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     AuthConfigModule,
     LayoutModule,
     HttpClientModule,
   ],
   providers: [
+    ServiceService,
     OidcConfigService,
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: configureAuth,
