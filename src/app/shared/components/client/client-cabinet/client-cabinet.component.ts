@@ -47,13 +47,12 @@ export class ClientCabinetComponent implements OnInit {
         let params: Filter = { 'clientId': clientId.toString() };
 
         this.apiService.getEntity('animals', params).subscribe((data: AnimalsData) => {
-            this.animals = data.data;
+            this.animals = data.data;               
+            this.getAnimalTypeData();          
+    }) 
+    }
 
-    this.apiService.getEntity('animals',params).subscribe((data: AnimalsData)=>{
-    this.animals=data.data;    
-      this.getAnimalTypeData();          
-    })  
-  }
+  
 
   initializeClient()
   {
@@ -74,13 +73,6 @@ export class ClientCabinetComponent implements OnInit {
    })
     
   }
-
-    getAnimalTypeData(id: number) {
-        this.apiService.getEntityById('animaltypes', id).subscribe((data: AnimalType) => {
-            this.animalType.push(data);
-        });
-    }
-
     notActiveAnimal(active: any) {
         this.activeAnimal = active;
     }
@@ -94,7 +86,7 @@ export class ClientCabinetComponent implements OnInit {
             if (result === null || result === undefined) {
                 return;
             }
-            this.getAnimalTypeData(result.animalTypeId);
+            this.getAnimalTypeData();
             this.animals.push(result);
         });
     }
