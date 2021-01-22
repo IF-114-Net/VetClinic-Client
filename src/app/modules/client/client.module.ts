@@ -7,7 +7,9 @@ import {ServicesListComponent} from '../../shared/components/services/services-l
 import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from 'src/app/shared/components/home/home.component';
 import { SharedModule } from '../shared/shared.module';
-import { AnimalItemComponent } from './animal-item/animal-item.component';
+import { CreateAnimalItemComponent } from './create-animal-item/create-animal-item.component';
+import { AnimalItemComponent } from './animal-item/animal-item.component';	
+
 
 const routes: Routes = [
   {path: 'services', component: ServicesListComponent},
@@ -20,6 +22,7 @@ const routes: Routes = [
   declarations: [
     ClientComponent,
     AnimalItemComponent,
+    CreateAnimalItemComponent,
   ],
   imports: [
     CommonModule,

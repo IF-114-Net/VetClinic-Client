@@ -1,0 +1,6 @@
+
+<div class="container">    
+<app-create-animal-item></app-create-animal-item>    
+<app-animal-item *ngFor="let animal of animals; index as i"  [animal]="animal" [animalType]="animalType[i]" [activeAnimal]="activeAnimal==animal?.id" (activeAnimalid)="notActiveAnimal($event)" ></app-animal-item>
+</div>
+{{activeAnimal}}
