@@ -26,6 +26,7 @@ import { MatConfirmDialogComponent } from './shared/components/mat-confirm-dialo
 import { ServicesListComponent } from './shared/components/services/services-list/services-list.component';
 import { MaterialModule } from './modules/material/material.module';
 
+
 export function configureAuth(oidcConfigService: OidcConfigService) {
   return () =>
     oidcConfigService.withConfig({
