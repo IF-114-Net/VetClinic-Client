@@ -23,7 +23,9 @@ export class ClientCabinetComponent implements OnInit {
       this.initializeClient();
     }
     else 
-    console.log("mistake happened");
+    {
+      console.log("mistake happened");
+    }
    }
 
   ngOnInit(): void {
