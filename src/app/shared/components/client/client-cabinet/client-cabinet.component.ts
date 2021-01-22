@@ -15,10 +15,11 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ClientCabinetComponent implements OnInit {
 
-    activeAnimal!: number;
-    animals!: Animal[];
-    animalType: AnimalType[] = new Array<AnimalType>();
-    id!: number;
+  activeAnimal!:number;
+  animals!:Animal[]  
+  animalTypeId!:number;
+  animalTypes!:AnimalType[];  
+  id!:number;
 
     animalData!: Animal;
 
@@ -46,32 +47,32 @@ export class ClientCabinetComponent implements OnInit {
         let params: Filter = { 'clientId': clientId.toString() };
 
         this.apiService.getEntity('animals', params).subscribe((data: AnimalsData) => {
-            this.animals = data.data;
-
-            for (let animal of this.animals) {
-                let id: number = parseInt(animal.animalTypeId);
-                this.getAnimalTypeData(id);
-            }
-        });
+            this.animals = data.data;               
+            this.getAnimalTypeData();          
+    }) 
     }
 
-    initializeClient() {
-        let id: string = this.authService.userData.sub;
-        let filter: Filter = { 'UserId': id };
-        this.apiService.getEntity('Client', filter).subscribe(response => {
-                this.client = response[0];
-                this.initializeAnimal(response[0].id);
-            },
-            error =>
-                console.log('error : ' + error));
-    }
+  
 
-    getAnimalTypeData(id: number) {
-        this.apiService.getEntityById('animaltypes', id).subscribe((data: AnimalType) => {
-            this.animalType.push(data);
-        });
-    }
-
+  initializeClient()
+  {
+    let id: string = this.authService.userData.sub;
+    let filter: Filter = {"UserId": id};
+    this.apiService.getEntity("Client", filter).subscribe(response =>
+      {
+        this.client = response[0];  
+        this.initializeAnimal(response[0].id)      
+      },
+      error =>
+      console.log("error : " + error));    
+  }
+  
+  getAnimalTypeData(){
+  this.apiService.getEntity('animaltypes').subscribe((data: AnimalType[])=>{
+    this.animalTypes=data    
+   })
+    
+  }
     notActiveAnimal(active: any) {
         this.activeAnimal = active;
     }
@@ -85,7 +86,7 @@ export class ClientCabinetComponent implements OnInit {
             if (result === null || result === undefined) {
                 return;
             }
-            this.getAnimalTypeData(result.animalTypeId);
+            this.getAnimalTypeData();
             this.animals.push(result);
         });
     }

@@ -7,11 +7,11 @@
             </app-client-main-info>
         </div>
 
-        <div id="animals-div">
+        <div *ngIf="animalTypes" id="animals-div">
             <h2>Animals</h2>
             <app-create-animal-item (click)="openDialog()"></app-create-animal-item>
             <app-animal-item *ngFor="let animal of animals; index as i" [animal]="animal"
-                             [animalType]="animalType[i]" [activeAnimal]="activeAnimal==animal?.id"
+                             [animalType]="animalTypes[animal.animalTypeId-1]" [activeAnimal]="activeAnimal==animal?.id"
                              (activeAnimalid)="notActiveAnimal($event)"></app-animal-item>
         </div>
         <mat-divider></mat-divider>

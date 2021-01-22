@@ -19,10 +19,10 @@ import { DoctorAppointmentComponent } from './doctor-appointment/doctor-appointm
 
 
 const routes: Routes = [
-    { path: '', component: DoctorComponent },
-    { path: 'list', component: DoctorListComponent },
-    { path: ':id', component: DoctorPageComponent },
-    { path: ':id/edit-doctor', component: EditDoctorComponent, canActivate: [AuthGuard, RoleGuard], data: { roles: ['admin', 'doctor'] } },
+  {path:'',component:DoctorComponent, canActivate:[AuthGuard, RoleGuard], data:{roles:['admin','doctor']}},
+  {path:'list',component:DoctorListComponent},
+  {path:':id',component:DoctorPageComponent, canActivate:[AuthGuard, RoleGuard], data:{roles:['admin','doctor']}},
+  {path:':id/edit-doctor',component:EditDoctorComponent,canActivate:[AuthGuard, RoleGuard], data:{roles:['admin','doctor']}},
 ];
 
 @NgModule({
