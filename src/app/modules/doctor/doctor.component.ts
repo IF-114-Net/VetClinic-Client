@@ -7,25 +7,28 @@ import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-doctor',
-  templateUrl: './doctor.component.html',
-  styleUrls: ['./doctor.component.css']
+    selector: 'app-doctor',
+    templateUrl: './doctor.component.html',
+    styleUrls: ['./doctor.component.css']
 })
 export class DoctorComponent implements OnInit {
 
-  constructor(private router: Router,
-    private doctorService:ApiService,
-    private authService:AuthService
-    ) { }
+    constructor(private router: Router,
+                private doctorService: ApiService,
+                private authService: AuthService
+    ) {
+    }
 
-    doctor!:Doctor;
+    doctor!: Doctor;
 
-  ngOnInit(): void {      
-    let params:Filter = {"UserId":this.authService.userData.sub}
-    this.doctorService.getEntity("doctor",params).subscribe(
-      (data:DoctorData)=> {this.doctor=data.data[0];
-      this.router.navigate(["doctor",this.doctor.id]);}
-    );    
-  }
+    ngOnInit(): void {
+        let params: Filter = { 'UserId': this.authService.userData.sub };
+        this.doctorService.getEntity('doctor', params).subscribe(
+            (data: DoctorData) => {
+                this.doctor = data.data[0];
+                this.router.navigate(['doctor', this.doctor.id]);
+            }
+        );
+    }
 
 }

@@ -91,7 +91,7 @@ export class ServicesComponent implements OnInit {
           this.service.deleteService(element as number).subscribe(
               data => {
                 this.updateDataSource();
-                this.notificationService.warn('! Deleted successfully');
+                this.notificationService.warn('Deleted successfully !');
               },
               err => {console.log(err); }
             );
