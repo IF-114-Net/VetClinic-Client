@@ -1,0 +1,38 @@
+<div class="container">
+    <mat-card *ngIf="animal&&animalType" 
+    class="animal_card light_grey'"  
+    [ngClass]="activeAnimal ? 'green' : ''" >
+        <div class="card">
+            <div class="img_container" (click)="selectAnimal()">
+                <img *ngIf="!animal.photo"
+                    src="assets/img/unknownAnimals.png"
+                    [alt]="animal.name"
+                    class="img">
+                <img *ngIf="animal.photo" [src]="animal?.photo"
+                    [alt]="animal.name"
+                    class="img">
+            </div>
+            <mat-card-content>
+                <div class="content" [ngClass]="activeAnimal ? 'color_white' : ''" >
+                    <div class="animalName">
+                        {{animal.name}}
+                    </div>                
+                    <div class="animalType">
+                        {{animalType.animalTypeName}}
+                    </div>   
+                </div>
+                <div *ngIf='closedInformation' class="settings"
+                    (click)="goToSettings()">  
+                    <button *ngIf='!activeAnimal' mat-mini-fab color="primary" class="settings_btn"
+                        aria-label="Example icon button with a heart icon">
+                        <mat-icon>settings</mat-icon>
+                    </button>
+                    <button *ngIf='activeAnimal' mat-mini-fab color="" class="settings_btn"
+                        aria-label="Example icon button with a heart icon">
+                        <mat-icon color="primary">settings</mat-icon>
+                    </button>
+                </div>
+            </mat-card-content> 
+        </div>
+    </mat-card>
+</div>

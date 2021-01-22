@@ -43,7 +43,6 @@ export class MainNavComponent {
     }else if(this.authService.isInRole("admin")){
       this.router.navigate(["admin"]);
     }
-      
   }
 
 }
