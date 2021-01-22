@@ -112,7 +112,7 @@ doctorForm:FormGroup=new FormGroup({
       "biography":this.doctorForm.value.biography,
       "education":this.doctorForm.value.education,
       "experience":this.doctorForm.value.experience,
-      "photo":this.doctorForm.value.biography,
+      "photo":this.doctorForm.value.photo,
       "positionId":this.doctorForm.value.positionId,
       "user":{
         "userName":this.doctorForm.value.userName,
@@ -132,7 +132,7 @@ doctorForm:FormGroup=new FormGroup({
   }
 
   cancel(){    
-    this.router.navigate(["doctor/list"]) ;
+    this.router.navigate(["admin"]) ;
   }
 
 }
