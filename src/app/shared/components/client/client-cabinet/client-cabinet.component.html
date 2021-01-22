@@ -7,12 +7,12 @@
 </app-client-main-info>
 </div>
 
-<div id="animals-div">
-<h2>Animals</h2>
-<app-create-animal-item></app-create-animal-item>
-<app-animal-item *ngFor="let animal of animals; index as i" [animal]="animal"
-    [animalType]="animalType[i]" [activeAnimal]="activeAnimal==animal?.id"
-    (activeAnimalid)="notActiveAnimal($event)"></app-animal-item>
+<div *ngIf="animalTypes"  id="animals-div">
+    <h2>Animals</h2>
+    <app-create-animal-item></app-create-animal-item>
+    <app-animal-item  *ngFor="let animal of animals" [animal]="animal" 
+        [animalType]="animalTypes[animal.animalTypeId-1]" [activeAnimal]="activeAnimal==animal?.id"
+        (activeAnimalid)="notActiveAnimal($event)"></app-animal-item>
 </div>
 <div id="appointments-div">
 <h2>Appointments</h2>

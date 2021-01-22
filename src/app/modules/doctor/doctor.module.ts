@@ -16,9 +16,9 @@ import { RoleGuard } from 'src/app/guards/role-guard.service';
 
 
 const routes: Routes = [
-  {path:'',component:DoctorComponent},
+  {path:'',component:DoctorComponent, canActivate:[AuthGuard, RoleGuard], data:{roles:['admin','doctor']}},
   {path:'list',component:DoctorListComponent},
-  {path:':id',component:DoctorPageComponent},
+  {path:':id',component:DoctorPageComponent, canActivate:[AuthGuard, RoleGuard], data:{roles:['admin','doctor']}},
   {path:':id/edit-doctor',component:EditDoctorComponent,canActivate:[AuthGuard, RoleGuard], data:{roles:['admin','doctor']}},
 ];
 

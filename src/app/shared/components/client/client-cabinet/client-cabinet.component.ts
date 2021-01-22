@@ -15,7 +15,8 @@ export class ClientCabinetComponent implements OnInit {
 
   activeAnimal!:number;
   animals!:Animal[]  
-  animalType:AnimalType[]=new Array<AnimalType>();
+  animalTypeId!:number;
+  animalTypes!:AnimalType[];  
   id!:number;
 
   client: any = {
@@ -45,13 +46,8 @@ export class ClientCabinetComponent implements OnInit {
     let params:Filter = {"clientId":clientId.toString()}   
 
     this.apiService.getEntity('animals',params).subscribe((data: AnimalsData)=>{
-    this.animals=data.data; 
-    
-    for(let animal of this.animals)
-      {      
-      let id:number =parseInt(animal.animalTypeId) 
-      this.getAnimalTypeData(id)      
-      }          
+    this.animals=data.data;    
+      this.getAnimalTypeData();          
     })  
   }
 
@@ -68,9 +64,11 @@ export class ClientCabinetComponent implements OnInit {
       console.log("error : " + error));    
   }
   
-  getAnimalTypeData(id:number){
-  this.apiService.getEntityById('animaltypes',id).subscribe((data: AnimalType)=>{
-    this.animalType.push(data)})
+  getAnimalTypeData(){
+  this.apiService.getEntity('animaltypes').subscribe((data: AnimalType[])=>{
+    this.animalTypes=data    
+   })
+    
   }
 
   notActiveAnimal(active:any){
