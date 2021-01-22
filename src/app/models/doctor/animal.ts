@@ -3,5 +3,5 @@ export interface Animal{
     photo:string;
     name:string;
     age:number;
-    animalTypeId:string;
+    animalTypeId:number;
 }
