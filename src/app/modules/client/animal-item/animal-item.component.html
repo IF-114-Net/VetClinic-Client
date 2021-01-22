@@ -5,7 +5,7 @@
         <div class="card">
             <div class="img_container" (click)="selectAnimal()">
                 <img *ngIf="!animal.photo"
-                    src="https://tanzolymp.com/images/default-non-user-no-photo-1.jpg"
+                    src="assets/img/unknownAnimals.png"
                     [alt]="animal.name"
                     class="img">
                 <img *ngIf="animal.photo" [src]="animal?.photo"
