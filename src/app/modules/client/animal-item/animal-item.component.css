@@ -2,9 +2,17 @@ h2 {
   text-align: center;
 }
 
+.green {
+  background-color: #8abc00;
+}
+
+.animal_card {
+  display: inline-block;
+  width: 150px;
+}
+
 .card {
   min-height: 220px;
-  margin: 20px 0;
 }
 
 .list_item {
@@ -14,15 +22,17 @@ h2 {
 
 mat-card-title {
   display: inline;
+  margin-top: 20px;
   margin-right: 20px;
 }
 
 .img_container {
-  position: absolute;
-  height: 210px;
-  width: 210px;
+  position: relative;
+  height: 150px;
+  width: 150px;
   border-radius: 50%;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .img {
@@ -35,27 +45,29 @@ mat-card-title {
 mat-card-content {
   width: auto;
   color: #252525;
-  padding-left: 270px;
-  max-width: 900px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.position {
-  color: #252525;
-  margin: 15px 0;
+
+.animalName {
   font-weight: 500;
   font-size: 18px;
+  max-width: 100px;
 }
 
-.content {
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
+.animalType {
+  margin-top: 10px;
+  font-size: 12px;
+  max-width: 100px;
 }
 
 .settings {
   position: absolute;
-  bottom: 20px;
+  bottom: 25px;
   right: 20px;
   cursor: pointer;
+}
+
+.color_white {
+  color: white;
 }

@@ -1,10 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Animal } from 'src/app/models/doctor/animal';
-import { AnimalData } from 'src/app/models/doctor/animalData';
 import { AnimalType } from 'src/app/models/doctor/animalType';
-import { ApiService } from 'src/app/services/api.service';
-import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-animal-item',
@@ -13,32 +9,32 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AnimalItemComponent implements OnInit {
 
-  animal!:Animal;
-  animalType!:AnimalType;
-  id!:number;
+  @Input() animal!:Animal;
+  @Input() animalType!:AnimalType;  
   closedInformation:boolean =true;
+  @Input() activeAnimal!: boolean; 
+  @Output() activeAnimalid=new EventEmitter<number|null>();
   
-  constructor(
-    private authService: AuthService,
-    private activatedRoute:ActivatedRoute,
-    private apiService: ApiService,
-    private router: Router,
-  ) { }
+  constructor( ) { }
 
-  ngOnInit(): void {
-    let id= this.activatedRoute.snapshot.paramMap.get('id') ;
-    this.id = id ? parseInt(id) : 0;
-    this.apiService.getEntityById('animals',this.id).subscribe((data: AnimalData)=>{
-    this.animal=data.data;
-    this.getAnimalTypeData(parseInt(this.animal.animalTypeId))
-    console.log(this.animal) 
-  })  
+  ngOnInit(): void {       
 }
 
-getAnimalTypeData(id:number){
-  this.apiService.getEntityById('animaltypes',id).subscribe((data: AnimalType)=>{
-    this.animalType=data;})
-}
+selectAnimal(){
+  if(!this.activeAnimal){
+    this.activeAnimal=!this.activeAnimal;
+    this.activeAnimalid.emit(this.animal.id) 
+  }
+    else{
+      this.activeAnimal=!this.activeAnimal;
+      this.activeAnimalid.emit(null)
+    }
+  }
+
 goToSettings(){}
 
 }
+
+
+
+
