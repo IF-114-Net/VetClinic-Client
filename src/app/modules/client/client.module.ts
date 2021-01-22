@@ -7,20 +7,24 @@ import {ServicesListComponent} from '../../shared/components/services/services-l
 import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from 'src/app/shared/components/home/home.component';
 import { SharedModule } from '../shared/shared.module';
+import { ClientCabinetComponent} from 'src/app/shared/components/client/client-cabinet/client-cabinet.component';
+import { ClientMainInfoComponent} from 'src/app/shared/components/client/client-main-info/client-main-info.component';
+import { ClientRegisterFormComponent} from 'src/app/shared/components/client/client-register-form/client-register-form.component'
 import { CreateAnimalItemComponent } from './create-animal-item/create-animal-item.component';
 import { AnimalItemComponent } from './animal-item/animal-item.component';	
-
-
 const routes: Routes = [
   {path: 'services', component: ServicesListComponent},
-  {path: 'client', component: ClientComponent},
+  {path: 'client', component: ClientCabinetComponent},
   {path: '', component: HomeComponent},
-  {path: 'animal/:id', component: AnimalItemComponent},
+  {path: 'create-client', component: ClientRegisterFormComponent}
 ];
 
 @NgModule({
   declarations: [
     ClientComponent,
+    ClientRegisterFormComponent,
+    ClientMainInfoComponent,
+    ClientCabinetComponent,
     AnimalItemComponent,
     CreateAnimalItemComponent,
   ],

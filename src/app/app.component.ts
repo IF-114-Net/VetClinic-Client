@@ -10,9 +10,8 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'vet-clinic-client';
 
-  constructor(public oidcSecurityService: OidcSecurityService,public authService: AuthService) { }
-
-  ngOnInit() {
-    this.oidcSecurityService.checkAuth().subscribe((auth) => console.log('is authenticated', auth));
-  }
+     constructor(public oidcSecurityService: OidcSecurityService,public authService: AuthService) { }
+     ngOnInit() {
+     this.oidcSecurityService.checkAuth().subscribe((auth) => console.log('is authenticated', auth));
+   }
 }

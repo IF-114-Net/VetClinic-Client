@@ -38,14 +38,10 @@ export class MainNavComponent {
     if(this.authService.isInRole("doctor"))
     {
       this.router.navigate(["doctor"])
-    }
-    else if(this.authService.isInRole("admin"))
-    {
-      this.router.navigate(["admin"])
-    }
-    else
-    {
-      this.router.navigate(["client"])
+    }else if(this.authService.isInRole("client")){
+      this.router.navigate(["client"]);
+    }else if(this.authService.isInRole("admin")){
+      this.router.navigate(["admin"]);
     }
   }
 

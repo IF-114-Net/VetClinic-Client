@@ -9,6 +9,8 @@ import { SharedModule } from '../shared/shared.module';
 import { CreateDoctorComponent } from './create-doctor/create-doctor.component';
 import { AuthGuard } from 'src/app/guards/auth-guard.service';
 import { RoleGuard } from 'src/app/guards/role-guard.service';
+import { RoleListComponent } from 'src/app/shared/components/role/role-list/role-list.component';
+import { CreateRoleComponent } from 'src/app/shared/components/role/create-role/create-role.component';
 import { DoctorListComponent } from 'src/app/shared/components/doctor/doctor-list/doctor-list.component';
 
 const routes: Routes = [
@@ -16,14 +18,19 @@ const routes: Routes = [
     children: [
       {path: 'services', component: ServicesComponent},
       {path: 'doctors', component: DoctorListComponent},
+      { path: 'role', component: RoleListComponent},
     ]},
   {path:'create-doctor',component:CreateDoctorComponent, canActivate:[AuthGuard, RoleGuard], data:{roles:['admin']}},
+ 
+  {path: 'role/create', component: CreateRoleComponent},
+  {path: 'role/edit/:id', component: CreateRoleComponent},
 ];
 
 @NgModule({
   declarations: [
     AdminComponent,
-    CreateDoctorComponent
+    CreateDoctorComponent,
+    RoleListComponent, CreateRoleComponent
   ],
   imports: [
     CommonModule,
