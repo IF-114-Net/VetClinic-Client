@@ -13,7 +13,7 @@ import {MatDialogRef} from '@angular/material/dialog';
 export class ServiceComponent implements OnInit {
 
   serviceNameFC = new FormControl('',
-    [Validators.required, Validators.maxLength(100), this.noWhitespaceValidator]);
+    [Validators.required, Validators.maxLength(50), this.noWhitespaceValidator]);
   descriptionFC = new FormControl('',
     [Validators.required, Validators.maxLength(2000), this.noWhitespaceValidator]);
 
@@ -40,7 +40,7 @@ export class ServiceComponent implements OnInit {
       return 'This field is mandatory';
     }
     else if (this.serviceNameFC.hasError('maxlength')){
-      return 'The service name should be less then 100 characters';
+      return 'The service name should be less then 50 characters';
     }
     else if (this.serviceNameFC.hasError('whitespace')){
       return 'Please enter valid data';
