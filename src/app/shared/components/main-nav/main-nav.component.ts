@@ -39,6 +39,8 @@ export class MainNavComponent {
     {
       this.router.navigate(["doctor"])
     }
+    if(this.authService.isInRole("client"))
+      this.router.navigate(["client"]);
   }
 
 }
