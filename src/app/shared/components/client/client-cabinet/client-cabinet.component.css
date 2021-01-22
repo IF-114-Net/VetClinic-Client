@@ -8,3 +8,10 @@ app-create-animal-item {
   display: inline-block;
   flex-direction: column;
 }
+#appointments-div {
+  margin-top: 30px;
+
+}
+#appointments-div h2 {
+  text-align: center;
+}
