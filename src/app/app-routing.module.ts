@@ -24,7 +24,8 @@ const routes: Routes = [
       import('../app/modules/admin/admin.module').then((m) => m.AdminModule),
     canActivate: [AuthGuard, RoleGuard], data: {roles: ['admin']}
   },
-  { path: 'account/password', component: ChangePasswordComponent, pathMatch: 'full' },
+  { path: 'account/password', component: ChangePasswordComponent, pathMatch: 'full',
+    canActivate: [AuthGuard] },
 
   { path: 'forbidden', component: ForbiddenComponent, pathMatch: 'full' },
   { path: 'unauthorized', component: UnauthorizedComponent, pathMatch: 'full' },

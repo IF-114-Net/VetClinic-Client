@@ -37,8 +37,8 @@ export class CreateRoleComponent implements OnInit {
   private getRole(id: string) {
     this.serv.getEntityById('role', id)
       .subscribe(
-        (role: Role) => {
-          this.editRole(role);
+        (role: any) => {
+          this.editRole(role.data);
         },
         (err: any) => console.log(err)
       );

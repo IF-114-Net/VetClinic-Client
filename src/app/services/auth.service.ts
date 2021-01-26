@@ -28,22 +28,6 @@ export class AuthService {
     this.oidcSecurityService.logoff();
   }
 
-  callApi() {
-    const token = this.oidcSecurityService.getToken();
-
-    this.http.get("https://localhost:5001/secret", {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,
-      }),
-      responseType: "text",
-    })
-      .subscribe((data: any) => {
-        console.log("api result", data);
-
-      });
-    this.isInRole("admin");
-  }
-
   isLogedIn(): boolean {
     this.oidcSecurityService.isAuthenticated$.subscribe((data) => {
       this.logedInResult = data;
