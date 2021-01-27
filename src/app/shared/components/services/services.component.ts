@@ -32,7 +32,8 @@ export class ServicesComponent implements OnInit {
 
   ngOnInit(): void {
       this.service.getServices().subscribe(data => {
-        this.dataSource = new MatTableDataSource<Service>(data);
+        // @ts-ignore
+        this.dataSource = new MatTableDataSource<Service>(data.data);
         // @ts-ignore
         this.dataSource.sort = this.sort;
         // @ts-ignore
@@ -42,7 +43,8 @@ export class ServicesComponent implements OnInit {
 
   updateDataSource(): void{
     this.service.getServices().subscribe(response => {
-      this.dataSource = new MatTableDataSource<Service>(response);
+      // @ts-ignore
+      this.dataSource = new MatTableDataSource<Service>(response.data);
       // @ts-ignore
       this.dataSource.sort = this.sort;
       // @ts-ignore
