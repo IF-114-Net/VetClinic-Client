@@ -8,8 +8,6 @@ import {Service} from '../models/service/service';
 })
 export class ServiceService {
 
-  //public services: Service[] = [];
-
   constructor(public apiService: ApiService) { }
 
   formData: Service = new Service();
@@ -23,7 +21,7 @@ export class ServiceService {
   }
 
   getServices(): Observable<Service[]> {
-     return this.apiService.getEntity('service');
+    return this.apiService.getEntity('service');
   }
 
   deleteService(id: number): Observable<Service>{

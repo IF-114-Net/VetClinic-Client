@@ -15,7 +15,8 @@ export class ServicesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getServices().subscribe(data => {
-      this.services = data;
+      // @ts-ignore
+      this.services = data.data;
     });
   }
 
