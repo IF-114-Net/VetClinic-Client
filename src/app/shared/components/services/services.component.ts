@@ -86,17 +86,31 @@ export class ServicesComponent implements OnInit {
     this.service.formData = Object.assign({}, element);
   }
 
-  onDelete(element: any): void{
+  onDelete(elementId: number): void{
     this.dialogService.openConfirmDialog('Are you sure to delete this record?')
       .afterClosed().subscribe(res => {
         if (res){
-          this.service.deleteService(element as number).subscribe(
+          this.service.deleteService(elementId).subscribe(
               data => {
                 this.updateDataSource();
                 this.notificationService.warn('Deleted successfully !');
               },
               err => {console.log(err); }
             );
+        }
+    });
+  }
+
+  onEmailSend(elementId: number): void{
+    this.dialogService.openConfirmDialog('Are you sure for sending all clients notification email?')
+      .afterClosed().subscribe(res => {
+        if (res){
+          this.service.sendMessage(elementId).subscribe(
+            data => {
+              this.notificationService.success('Messages send successfully !');
+            },
+            err => {console.log(err); }
+          );
         }
     });
   }

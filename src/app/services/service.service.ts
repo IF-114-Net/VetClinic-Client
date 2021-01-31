@@ -28,4 +28,8 @@ export class ServiceService {
     return this.apiService.deleteEntity('service', id);
   }
 
+  sendMessage(serviceId: number): Observable<Service>{
+    return this.apiService.sendMessageGet('new-service-email', serviceId);
+  }
+
 }
