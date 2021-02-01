@@ -13,19 +13,19 @@ export class ServiceService {
   formData: Service = new Service();
 
   addService(): Observable<Service>  {
-     return this.apiService.addEntity('service', this.formData);
+     return this.apiService.addEntity('services', this.formData);
   }
 
   updateService(): Observable<Service> {
-     return this.apiService.updateEntity('service', this.formData.id as number, this.formData);
+     return this.apiService.updateEntity('services', this.formData.id as number, this.formData);
   }
 
   getServices(): Observable<Service[]> {
-    return this.apiService.getEntity('service');
+    return this.apiService.getEntity('services');
   }
 
   deleteService(id: number): Observable<Service>{
-    return this.apiService.deleteEntity('service', id);
+    return this.apiService.deleteEntity('services', id);
   }
 
 }
