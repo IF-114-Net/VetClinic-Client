@@ -1,9 +1,9 @@
-<div class="container">
-    <mat-card *ngIf="animal&&animalType" 
-    class="animal_card light_grey'"  
-    [ngClass]="activeAnimal ? 'green' : ''" >
-        <div class="card">
-            <div class="img_container" (click)="selectAnimal()">
+<div class="animal_card">
+    <mat-card *ngIf="animal&&animalType"     
+    [@active]="activeAnimal ? 'active' : '*'" 
+    (click)="selectAnimal()" matRipple>
+        <div class="card" >
+            <div class="img_container" >
                 <img *ngIf="!animal.photo"
                     src="assets/img/unknownAnimals.png"
                     [alt]="animal.name"
@@ -20,19 +20,18 @@
                     <div class="animalType">
                         {{animalType.animalTypeName}}
                     </div>   
-                </div>
-                <div *ngIf='closedInformation' class="settings"
-                    (click)="goToSettings()">  
-                    <button *ngIf='!activeAnimal' mat-mini-fab color="primary" class="settings_btn"
-                        aria-label="Example icon button with a heart icon">
-                        <mat-icon>settings</mat-icon>
-                    </button>
-                    <button *ngIf='activeAnimal' mat-mini-fab color="" class="settings_btn"
-                        aria-label="Example icon button with a heart icon">
-                        <mat-icon color="primary">settings</mat-icon>
-                    </button>
-                </div>
+                </div>                
             </mat-card-content> 
-        </div>
+        </div>        
     </mat-card>
+    <div *ngIf='closedInformation' class="settings" (click)="goToSettings()">
+        <button *ngIf='!activeAnimal' mat-mini-fab color="primary"
+            class="settings_btn" aria-label="Example icon button with a heart icon">
+            <mat-icon>settings</mat-icon>
+        </button>
+        <button *ngIf='activeAnimal' mat-mini-fab color="" class="settings_btn"
+            aria-label="Example icon button with a heart icon">
+            <mat-icon color="primary">settings</mat-icon>
+        </button>
+    </div>
 </div>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Position } from 'src/app/models/doctor/position';
+import { PageResponse } from 'src/app/models/doctor/pageResponse';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -16,18 +18,22 @@ doctorForm:FormGroup=new FormGroup({
     userName: new FormControl("",[
       Validators.required,
       Validators.minLength(4),
-      Validators.maxLength(30)
+      Validators.maxLength(30),      
+    ],[
+      this.userNameValidator()
     ]),
     password: new FormControl("",[
       Validators.required,
-      Validators.minLength(4),
+      Validators.minLength(8),
       Validators.maxLength(30),
       this.passwordValidator(),
     ]),
     repeatedPassword: new FormControl("",[
       Validators.required,
       Validators.minLength(4),
-      Validators.maxLength(30)
+      Validators.maxLength(30),      
+      this.repeatPasswordValidator(),
+      this.passwordValidator(),
     ]),
     firstName: new FormControl("",[
       Validators.required,
@@ -64,9 +70,9 @@ doctorForm:FormGroup=new FormGroup({
     ]),
     photo:new FormControl('',),
   }); 
-
-  mainInformationCreated:boolean=false;
+ 
   positions!:Position[];
+  hide:boolean = true; 
 
   constructor(private apiService:ApiService,
     public authService: AuthService,   
@@ -74,14 +80,11 @@ doctorForm:FormGroup=new FormGroup({
     ) { }
 
   ngOnInit(): void {  
-      this.apiService.getEntity('position').subscribe((data: Position[])=>{
-    this.positions=data;    
-    });    
-  }
-
-  continue(){
-    this.mainInformationCreated=!this.mainInformationCreated;
-  }
+      this.apiService.getEntity('positions').subscribe((data: PageResponse)=>{
+    this.positions=data.data;    
+    });
+    
+  }  
 
   notNumberValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: boolean } | null => {
@@ -94,16 +97,30 @@ doctorForm:FormGroup=new FormGroup({
 
   passwordValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: boolean } | null => {
-    let numberRgEx: RegExp = /[1-9]/;
-    let charRgEx: RegExp = /[a-z]/;
-    let charUppercaseRgEx: RegExp = /[A-Z]/;
-    let simbolRgEx: RegExp = /\$|\#|\@/;
+    let numberRgEx: RegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;    
     let valid =
-      !control.value || (numberRgEx.test(control.value)
-      && charRgEx.test(control.value)
-      && simbolRgEx.test(control.value)
-      && charUppercaseRgEx.test(control.value))
+      !control.value || (numberRgEx.test(control.value))      
     return valid ? null : { invalidPassword: true };
+    }
+  } 
+
+  repeatPasswordValidator():ValidatorFn {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
+      let valid =
+      !control.value || (control.value==this.doctorForm.get(['password'])?.value)     
+    return valid ? null : { wrongPassword: true };
+    }  
+  }
+
+
+  userNameValidator(): AsyncValidatorFn {    
+     return async (control: AbstractControl): Promise<ValidationErrors | null| Observable<ValidationErrors>| null> => { 
+       let userNameExist!:boolean
+      await this.userNameExistPromise(control).then( 
+        data=>{ userNameExist= data;                   
+        })    
+        let  valid =!control.value || !userNameExist;        
+        return valid ? null : { userNameExist: true };                
     }
   } 
   
@@ -113,26 +130,36 @@ doctorForm:FormGroup=new FormGroup({
       "education":this.doctorForm.value.education,
       "experience":this.doctorForm.value.experience,
       "photo":this.doctorForm.value.photo,
-      "positionId":this.doctorForm.value.positionId,
-      "user":{
-        "userName":this.doctorForm.value.userName,
-        "firstName":this.doctorForm.value.firstName,
-        "lastName":this.doctorForm.value.lastName,
-        "phoneNumber":this.doctorForm.value.phoneNumber,
-        "email":this.doctorForm.value.email,
-        "password":this.doctorForm.value.password,
-      }  
+      "positionId":this.doctorForm.value.positionId,      
+      "userName":this.doctorForm.value.userName,
+      "firstName":this.doctorForm.value.firstName,
+      "lastName":this.doctorForm.value.lastName,
+      "phoneNumber":this.doctorForm.value.phoneNumber,
+      "email":this.doctorForm.value.email,
+      "password":this.doctorForm.value.password,
+       
     }  
-    this.apiService.addEntity('doctor',doctor).subscribe(()=>{
+    this.apiService.addEntity('doctors',doctor).subscribe(()=>{
       alert(`Doctor created`);
     this.router.navigate(["doctor/list"]) ;
     },
-    error => console.error('oops', error));
+    error => console.error('oops', error.error));
        
   }
 
   cancel(){    
     this.router.navigate(["admin"]) ;
   }
-
+  
+userNameExistPromise(control: AbstractControl){      
+      let p = new Promise<boolean>((resolve,reject)=>{
+      if(control.value){  
+        this.apiService.getEntityById('account', control.value).subscribe(
+          (data: boolean) => {                   
+          resolve(data); 
+        })         
+      } 
+    }) 
+    return p
+  }
 }

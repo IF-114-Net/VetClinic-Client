@@ -1,16 +1,15 @@
 app-animal-item {
   display: inline-block;
-  margin: 10px;
+  margin: 6px;
 }
 app-create-animal-item {
-  margin: 10px;
+  margin: 6px;
   position: relative;
   display: inline-block;
   flex-direction: column;
 }
 #appointments-div {
   margin-top: 30px;
-
 }
 #appointments-div h2 {
   text-align: center;
