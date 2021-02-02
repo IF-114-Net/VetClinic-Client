@@ -1,0 +1,18 @@
+<div class="card">
+  <mat-card>
+    <h2 style="text-align: center">Financial month report</h2>
+    <form novalidate [formGroup]="monthReportForm" >
+      <mat-form-field appearance="fill">
+        <mat-label>Month and Year</mat-label>
+        <input matInput name="date" [matDatepicker]="dp" [formControl]="date">
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp
+                        startView="multi-year"
+                        (yearSelected)="chosenYearHandler($event)"
+                        (monthSelected)="chosenMonthHandler($event, dp)"
+                        panelClass="example-month-picker">
+        </mat-datepicker>
+      </mat-form-field>
+    </form>
+  </mat-card>
+</div>
