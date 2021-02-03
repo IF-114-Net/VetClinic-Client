@@ -17,10 +17,22 @@ import { AnimalItemComponent } from './animal-item/animal-item.component';
 import { ClientAppointmentComponent } from './client-appointment/client-appointment.component';
 import { AddAnimalComponent } from './add-animal/add-animal.component';
 import { MakeAppointmentComponent } from './make-appointment/make-appointment.component';
+import { AuthGuard } from '../../guards/auth-guard.service';
+import { RoleGuard } from '../../guards/role-guard.service';
 
 const routes: Routes = [
-    { path: 'client/make-appointment', component: MakeAppointmentComponent },
-    { path: 'client/add-animal', component: AddAnimalComponent },
+    {
+        path: 'client/make-appointment',
+        component: MakeAppointmentComponent,
+        canActivate: [AuthGuard, RoleGuard],
+        data: { roles: ['client'] }
+    },
+    {
+        path: 'client/add-animal',
+        component: AddAnimalComponent,
+        canActivate: [AuthGuard, RoleGuard],
+        data: { roles: ['client'] }
+    },
     { path: 'services', component: ServicesListComponent },
     { path: 'client', component: ClientCabinetComponent },
     { path: '', component: HomeComponent },
