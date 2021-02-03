@@ -6,6 +6,7 @@ import { Service } from '../../../models/appointments/service';
 import { Animal } from '../../../models/appointments/animal';
 import { AppointmentPost } from '../../../models/appointments/appointmentPost';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-make-appointment',
@@ -22,7 +23,7 @@ export class MakeAppointmentComponent implements OnInit {
     public dateControl = new FormControl('', [Validators.required]);
     public complaintsControl = new FormControl('', [Validators.required]);
 
-    public constructor(private apiService: ApiService, private authService: AuthService) {
+    public constructor(private router: Router, private apiService: ApiService, private authService: AuthService) {
         this.appointmentForm = new FormGroup({
             animalControl: this.animalControl,
             serviceControl: this.serviceControl,
@@ -42,6 +43,7 @@ export class MakeAppointmentComponent implements OnInit {
         this.apiService.addEntity('appointments', appointment)
             .subscribe(res => {
                 console.log(res);
+                this.router.navigate(['client']);
             }, error => {
                 console.log(error);
             });
@@ -54,9 +56,9 @@ export class MakeAppointmentComponent implements OnInit {
 
     private getAnimals(): void {
         const userId = this.authService.userData.sub;
-        this.apiService.getEntity('client', { userId })
+        this.apiService.getEntity('clients', { userId })
             .subscribe(res => {
-                const clientId = res[0].id;
+                const clientId = res.data[0].id;
                 this.apiService.getEntity('animals', { clientId: clientId.toString() })
                     .subscribe(res2 => {
                         this.animals = res2.data;
@@ -65,9 +67,9 @@ export class MakeAppointmentComponent implements OnInit {
     }
 
     private getServices(): void {
-        this.apiService.getEntity('service')
-            .subscribe(res => {
-                this.services = res;
+        this.apiService.getEntity('services')
+            .subscribe((res) => {
+                this.services = res.data;
             });
     }
 }

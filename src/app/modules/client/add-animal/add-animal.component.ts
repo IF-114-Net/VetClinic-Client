@@ -42,16 +42,16 @@ export class AddAnimalComponent implements OnInit {
     private getAnimalTypes(): void {
         this.apiService.getEntity('animalTypes')
             .subscribe(res => {
-                this.animalTypes = res;
+                this.animalTypes = res.data;
             });
     }
 
     public onSubmit(): void {
         const userId = this.authService.userData.sub;
         let clientId!: number;
-        this.apiService.getEntity('client', { userId })
+        this.apiService.getEntity('clients', { userId })
             .subscribe(res => {
-                clientId = res[0].id;
+                clientId = res.data[0].id;
 
                 const animal: AnimalPost = {
                     clientId,

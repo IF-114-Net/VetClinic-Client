@@ -140,7 +140,7 @@ export class DoctorAppointmentComponent implements OnInit {
 
     private getAppointment(): void {
         const userId = this.authService.userData.sub;
-        this.apiService.getEntity('doctor', { userId })
+        this.apiService.getEntity('doctors', { userId })
             .subscribe(res => {
                 const doctorId = res.data[0].id;
                 this.apiService.getEntity('appointments', { doctorId: doctorId.toString(), statusId: Status.Approved.toString() })
@@ -157,9 +157,9 @@ export class DoctorAppointmentComponent implements OnInit {
     }
 
     private getProcedures(): void {
-        this.apiService.getEntity('procedure')
-            .subscribe(res3 => {
-                this.allProcedures = res3;
+        this.apiService.getEntity('procedures')
+            .subscribe(res => {
+                this.allProcedures = res.data;
                 this.inputsControlArray.controls.forEach((control, index) => {
                     this.filteredProcedures[index] = control.valueChanges.pipe(startWith(null),
                         map((procedureName: any) => {
