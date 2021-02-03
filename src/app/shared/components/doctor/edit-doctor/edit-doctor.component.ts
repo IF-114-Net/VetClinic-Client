@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Position } from 'src/app/models/doctor/position';
+import { Response } from 'src/app/models/doctor/response';
+import { PageResponse } from 'src/app/models/doctor/pageResponse';
 
 @Component({
   selector: 'app-edit-doctor',
@@ -63,13 +65,13 @@ export class EditDoctorComponent implements OnInit {
     this.doctorService.currDoctor.subscribe(doc=>this.doctor=doc)    
     let id= this.activatedRoute.snapshot.paramMap.get('id') ;
     this.id = id ? parseInt(id) : 0; 
-    this.apiService.getEntityById('doctor',this.id).subscribe((data: Doctor)=>{
-      this.doctor=data; 
+    this.apiService.getEntityById('doctors',this.id).subscribe((data: Response)=>{
+      this.doctor=data.data; 
       this.fillProfile();  
       this.closedInformationCheck();
       });
-      this.apiService.getEntity('position').subscribe((data: Position[])=>{
-      this.positions=data;
+      this.apiService.getEntity('positions').subscribe((data: PageResponse)=>{
+      this.positions=data.data;
     })
   }
 
@@ -84,10 +86,10 @@ export class EditDoctorComponent implements OnInit {
   
   fillProfile(){
     this.editDoctorForm.patchValue({
-      firstName: this.doctor.user.firstName,
-      lastName: this.doctor.user.lastName,
-      email: this.doctor.user.email,
-      phoneNumber: this.doctor.user.phoneNumber,
+      firstName: this.doctor.firstName,
+      lastName: this.doctor.lastName,
+      email: this.doctor.email,
+      phoneNumber: this.doctor.phoneNumber,
       education: this.doctor.education,
       biography: this.doctor.biography,
       experience: this.doctor.experience,
@@ -98,37 +100,38 @@ export class EditDoctorComponent implements OnInit {
 
   closedInformationCheck(){
     if(this.authService?.userData)
-    {
-        if((this.authService?.userData.name==this.doctor?.user?.userName
-          || this.authService?.isInRole('admin')))
-          {
-            this.closedInformation=true;
-          }        
+    {      
+      if((this.authService?.userData.name==this.doctor?.userName
+        || this.authService?.isInRole('admin')))
+        {
+          this.closedInformation=true;
+        }        
     } 
   }
 
   updateProfile() {
-    this.doctor.user.firstName=this.editDoctorForm.value.firstName;
-    this.doctor.user.lastName=this.editDoctorForm.value.lastName;
-    this.doctor.user.email=this.editDoctorForm.value.email;
-    this.doctor.user.phoneNumber=this.editDoctorForm.value.phoneNumber;
+    this.doctor.firstName=this.editDoctorForm.value.firstName;
+    this.doctor.lastName=this.editDoctorForm.value.lastName;
+    this.doctor.email=this.editDoctorForm.value.email;
+    this.doctor.phoneNumber=this.editDoctorForm.value.phoneNumber;
     this.doctor.education=this.editDoctorForm.value.education;
     this.doctor.biography=this.editDoctorForm.value.biography;
     this.doctor.experience=this.editDoctorForm.value.experience;
     this.doctor.photo=this.editDoctorForm.value.photo;
     this.doctor.positionId=this.editDoctorForm.value.positionId;   
     
-    this.apiService.updateEntity('doctor',this.id,this.doctor).subscribe();
+    this.apiService.updateEntity('doctors',this.id,this.doctor).subscribe();
     alert("Changes is saved");
     this.router.navigate(["doctor",this.id]);  
       
   }
 
   deleteDoctor(){
-    let result = confirm(`you really want to remove the doctor ${this.doctor.user.firstName} ${this.doctor.user.lastName}`);  
+    let result = confirm(`you really want to remove the doctor ${this.doctor.firstName} ${this.doctor.lastName}`);  
     if(result)
     {
-      this.apiService.deleteEntity("doctor",this.id).subscribe();
+      this.doctor.isDeleted=true;
+      this.apiService.updateEntity('doctors',this.id,this.doctor).subscribe();
 
       this.router.navigate(["doctor/list"]) 
     }

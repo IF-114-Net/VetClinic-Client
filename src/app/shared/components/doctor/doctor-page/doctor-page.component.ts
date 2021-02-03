@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Response } from 'src/app/models/doctor/response';
 import { Doctor } from 'src/app/models/doctor/doctor';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -23,8 +24,8 @@ export class DoctorPageComponent implements OnInit {
   ngOnInit(): void {  
     let id= this.activatedRoute.snapshot.paramMap.get('id') ;
     this.id = id ? parseInt(id) : 0;
-    this.doctorService.getEntityById('doctor',this.id).subscribe((data: Doctor)=>{
-    this.doctor=data;      
+    this.doctorService.getEntityById('doctors',this.id).subscribe((data: Response)=>{
+    this.doctor=data.data;      
     });
 
     if(this.authService.userData){

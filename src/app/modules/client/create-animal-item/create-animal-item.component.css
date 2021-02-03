@@ -2,13 +2,13 @@ mat-card {
   position: relative;
   display: inline-block;
   width: 150px;
+  height: 220px;
 }
 mat-icon {
   font-size: 150px;
 }
 .content {
-  padding-top: 10px;
-  padding-bottom: 8px;
+  padding-top: 12px;
   text-align: center;
   font-size: 18px;
   font-weight: 500;
