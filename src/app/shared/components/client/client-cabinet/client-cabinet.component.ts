@@ -58,10 +58,10 @@ export class ClientCabinetComponent implements OnInit {
   {
     let id: string = this.authService.userData.sub;
     let filter: Filter = {"UserId": id};
-    this.apiService.getEntity("Client", filter).subscribe(response =>
+    this.apiService.getEntity("clients", filter).subscribe((response) =>
       {
-        this.client = response[0];  
-        this.initializeAnimal(response[0].id)      
+        this.client = response.data[0];  
+        this.initializeAnimal(response.data[0].id)      
       },
       error =>
       console.log("error : " + error));    
