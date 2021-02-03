@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, Validators } from '@angular/forms';
 
 import { ApiService } from '../../../services/api.service';
+import { EmailService } from '../../../services/email.service'
 
 import { Status } from '../../../enums/status';
 
@@ -21,7 +22,7 @@ export class IncomingAppointmentComponent implements OnInit {
 
     public doctorsControlArray: FormArray = new FormArray([]);
 
-    public constructor(private apiService: ApiService) {
+    public constructor(private apiService: ApiService, private emailService: EmailService) {
     }
 
     public ngOnInit(): void {
@@ -43,6 +44,7 @@ export class IncomingAppointmentComponent implements OnInit {
         };
 
         this.updateAppointment(index, appointment.id, appointmentPut);
+        this.emailService.sendAppointmentNotification(appointment.id);
     }
 
     public onDisapprove(index: number): void {
