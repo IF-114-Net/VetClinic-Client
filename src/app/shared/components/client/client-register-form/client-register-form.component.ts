@@ -83,7 +83,7 @@ export class ClientRegisterFormComponent implements OnInit {
       "phoneNumber": this.clientForm.value.phoneNumber,
       "password": this.clientForm.value.password,
     }
-    this.apiService.addEntity('Client', client).subscribe(response =>
+    this.apiService.addEntity('clients', client).subscribe(response =>
       {
         console.log(client);
         alert('Registration is successful');
