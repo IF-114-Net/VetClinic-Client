@@ -37,8 +37,8 @@ export class CreateRoleComponent implements OnInit {
   private getRole(id: string) {
     this.serv.getEntityById('role', id)
       .subscribe(
-        (role: Role) => {
-          this.editRole(role);
+        (role: any) => {
+          this.editRole(role.data);
         },
         (err: any) => console.log(err)
       );
@@ -61,12 +61,18 @@ export class CreateRoleComponent implements OnInit {
   saveRole() {
     if (!this.form.invalid) {
       if (!this.editedRole) {
-        this.serv.addEntity('role',new Role('', this.name?.value)).subscribe();
+        this.serv.addEntity('role',new Role('', this.name?.value)).subscribe(()=>{
+          alert(`Role created`);
+          
+          this.router.navigate(['/admin/role']); 
+        });
        
-       this.router.navigate(['/admin/role']); 
       } else {
-        this.serv.updateEntity('role', this.editedRole.id, new Role(this.editedRole.id, this.name?.value)).subscribe();
-        this.router.navigate(['/admin/role']);
+        this.serv.updateEntity('role', this.editedRole.id, new Role(this.editedRole.id, this.name?.value)).subscribe(()=>{
+          alert(`Role updated`);
+          
+          this.router.navigate(['/admin/role']);
+        });
       }
     }
   }

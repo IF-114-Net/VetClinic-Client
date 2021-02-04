@@ -25,7 +25,7 @@ export class DoctorItemComponent implements OnInit {
   ngOnInit(): void {
     if(this.authService.userData)
     {
-      if((this.authService.userData.name==this.doctor?.user.userName
+      if((this.authService.userData.name==this.doctor?.userName
         || this.authService.isInRole('admin'))
         && this.notListItem){
           this.closedInformation=true;
@@ -34,7 +34,7 @@ export class DoctorItemComponent implements OnInit {
   }
 
   goToSettings(doctor:Doctor){
-      this.doctorService.changeDoctor(doctor);
+      this.doctorService.changeDoctor(doctor);      
       this.router.navigate(["doctor",doctor.id,"edit-doctor"]) ;
   }
 

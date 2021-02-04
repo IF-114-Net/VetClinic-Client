@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Doctor } from 'src/app/models/doctor/doctor';
-import { DoctorData } from 'src/app/models/doctor/doctorData';
+import { PageResponse } from 'src/app/models/doctor/pageResponse';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -21,7 +21,7 @@ export class DoctorListComponent implements OnInit {
      private doctorService: ApiService) { }
 
   ngOnInit(): void {    
-    this.doctorService.getEntity('doctor').subscribe((data: DoctorData)=>{
+    this.doctorService.getEntity('doctors').subscribe((data: PageResponse)=>{
     this.doctors=data.data;});
   }
 

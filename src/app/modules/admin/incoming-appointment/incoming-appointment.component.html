@@ -37,7 +37,7 @@
                             <mat-label>Choose doctor</mat-label>
                             <mat-select required [formControl]="getFormControl(i)" name="doctor">
                                 <mat-option *ngFor="let doctor of doctors" [value]="doctor?.id">
-                                    {{ doctor?.user?.firstName + " " + doctor?.user?.lastName }}
+                                    {{ doctor?.firstName + " " + doctor?.lastName }}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>

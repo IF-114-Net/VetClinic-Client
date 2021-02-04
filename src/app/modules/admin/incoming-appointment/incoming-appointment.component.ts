@@ -81,7 +81,7 @@ export class IncomingAppointmentComponent implements OnInit {
     }
 
     private getDoctors(): void {
-        this.apiService.getEntity('doctor')
+        this.apiService.getEntity('doctors')
             .subscribe(res => {
                 this.doctors = res.data;
             });

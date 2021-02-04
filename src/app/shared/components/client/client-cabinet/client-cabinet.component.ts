@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Animal } from 'src/app/models/doctor/animal';
-import { AnimalsData } from 'src/app/models/doctor/animalsData';
 import { AnimalType } from 'src/app/models/doctor/animalType';
 import { Filter } from 'src/app/models/queries/filter';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { AddAnimalComponent } from '../../../../modules/client/add-animal/add-animal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { PageResponse } from 'src/app/models/doctor/pageResponse';
 
 @Component({
     selector: 'app-client-cabinet',
@@ -46,7 +46,7 @@ export class ClientCabinetComponent implements OnInit {
     initializeAnimal(clientId: number) {
         let params: Filter = { 'clientId': clientId.toString() };
 
-        this.apiService.getEntity('animals', params).subscribe((data: AnimalsData) => {
+        this.apiService.getEntity('animals', params).subscribe((data: PageResponse) => {
             this.animals = data.data;               
             this.getAnimalTypeData();          
     }) 
@@ -58,10 +58,10 @@ export class ClientCabinetComponent implements OnInit {
   {
     let id: string = this.authService.userData.sub;
     let filter: Filter = {"UserId": id};
-    this.apiService.getEntity("Client", filter).subscribe(response =>
+    this.apiService.getEntity("clients", filter).subscribe((response) =>
       {
-        this.client = response[0];  
-        this.initializeAnimal(response[0].id)      
+        this.client = response.data[0];  
+        this.initializeAnimal(response.data[0].id)      
       },
       error =>
       console.log("error : " + error));    

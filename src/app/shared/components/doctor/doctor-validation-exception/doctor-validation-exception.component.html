@@ -14,4 +14,10 @@
     <div *ngIf="exeption?.invalidPassword">
         {{name}} must have uppercase and lowercase, number and simbol like @ or # or $
     </div>
+    <div *ngIf="exeption?.userNameExist">
+        {{name}} already exist
+    </div>
+    <div *ngIf="exeption?.wrongPassword">
+        {{name}} unfaithful
+    </div>
 </div>

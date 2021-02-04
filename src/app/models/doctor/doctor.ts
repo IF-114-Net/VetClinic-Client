@@ -1,15 +1,18 @@
 import { Appointment } from "./appointment";
-import { User } from "./user";
 
 export interface Doctor{
     id:number | null;
     userId:string;
-    user: User;
+    userName:string;
+    firstName:string;
+    lastName:string;
+    email:string;
+    phoneNumber:string;
     education:string;
     biography:string;
     experience:string;
     photo:string;
     positionId:number;
-    positionName:string;    
-    appointments:Appointment[];
+    positionName:string;
+    isDeleted:boolean;
 }

@@ -3,7 +3,7 @@
   
       <div>
         <label for="name">Role name</label>
-        <input formControlName="name" type="text" class="form-control" />
+        <input mat-input formControlName="name" type="text" class="form-control" />
       </div>
       
       <mat-error *ngIf="(name?.dirty || name?.touched) && form?.invalid">

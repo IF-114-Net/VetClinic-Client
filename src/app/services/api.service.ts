@@ -38,6 +38,14 @@ export class ApiService {
     return this.http.delete(`${environment.BASEURL}/${entity}/${id}`);
   }
 
+  sendMessageGet(routeAction: string, id?: number|string): Observable<any>{
+    return this.http.get(`${environment.BASEURL}/email/${routeAction}/${id}`);
+  }
+
+  // sendMessagePost(routeAction: string, messageBody: any): Observable<any>{
+  //   return this.http.post(`${environment.BASEURL}/email/${routeAction}`, messageBody);
+  // }
+
   downloadFile(route: string, payload: any): Observable<Blob>{
     return this.http.post(`${environment.BASEURL}/${route}`, payload,
       { reportProgress: true, responseType: 'blob' });

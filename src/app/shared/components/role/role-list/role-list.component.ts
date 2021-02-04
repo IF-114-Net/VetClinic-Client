@@ -20,9 +20,6 @@ export class RoleListComponent implements OnInit {
     private router: Router) {
 
     this.roles = new Array<Role>();
-    this.router.events.subscribe(()=>{
-      this.loadRoles();
-    });
   }
 
   ngOnInit(): void {
@@ -30,8 +27,8 @@ export class RoleListComponent implements OnInit {
   }
 
   public loadRoles(): Array<Role> {
-    this.serv.getEntity('Role').subscribe((data: Role[]) => {
-      this.roles = data;
+    this.serv.getEntity('Role').subscribe((data: any) => {
+      this.roles = data.data;
     });
     return this.roles;
   }

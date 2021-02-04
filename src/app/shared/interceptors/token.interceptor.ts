@@ -26,15 +26,16 @@ export class TokenInterceptor implements HttpInterceptor {
     
     return next.handle(request)
       .pipe(
-        catchError((error: HttpErrorResponse) => {
-            if (error && error.status === 401) {
+        catchError((err: HttpErrorResponse) => {
+            if (err && err.status === 401) {
                 this.oidc.logoff();
                 location.reload();
-            }else if(error && error.status === 403){
+            }else if(err && err.status === 403){
                 this.router.navigate(['/forbidden']);
             }
 
-          return throwError(error.message);
+            //const error = err.error.message || err.statusText;
+            return throwError(err);
         })
       );
   }
