@@ -37,4 +37,9 @@ export class ApiService {
   deleteEntity(entity: string, id: number|string): Observable<any> {
     return this.http.delete(`${environment.BASEURL}/${entity}/${id}`);
   }
+
+  downloadFile(route: string, payload: any): Observable<Blob>{
+    return this.http.post(`${environment.BASEURL}/${route}`, payload,
+      { reportProgress: true, responseType: 'blob' });
+  }
 }
