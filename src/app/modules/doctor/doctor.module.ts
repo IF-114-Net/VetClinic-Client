@@ -11,17 +11,16 @@ import { AuthGuard } from 'src/app/guards/auth-guard.service';
 import { RoleGuard } from 'src/app/guards/role-guard.service';
 
 import { DoctorListComponent } from 'src/app/shared/components/doctor/doctor-list/doctor-list.component';
-import { DoctorPageComponent } from 'src/app/shared/components/doctor/doctor-page/doctor-page.component';
 import { DoctorItemComponent } from 'src/app/shared/components/doctor/doctor-item/doctor-item.component';
 import { DoctorDescriptionItemComponent } from 'src/app/shared/components/doctor/doctor-item/doctor-description-item/doctor-description-item.component';
-import { EditDoctorComponent } from 'src/app/shared/components/doctor/edit-doctor/edit-doctor.component';
+import { EditDoctorComponent } from 'src/app/modules/doctor/edit-doctor/edit-doctor.component';
 import { DoctorAppointmentComponent } from './doctor-appointment/doctor-appointment.component';
 
 
 const routes: Routes = [
   {path:'',component:DoctorComponent, canActivate:[AuthGuard, RoleGuard], data:{roles:['admin','doctor']}},
   {path:'list',component:DoctorListComponent},
-  {path:':id',component:DoctorPageComponent, canActivate:[AuthGuard, RoleGuard], data:{roles:['admin','doctor']}},
+  {path:':id',component:DoctorComponent, canActivate:[AuthGuard, RoleGuard], data:{roles:['admin','doctor']}},
   {path:':id/edit-doctor',component:EditDoctorComponent,canActivate:[AuthGuard, RoleGuard], data:{roles:['admin','doctor']}},
 ];
 
@@ -29,7 +28,6 @@ const routes: Routes = [
     declarations: [DoctorListComponent,
         DoctorComponent,
         DoctorItemComponent,
-        DoctorPageComponent,
         DoctorDescriptionItemComponent,
         EditDoctorComponent,
         DoctorAppointmentComponent

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Animal } from 'src/app/models/doctor/animal';
-import { AnimalType } from 'src/app/models/doctor/animalType';
 import { Filter } from 'src/app/models/queries/filter';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,8 +16,7 @@ export class ClientCabinetComponent implements OnInit {
 
   activeAnimal!:number;
   animals!:Animal[]  
-  animalTypeId!:number;
-  animalTypes!:AnimalType[];  
+  animalTypeId!:number;    
   id!:number;
 
     animalData!: Animal;
@@ -47,8 +45,7 @@ export class ClientCabinetComponent implements OnInit {
         let params: Filter = { 'clientId': clientId.toString() };
 
         this.apiService.getEntity('animals', params).subscribe((data: PageResponse) => {
-            this.animals = data.data;               
-            this.getAnimalTypeData();          
+            this.animals = data.data; 
     }) 
     }
 
@@ -65,14 +62,8 @@ export class ClientCabinetComponent implements OnInit {
       },
       error =>
       console.log("error : " + error));    
-  }
+  }  
   
-  getAnimalTypeData(){
-  this.apiService.getEntity('animaltypes').subscribe((data: AnimalType[])=>{
-    this.animalTypes=data    
-   })
-    
-  }
     notActiveAnimal(active: any) {
         this.activeAnimal = active;
     }
@@ -85,8 +76,7 @@ export class ClientCabinetComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result === null || result === undefined) {
                 return;
-            }
-            this.getAnimalTypeData();
+            }            
             this.animals.push(result);
         });
     }
