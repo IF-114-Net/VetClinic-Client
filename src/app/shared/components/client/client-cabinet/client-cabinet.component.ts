@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Animal } from 'src/app/models/doctor/animal';
-import { AnimalType } from 'src/app/models/doctor/animalType';
 import { Filter } from 'src/app/models/queries/filter';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';

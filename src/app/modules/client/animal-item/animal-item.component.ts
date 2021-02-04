@@ -1,7 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Animal } from 'src/app/models/doctor/animal';
-import { AnimalType } from 'src/app/models/doctor/animalType';
 
 @Component({
   selector: 'app-animal-item',
