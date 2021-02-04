@@ -17,8 +17,7 @@ export class ClientCabinetComponent implements OnInit {
 
   activeAnimal!:number;
   animals!:Animal[]  
-  animalTypeId!:number;
-  animalTypes!:AnimalType[];  
+  animalTypeId!:number;    
   id!:number;
 
     animalData!: Animal;
@@ -47,8 +46,7 @@ export class ClientCabinetComponent implements OnInit {
         let params: Filter = { 'clientId': clientId.toString() };
 
         this.apiService.getEntity('animals', params).subscribe((data: PageResponse) => {
-            this.animals = data.data;               
-            this.getAnimalTypeData();          
+            this.animals = data.data; 
     }) 
     }
 
@@ -65,14 +63,8 @@ export class ClientCabinetComponent implements OnInit {
       },
       error =>
       console.log("error : " + error));    
-  }
+  }  
   
-  getAnimalTypeData(){
-  this.apiService.getEntity('animaltypes').subscribe((data: AnimalType[])=>{
-    this.animalTypes=data    
-   })
-    
-  }
     notActiveAnimal(active: any) {
         this.activeAnimal = active;
     }
@@ -85,8 +77,7 @@ export class ClientCabinetComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result === null || result === undefined) {
                 return;
-            }
-            this.getAnimalTypeData();
+            }            
             this.animals.push(result);
         });
     }

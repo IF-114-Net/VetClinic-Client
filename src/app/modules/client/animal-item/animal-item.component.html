@@ -1,5 +1,5 @@
 <div class="animal_card">
-    <mat-card *ngIf="animal&&animalType"     
+    <mat-card *ngIf="animal"     
     [@active]="activeAnimal ? 'active' : '*'" 
     (click)="selectAnimal()" matRipple>
         <div class="card" >
@@ -18,7 +18,7 @@
                         {{animal.name}}
                     </div>                
                     <div class="animalType">
-                        {{animalType.animalTypeName}}
+                        {{animal.animalTypeName}}
                     </div>   
                 </div>                
             </mat-card-content> 

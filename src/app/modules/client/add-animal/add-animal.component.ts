@@ -67,7 +67,9 @@ export class AddAnimalComponent implements OnInit {
                                 photo: res2.data.photo,
                                 name: res2.data.name,
                                 age: res2.data.age,
-                                animalTypeId: res2.data.animalTypeId
+                                animalTypeId: res2.data.animalTypeId,
+                                animalTypeName: res2.data.animalTypeName,
+                                client: res2.data.client
                             };
                             this.dialogRef.close(this.data);
                             console.log(res2);

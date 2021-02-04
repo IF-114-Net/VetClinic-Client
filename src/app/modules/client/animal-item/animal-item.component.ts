@@ -30,8 +30,7 @@ import { AnimalType } from 'src/app/models/doctor/animalType';
 })
 export class AnimalItemComponent implements OnInit {
 
-  @Input() animal!:Animal;
-  @Input() animalType!:AnimalType;  
+  @Input() animal!:Animal;    
   closedInformation:boolean =true;
   @Input() activeAnimal!: boolean; 
   @Output() activeAnimalid=new EventEmitter<number|null>();
@@ -62,7 +61,3 @@ selectAnimal(){
 goToSettings(){}
 
 }
-
-
-
-
