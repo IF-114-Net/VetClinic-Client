@@ -42,16 +42,16 @@ export class AddAnimalComponent implements OnInit {
     private getAnimalTypes(): void {
         this.apiService.getEntity('animalTypes')
             .subscribe(res => {
-                this.animalTypes = res;
+                this.animalTypes = res.data;
             });
     }
 
     public onSubmit(): void {
         const userId = this.authService.userData.sub;
         let clientId!: number;
-        this.apiService.getEntity('client', { userId })
+        this.apiService.getEntity('clients', { userId })
             .subscribe(res => {
-                clientId = res[0].id;
+                clientId = res.data[0].id;
 
                 const animal: AnimalPost = {
                     clientId,
@@ -67,7 +67,9 @@ export class AddAnimalComponent implements OnInit {
                                 photo: res2.data.photo,
                                 name: res2.data.name,
                                 age: res2.data.age,
-                                animalTypeId: res2.data.animalTypeId
+                                animalTypeId: res2.data.animalTypeId,
+                                animalTypeName: res2.data.animalTypeName,
+                                client: res2.data.client
                             };
                             this.dialogRef.close(this.data);
                             console.log(res2);

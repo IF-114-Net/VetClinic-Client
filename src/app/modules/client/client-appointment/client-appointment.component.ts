@@ -36,9 +36,9 @@ export class ClientAppointmentComponent implements OnInit {
 
     private getAppointment(animalId?: number): void {
         const userId = this.authService.userData.sub;
-        this.apiService.getEntity('client', { userId })
+        this.apiService.getEntity('clients', { userId })
             .subscribe(res => {
-                const clientId = res[0].id;
+                const clientId = res.data[0].id;
                 let filter: Filter;
                 if (animalId !== null && animalId !== undefined) {
                     filter = { clientId: clientId.toString(), animalId: animalId.toString() };
