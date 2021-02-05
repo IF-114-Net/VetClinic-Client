@@ -64,6 +64,12 @@ export class ClientCabinetComponent implements OnInit {
       console.log("error : " + error));    
   }  
   
+  getAnimalTypeData(){
+  this.apiService.getEntity('animaltypes').subscribe((data: AnimalType[])=>{
+    this.animalTypes=data    
+   })
+    
+  }
     notActiveAnimal(active: any) {
         this.activeAnimal = active;
     }
