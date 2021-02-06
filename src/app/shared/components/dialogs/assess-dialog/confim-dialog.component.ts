@@ -2,14 +2,14 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-assess-dialog',
-  templateUrl: './assess-dialog.component.html',
-  styleUrls: ['./assess-dialog.component.css']
+  selector: 'app-confim-dialog',
+  templateUrl: './confim-dialog.component.html',
+  styleUrls: ['./confim-dialog.component.css']
 })
-export class AssessDialogComponent implements OnInit {
+export class ConfimDialogComponent implements OnInit {
   
   constructor(
-    public dialogRef: MatDialogRef<AssessDialogComponent>,
+    public dialogRef: MatDialogRef<ConfimDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string
   ) { }
 

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AssessDialogComponent } from './assess-dialog.component';
+import { ConfimDialogComponent } from './confim-dialog.component';
 
-describe('AssessDialogComponent', () => {
-  let component: AssessDialogComponent;
-  let fixture: ComponentFixture<AssessDialogComponent>;
+describe('ConfimDialogComponent', () => {
+  let component: ConfimDialogComponent;
+  let fixture: ComponentFixture<ConfimDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AssessDialogComponent ]
+      declarations: [ ConfimDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AssessDialogComponent);
+    fixture = TestBed.createComponent(ConfimDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

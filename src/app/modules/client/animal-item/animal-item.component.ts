@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Animal } from 'src/app/models/doctor/animal';
 import { ApiService } from 'src/app/services/api.service';
-import { AssessDialogComponent } from 'src/app/shared/components/dialogs/assess-dialog/assess-dialog.component';
+import { ConfimDialogComponent } from 'src/app/shared/components/dialogs/assess-dialog/confim-dialog.component';
 
 @Component({
   selector: 'app-animal-item',
@@ -70,7 +70,7 @@ deleteAnimal(){
 
 
 openAssessDialog() {
-    const dialogRef = this.dialog.open(AssessDialogComponent,{
+    const dialogRef = this.dialog.open(ConfimDialogComponent,{
       data: "Do you really want to remove this animal?"
      });
 
