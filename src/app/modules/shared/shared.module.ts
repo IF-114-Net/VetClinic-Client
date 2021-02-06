@@ -6,6 +6,7 @@ import { MaterialModule } from '../material/material.module';
 
 import { DoctorValidationExceptionComponent } from 'src/app/shared/components/doctor/doctor-validation-exception/doctor-validation-exception.component';
 import { ConfimDialogComponent } from 'src/app/shared/components/dialogs/assess-dialog/confim-dialog.component';
+import { AlertDialogComponent } from 'src/app/shared/components/dialogs/alert-dialog/alert-dialog.component';
 
 
 
@@ -13,6 +14,7 @@ import { ConfimDialogComponent } from 'src/app/shared/components/dialogs/assess-
     declarations: [
         DoctorValidationExceptionComponent,
         ConfimDialogComponent,
+        AlertDialogComponent,
     ],
     imports: [
         CommonModule,
@@ -21,7 +23,8 @@ import { ConfimDialogComponent } from 'src/app/shared/components/dialogs/assess-
         MaterialModule
     ], exports: [
         DoctorValidationExceptionComponent,
-        ConfimDialogComponent
+        ConfimDialogComponent,
+        AlertDialogComponent
     ]
 })
 export class SharedModule {

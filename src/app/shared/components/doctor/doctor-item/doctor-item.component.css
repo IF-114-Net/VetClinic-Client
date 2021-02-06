@@ -58,6 +58,12 @@ mat-card-content {
   cursor: pointer;
 }
 
+.deleted {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
 @media (max-width: 720px) {
   mat-card-content {
     padding-left: 20px;

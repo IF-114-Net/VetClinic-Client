@@ -6,6 +6,8 @@ import { Position } from 'src/app/models/doctor/position';
 import { PageResponse } from 'src/app/models/doctor/pageResponse';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { AlertDialogComponent } from 'src/app/shared/components/dialogs/alert-dialog/alert-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-doctor',
@@ -76,7 +78,8 @@ doctorForm:FormGroup=new FormGroup({
 
   constructor(private apiService:ApiService,
     public authService: AuthService,   
-    private router:Router, 
+    private router:Router,
+    public dialog: MatDialog 
     ) { }
 
   ngOnInit(): void {  
@@ -140,7 +143,9 @@ doctorForm:FormGroup=new FormGroup({
        
     }  
     this.apiService.addEntity('doctors',doctor).subscribe(()=>{
-      alert(`Doctor created`);
+       this.dialog.open(AlertDialogComponent,{
+      data: "Changes is saved"
+     });
     this.router.navigate(["doctor/list"]) ;
     },
     error => console.error('oops', error.error));
