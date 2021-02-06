@@ -62,6 +62,10 @@ deleteAnimal(){
     ()=>this.changedAnimal.emit(this.animal)
   );  
    
+  if(this.activeAnimal)
+  {
+    this.activeAnimalid.emit(null)
+  }
 }
 
 
