@@ -11,7 +11,8 @@
             <app-create-animal-item (click)="openDialog()"></app-create-animal-item>
             <app-animal-item *ngFor="let animal of animals; index as i" [animal]="animal"
                              [activeAnimal]="activeAnimal==animal?.id"
-                             (activeAnimalid)="notActiveAnimal($event)"></app-animal-item>
+                             (activeAnimalid)="notActiveAnimal($event)"
+                             (changedAnimal)="changeAnimal($event)"></app-animal-item>
         </div>
         <mat-divider></mat-divider>
         <div id="appointments-div">

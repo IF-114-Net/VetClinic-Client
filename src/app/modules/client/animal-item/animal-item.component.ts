@@ -1,6 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Animal } from 'src/app/models/doctor/animal';
+import { ApiService } from 'src/app/services/api.service';
+import { ConfimDialogComponent } from 'src/app/shared/components/dialogs/assess-dialog/confim-dialog.component';
 
 @Component({
   selector: 'app-animal-item',
@@ -15,16 +18,7 @@ import { Animal } from 'src/app/models/doctor/animal';
       transition('active <=> *', [
         animate('0.5s ease-out')
       ]),      
-    ]),
-    trigger('create', [ 
-      state('void', style({
-        transform: 'translateY(-20px)', 
-        opacity: 0.5,        
-      })),
-      transition('void <=> *', [
-        animate('0.5s')
-      ]),
-    ]),
+    ]),    
   ]
 })
 export class AnimalItemComponent implements OnInit {
@@ -33,9 +27,11 @@ export class AnimalItemComponent implements OnInit {
   closedInformation:boolean =true;
   @Input() activeAnimal!: boolean; 
   @Output() activeAnimalid=new EventEmitter<number|null>();
+  @Output() changedAnimal=new EventEmitter<Animal>();
   created:boolean=false;
   
-  constructor( ) { }
+  constructor(public dialog: MatDialog,
+    private apiService: ApiService) { }
 
   isOpen = true;
 
@@ -58,5 +54,31 @@ selectAnimal(){
   }
 
 goToSettings(){}
+
+deleteAnimal(){   
+  this.animal.isDeleted=true;
+  let id:number=this.animal.id!=null? this.animal.id:0;
+  this.apiService.updateEntity("animals",id,this.animal).subscribe(
+    ()=>this.changedAnimal.emit(this.animal)
+  );  
+   
+  if(this.activeAnimal)
+  {
+    this.activeAnimalid.emit(null)
+  }
+}
+
+
+openAssessDialog() {
+    const dialogRef = this.dialog.open(ConfimDialogComponent,{
+      data: "Do you really want to remove this animal?"
+     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.deleteAnimal();
+      }
+    });
+  }
 
 }

@@ -1,8 +1,11 @@
-<div class="container">
-    <app-doctor-item *ngIf='doctor' [doctor]="doctor" [notListItem]="true">
-    </app-doctor-item>
-</div>
-<div *ngIf="isEmploee" class="container">
-    <div *ngIf="doctor" class="next_appointment">
-        <app-doctor-appointment></app-doctor-appointment>
+<mat-card  class="container">
+    <div>        
+        <app-doctor-item *ngIf='doctor' [doctor]="doctor" [notListItem]="true">
+        </app-doctor-item>
     </div>
+    <div *ngIf="isEmploee" class="container">
+        <div *ngIf="doctor" class="next_appointment">
+            <app-doctor-appointment></app-doctor-appointment>
+        </div>   
+    </div>
+</mat-card>
