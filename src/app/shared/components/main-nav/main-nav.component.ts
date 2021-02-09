@@ -22,7 +22,7 @@ export class MainNavComponent {
   constructor(private breakpointObserver: BreakpointObserver,
     public authService: AuthService,
     private router: Router) {}
-    
+
   ngOnInit() {
   }
 
@@ -35,13 +35,15 @@ export class MainNavComponent {
   }
 
   moveToCabinet(){
-    if(this.authService.isInRole("doctor"))
+    if (this.authService.isInRole("doctor"))
     {
       this.router.navigate(["doctor"])
-    }else if(this.authService.isInRole("client")){
+    }else if (this.authService.isInRole("client")){
       this.router.navigate(["client"]);
-    }else if(this.authService.isInRole("admin")){
+    }else if (this.authService.isInRole("admin")){
       this.router.navigate(["admin"]);
+    }else if (this.authService.isInRole('accountant')){
+      this.router.navigate(['accountant']);
     }
   }
 

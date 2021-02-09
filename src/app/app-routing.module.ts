@@ -22,6 +22,7 @@ const routes: Routes = [
     path: 'accountant',
     loadChildren: () =>
       import('../app/modules/accountant/accountant.module').then((m) => m.AccountantModule),
+    canActivate: [AuthGuard, RoleGuard], data: {roles: ['accountant']}
   },
   {
     path: 'admin',
