@@ -61,7 +61,7 @@ mat-card-content {
 
 .animalType {
   margin-top: 10px;
-  font-size: 12px;
+  font-size: 14px;
   max-width: 100px;
 }
 
@@ -70,7 +70,23 @@ mat-card-content {
   bottom: 25px;
   right: 20px;
   cursor: pointer;
-  z-index: 100;
+}
+
+.delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.delete_btn {
+  height: 25px;
+  width: 25px;
+}
+
+.delete_btn mat-icon {
+  font-size: 18px;
+  transform: translateY(-5px);
 }
 
 .color_white {

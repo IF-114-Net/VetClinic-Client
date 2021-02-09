@@ -68,6 +68,13 @@ export class ClientCabinetComponent implements OnInit {
         this.activeAnimal = active;
     }
 
+    changeAnimal(changeAnimal:Animal){
+        if(changeAnimal.isDeleted)
+        {
+            this.animals= this.animals.filter(animal=>animal.id!=changeAnimal.id);
+        }
+    }
+
     openDialog(): void {
         const dialogRef = this.dialog.open(AddAnimalComponent, {
             width: '250px',

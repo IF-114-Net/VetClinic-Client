@@ -5,11 +5,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 
 import { DoctorValidationExceptionComponent } from 'src/app/shared/components/doctor/doctor-validation-exception/doctor-validation-exception.component';
+import { ConfimDialogComponent } from 'src/app/shared/components/dialogs/assess-dialog/confim-dialog.component';
+import { AlertDialogComponent } from 'src/app/shared/components/dialogs/alert-dialog/alert-dialog.component';
+
 
 
 @NgModule({
     declarations: [
-        DoctorValidationExceptionComponent
+        DoctorValidationExceptionComponent,
+        ConfimDialogComponent,
+        AlertDialogComponent,
     ],
     imports: [
         CommonModule,
@@ -17,7 +22,9 @@ import { DoctorValidationExceptionComponent } from 'src/app/shared/components/do
         ReactiveFormsModule,
         MaterialModule
     ], exports: [
-        DoctorValidationExceptionComponent
+        DoctorValidationExceptionComponent,
+        ConfimDialogComponent,
+        AlertDialogComponent
     ]
 })
 export class SharedModule {

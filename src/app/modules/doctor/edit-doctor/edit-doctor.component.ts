@@ -8,6 +8,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Position } from 'src/app/models/doctor/position';
 import { Response } from 'src/app/models/doctor/response';
 import { PageResponse } from 'src/app/models/doctor/pageResponse';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfimDialogComponent } from 'src/app/shared/components/dialogs/assess-dialog/confim-dialog.component';
+import { AlertDialogComponent } from 'src/app/shared/components/dialogs/alert-dialog/alert-dialog.component';
 
 @Component({
   selector: 'app-edit-doctor',
@@ -59,6 +62,7 @@ export class EditDoctorComponent implements OnInit {
     private activatedRoute:ActivatedRoute,
     public authService: AuthService,   
     private router:Router, 
+    public dialog: MatDialog
     ) { }
 
   ngOnInit(): void {
@@ -120,20 +124,28 @@ export class EditDoctorComponent implements OnInit {
     this.doctor.photo=this.editDoctorForm.value.photo;
     this.doctor.positionId=this.editDoctorForm.value.positionId;   
     
-    this.apiService.updateEntity('doctors',this.id,this.doctor).subscribe();
-    alert("Changes is saved");
-    this.router.navigate(["doctor",this.id]);  
-      
+    this.apiService.updateEntity('doctors',this.id,this.doctor).subscribe(
+      ()=>{
+        this.dialog.open(AlertDialogComponent,{
+      data: "Changes is saved"
+     });
+     this.router.navigate(["doctor",this.id]); 
+      }
+    ); 
   }
 
-  deleteDoctor(){
-    let result = confirm(`you really want to remove the doctor ${this.doctor.firstName} ${this.doctor.lastName}`);  
-    if(result)
-    {
-      this.doctor.isDeleted=true;
-      this.apiService.updateEntity('doctors',this.id,this.doctor).subscribe();
+  deleteDoctor(){      
+    const dialogRef = this.dialog.open(ConfimDialogComponent,{
+      data: "Do you really want to remove this doctor?"
+     });
 
-      this.router.navigate(["doctor/list"]) 
-    }
-  }
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+       this.doctor.isDeleted=true;
+      this.apiService.updateEntity('doctors',this.id,this.doctor).subscribe(
+        ()=>this.router.navigate(["doctor/list"])
+      ); 
+      }
+    });
+  } 
 }
