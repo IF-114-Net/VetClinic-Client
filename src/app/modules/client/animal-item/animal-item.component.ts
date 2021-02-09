@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Animal } from 'src/app/models/doctor/animal';
 import { ApiService } from 'src/app/services/api.service';
 import { ConfimDialogComponent } from 'src/app/shared/components/dialogs/assess-dialog/confim-dialog.component';
+import { EditAnimalComponent } from '../edit-animal/edit-animal.component';
 
 @Component({
   selector: 'app-animal-item',
@@ -53,7 +54,23 @@ selectAnimal(){
     }
   }
 
-goToSettings(){}
+goToSettings(){
+    const dialogRef = this.dialog.open(EditAnimalComponent, {
+    width: '250px',
+    data: this.animal
+  });
+  dialogRef.afterClosed().subscribe(result => {
+    if (result === null || result === undefined) {
+      return;
+    }  
+    else{
+      this.animal.name=result.name;
+      this.animal.animalTypeName = result.animalTypeName;
+    }          
+  });
+
+  
+}
 
 deleteAnimal(){   
   this.animal.isDeleted=true;
