@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { AddAnimalComponent } from '../add-animal/add-animal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PageResponse } from 'src/app/models/doctor/pageResponse';
+import { Client } from 'src/app/models/client/client';
 
 @Component({
     selector: 'app-client-cabinet',
@@ -23,14 +24,7 @@ export class ClientCabinetComponent implements OnInit {
 
     animalData!: Animal;
 
-    client: any = {
-        'id': null,
-        'userName': null,
-        'firstName': null,
-        'lastName': null,
-        'email': null,
-        'phoneNumber': null
-    };
+    client!: Client;
 
     constructor(public dialog: MatDialog, public authService: AuthService, public apiService: ApiService) {
         if (this.authService.isLogedIn()) {
@@ -51,8 +45,6 @@ export class ClientCabinetComponent implements OnInit {
             this.getAnimalTypeData();          
     }) 
     }
-
-  
 
   initializeClient()
   {
