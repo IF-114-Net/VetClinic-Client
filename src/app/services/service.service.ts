@@ -29,7 +29,7 @@ export class ServiceService {
   }
 
   sendMessage(serviceId: number): Observable<Service>{
-    return this.apiService.sendMessageGet('new-service-email', serviceId);
+    return this.apiService.sendMessageGet('services', serviceId);
   }
 
 }
