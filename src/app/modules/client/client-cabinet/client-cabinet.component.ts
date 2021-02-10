@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Animal } from 'src/app/models/doctor/animal';
+import { AnimalType } from 'src/app/models/doctor/animalType';
 import { Filter } from 'src/app/models/queries/filter';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { AddAnimalComponent } from '../../../../modules/client/add-animal/add-animal.component';
+import { AddAnimalComponent } from '../add-animal/add-animal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PageResponse } from 'src/app/models/doctor/pageResponse';
 
@@ -16,7 +17,8 @@ export class ClientCabinetComponent implements OnInit {
 
   activeAnimal!:number;
   animals!:Animal[]  
-  animalTypeId!:number;    
+  animalTypeId!:number;
+  animalTypes!:AnimalType[];  
   id!:number;
 
     animalData!: Animal;
@@ -45,7 +47,8 @@ export class ClientCabinetComponent implements OnInit {
         let params: Filter = { 'clientId': clientId.toString() };
 
         this.apiService.getEntity('animals', params).subscribe((data: PageResponse) => {
-            this.animals = data.data; 
+            this.animals = data.data;               
+            this.getAnimalTypeData();          
     }) 
     }
 
@@ -62,11 +65,12 @@ export class ClientCabinetComponent implements OnInit {
       },
       error =>
       console.log("error : " + error));    
-  }  
+  }
   
   getAnimalTypeData(){
-  this.apiService.getEntity('animaltypes').subscribe((data: AnimalType[])=>{
-    this.animalTypes=data    
+  this.apiService.getEntity('animaltypes').subscribe((response)=>{
+    this.animalTypes=response.data;
+    //alert(this.animalTypes[0].animalTypeName);   
    })
     
   }
@@ -82,7 +86,8 @@ export class ClientCabinetComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result === null || result === undefined) {
                 return;
-            }            
+            }
+            this.getAnimalTypeData();
             this.animals.push(result);
         });
     }
