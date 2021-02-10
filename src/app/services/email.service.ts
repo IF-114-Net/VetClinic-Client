@@ -25,6 +25,6 @@ export class EmailService {
 
   sendAppointmentNotification(appointmentId: number)
   {
-     this.sendNotification("appointment", appointmentId).subscribe();
+     this.sendNotification("appointments", appointmentId).subscribe();
   }
 }
