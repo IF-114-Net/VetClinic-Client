@@ -19,6 +19,7 @@ import { AddAnimalComponent } from './add-animal/add-animal.component';
 import { MakeAppointmentComponent } from './make-appointment/make-appointment.component';
 import { AuthGuard } from '../../guards/auth-guard.service';
 import { RoleGuard } from '../../guards/role-guard.service';
+import { EditAnimalComponent } from './edit-animal/edit-animal.component';
 
 const routes: Routes = [
     {
@@ -49,7 +50,8 @@ const routes: Routes = [
         CreateAnimalItemComponent,
         ClientAppointmentComponent,
         AddAnimalComponent,
-        MakeAppointmentComponent
+        MakeAppointmentComponent,
+        EditAnimalComponent
     ],
     imports: [
         CommonModule,
