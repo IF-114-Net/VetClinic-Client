@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
@@ -18,6 +18,7 @@ import { AppointmentPut } from '../../../models/appointments/appointmentPut';
 import { Appointment } from '../../../models/appointments/appointment';
 import { Procedure } from '../../../models/appointments/procedure';
 import { AuthService } from '../../../services/auth.service';
+import { Doctor } from 'src/app/models/doctor/doctor';
 
 @Component({
     selector: 'app-doctor-appointment',
@@ -38,6 +39,7 @@ export class DoctorAppointmentComponent implements OnInit {
     public selectable = true;
     public removable = true;
     public separatorKeysCodes: number[] = [ENTER, COMMA];
+    @Input() doctor!:Doctor;
 
     @ViewChild('procedureInput') public procedureInput!: ElementRef<HTMLInputElement>;
     @ViewChild('auto') public matAutocomplete!: MatAutocomplete;
@@ -92,7 +94,8 @@ export class DoctorAppointmentComponent implements OnInit {
     }
 
     public validator(index: number): boolean {
-        return this.selectedProcedures[index].length <= 0 || this.treatmentsControlArray.controls[index].invalid;
+        return (this.selectedProcedures[index].length <= 0 || this.treatmentsControlArray.controls[index].invalid)
+        || this.authService.userData.sub!=this.doctor.userId;
     }
 
 
@@ -139,11 +142,8 @@ export class DoctorAppointmentComponent implements OnInit {
     }
 
     private getAppointment(): void {
-        const userId = this.authService.userData.sub;
-        this.apiService.getEntity('doctors', { userId })
-            .subscribe(res => {
-                const doctorId = res.data[0].id;
-                this.apiService.getEntity('appointments', { doctorId: doctorId.toString(), statusId: Status.Approved.toString() })
+        let doctorId = this.doctor.id?this.doctor.id:0;        
+        this.apiService.getEntity('appointments', { doctorId: doctorId.toString(), statusId: Status.Approved.toString() })
                     .subscribe(res2 => {
                         this.appointments = res2.data;
                         this.appointments.forEach(() => {
@@ -153,7 +153,6 @@ export class DoctorAppointmentComponent implements OnInit {
                         });
                         this.getProcedures();
                     });
-            });
     }
 
     private getProcedures(): void {
