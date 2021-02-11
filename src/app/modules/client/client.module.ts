@@ -53,8 +53,7 @@ const routes: Routes = [
         ClientAppointmentComponent,
         AddAnimalComponent,
         MakeAppointmentComponent,
-        ClientEditFormComponent
-        MakeAppointmentComponent,
+        ClientEditFormComponent,
         EditAnimalComponent
     ],
     imports: [
