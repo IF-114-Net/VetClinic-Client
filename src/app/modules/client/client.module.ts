@@ -19,6 +19,7 @@ import { AddAnimalComponent } from './add-animal/add-animal.component';
 import { MakeAppointmentComponent } from './make-appointment/make-appointment.component';
 import { AuthGuard } from '../../guards/auth-guard.service';
 import { RoleGuard } from '../../guards/role-guard.service';
+import { ClientEditFormComponent } from './client-edit-form/client-edit-form.component';
 
 const routes: Routes = [
     {
@@ -36,7 +37,8 @@ const routes: Routes = [
     { path: 'services', component: ServicesListComponent },
     { path: 'client', component: ClientCabinetComponent },
     { path: '', component: HomeComponent },
-    { path: 'create-client', component: ClientRegisterFormComponent }
+    { path: 'create-client', component: ClientRegisterFormComponent },
+    { path: 'client/edit-client', component: ClientEditFormComponent}
 ];
 
 @NgModule({
@@ -49,7 +51,8 @@ const routes: Routes = [
         CreateAnimalItemComponent,
         ClientAppointmentComponent,
         AddAnimalComponent,
-        MakeAppointmentComponent
+        MakeAppointmentComponent,
+        ClientEditFormComponent
     ],
     imports: [
         CommonModule,

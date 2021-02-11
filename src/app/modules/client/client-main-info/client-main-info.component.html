@@ -1,5 +1,5 @@
 <div id="main-info-div" >
-    <mat-card>
+    <mat-card >
     <table>
         <caption></caption>
         <tr>
@@ -9,7 +9,7 @@
             <td><h1>{{client.firstName}}</h1> </td>
             <td><h1>{{client.lastName}}</h1></td>
             <td id="tablecell-button" colspan="2">
-                <button id="edit-button" mat-raised-button color="accent">Edit</button>
+                <button [routerLink]='["edit-client"]' id="edit-button" mat-raised-button color="accent">Edit</button>
             </td>
         </tr>
         <tr>
