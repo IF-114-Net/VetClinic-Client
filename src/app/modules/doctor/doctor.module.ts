@@ -15,7 +15,7 @@ import { DoctorItemComponent } from 'src/app/shared/components/doctor/doctor-ite
 import { DoctorDescriptionItemComponent } from 'src/app/shared/components/doctor/doctor-item/doctor-description-item/doctor-description-item.component';
 import { EditDoctorComponent } from 'src/app/modules/doctor/edit-doctor/edit-doctor.component';
 import { DoctorAppointmentComponent } from './doctor-appointment/doctor-appointment.component';
-import { ApprovedDoctorAppointmentsComponent } from './approved-doctor-appointments/approved-doctor-appointments.component';
+import { CompletedDoctorAppointmentsComponent } from './completed-doctor-appointments/completed-doctor-appointments.component';
 
 
 const routes: Routes = [
@@ -32,7 +32,7 @@ const routes: Routes = [
         DoctorDescriptionItemComponent,
         EditDoctorComponent,
         DoctorAppointmentComponent,
-        ApprovedDoctorAppointmentsComponent
+        CompletedDoctorAppointmentsComponent
     ],
     imports: [
         CommonModule,

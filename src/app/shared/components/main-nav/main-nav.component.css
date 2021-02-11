@@ -6,7 +6,7 @@
   width: 200px;
 }
 
- .sidenav .mat-toolbar {
+.sidenav .mat-toolbar {
   background: inherit;
 }
 
@@ -14,40 +14,40 @@
   position: sticky;
   top: 0;
   z-index: 1;
-} 
+}
 
-img{
+img {
   height: 50px;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
-.spacer{
+.spacer {
   flex: 1 1 auto;
 }
 
-.toolbar a{
+.toolbar a {
   display: inline-block;
-  margin:0 10px;
+  margin: 0 10px;
   font-size: 18px;
   color: white;
   text-decoration: none;
 }
 
-.toolbar{
+.toolbar {
   display: flex;
 }
 
-.toolbar div{
-  margin:auto;
+.toolbar div {
+  margin: auto;
 }
 
-mat-icon{
+.menu_icon {
   margin-top: 15px;
 }
 
-.authButtons{
+.authButtons {
   margin: 0 10px;
 }

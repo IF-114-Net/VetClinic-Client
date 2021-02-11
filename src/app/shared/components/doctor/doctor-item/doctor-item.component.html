@@ -4,7 +4,7 @@
     [ngClass]="doctor.isDeleted?'grey':''">
     <div  class="doctor_card">
         <div class="doctor_img_container">            
-            <img *ngIf="!doctor.photo" src="https://tanzolymp.com/images/default-non-user-no-photo-1.jpg" [alt]="doctor.firstName +' '+ doctor.lastName" class="doctor_img">
+            <img *ngIf="!doctor.photo" src="assets/img/unknownDoctor.jpg" [alt]="doctor.firstName +' '+ doctor.lastName" class="doctor_img">
             <img *ngIf="doctor.photo" [src]="doctor?.photo" [alt]="doctor.firstName +' '+ doctor.lastName" class="doctor_img">            
         </div>
         <mat-card-content class="doctor_content">

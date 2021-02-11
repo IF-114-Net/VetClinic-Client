@@ -7,11 +7,11 @@ import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-approved-doctor-appointments',
-  templateUrl: './approved-doctor-appointments.component.html',
-  styleUrls: ['./approved-doctor-appointments.component.css']
+  selector: 'app-completed-doctor-appointments',
+  templateUrl: './completed-doctor-appointments.component.html',
+  styleUrls: ['./completed-doctor-appointments.component.css']
 })
-export class ApprovedDoctorAppointmentsComponent implements OnInit {
+export class CompletedDoctorAppointmentsComponent implements OnInit {
 
   
     @Input() doctor!:Doctor;
