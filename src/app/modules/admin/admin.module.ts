@@ -10,7 +10,7 @@ import { RoleListComponent } from 'src/app/shared/components/role/role-list/role
 import { CreateRoleComponent } from 'src/app/shared/components/role/create-role/create-role.component';
 import { AdminComponent } from './admin.component';
 import { IncomingAppointmentComponent } from './incoming-appointment/incoming-appointment.component';
-import { ServicesComponent } from '../../shared/components/services/services.component';
+import { ServicesComponent } from './services/services.component';
 import { CreateDoctorComponent } from './create-doctor/create-doctor.component';
 
 
@@ -23,7 +23,7 @@ const routes: Routes = [
             { path: 'create-doctor', component: CreateDoctorComponent },
             { path: 'role', component: RoleListComponent },
         ]
-    },    
+    },
     { path: 'role/create', component: CreateRoleComponent },
     { path: 'role/edit/:id', component: CreateRoleComponent },
 ];
