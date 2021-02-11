@@ -20,6 +20,7 @@ import { MakeAppointmentComponent } from './make-appointment/make-appointment.co
 import { AuthGuard } from '../../guards/auth-guard.service';
 import { RoleGuard } from '../../guards/role-guard.service';
 import { ClientEditFormComponent } from './client-edit-form/client-edit-form.component';
+import { EditAnimalComponent } from './edit-animal/edit-animal.component';
 
 const routes: Routes = [
     {
@@ -53,6 +54,8 @@ const routes: Routes = [
         AddAnimalComponent,
         MakeAppointmentComponent,
         ClientEditFormComponent
+        MakeAppointmentComponent,
+        EditAnimalComponent
     ],
     imports: [
         CommonModule,

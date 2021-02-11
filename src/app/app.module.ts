@@ -17,8 +17,8 @@ import { ForbiddenComponent } from './shared/components/forbidden/forbidden.comp
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { UnauthorizedComponent } from './shared/components/unauthorized/unauthorized.component';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
-import { ServicesComponent } from './shared/components/services/services.component';
-import { ServiceComponent } from './shared/components/services/service/service.component';
+import { ServicesComponent } from './modules/admin/services/services.component';
+import { ServiceComponent } from './modules/admin/services/service/service.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ServiceService} from './services/service.service';
 import { MatDialogRef} from '@angular/material/dialog';

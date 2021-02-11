@@ -13,7 +13,7 @@ export interface Appointment {
     status: Status;
     doctor: Doctor;
     performedProcedures: Procedure[];
-    appointmentDate: Date;
+    appointmentDate: string;
     complaints: string;
     treatmentDescription: string;
 }

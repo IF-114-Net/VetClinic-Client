@@ -8,4 +8,5 @@ export interface Animal{
     client:Client;
     animalTypeId:number;
     animalTypeName:string;
+    isDeleted:boolean;
 }

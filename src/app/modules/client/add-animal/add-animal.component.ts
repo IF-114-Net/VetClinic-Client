@@ -69,7 +69,8 @@ export class AddAnimalComponent implements OnInit {
                                 age: res2.data.age,
                                 animalTypeId: res2.data.animalTypeId,
                                 animalTypeName: res2.data.animalTypeName,
-                                client: res2.data.client
+                                client: res2.data.client,
+                                isDeleted:false
                             };
                             this.dialogRef.close(this.data);
                             console.log(res2);

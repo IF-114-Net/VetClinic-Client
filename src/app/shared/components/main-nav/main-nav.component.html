@@ -18,13 +18,13 @@
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <div class="toolbar container">
-      <button
+      <button class="toolbar_icon"
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon class="menu_icon" aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <div>
         <a class="navbar-brand" [routerLink]='["/"]'>
@@ -40,7 +40,9 @@
       <div  *ngIf="!(isHandset$ | async)">
           <button mat-raised-button color='warn' *ngIf ='!authService.isLogedIn()' (click)="authService.login()" class='authButtons'>Login</button>   
           <button mat-raised-button color='warn' *ngIf ='!authService.isLogedIn()' [routerLink]='["create-client"]' class='authButtons'>Register</button>
-        <button mat-button [matMenuTriggerFor]="beforeMenu" *ngIf ='authService.isLogedIn() && authService.userData != null'>{{authService.userData['preferred_username']}}</button>
+        <button mat-raised-button [matMenuTriggerFor]="beforeMenu" *ngIf ='authService.isLogedIn() && authService.userData != null'>
+          <mat-icon color="primary">person</mat-icon>
+          {{authService.userData['preferred_username']}}</button>
             <mat-menu #beforeMenu="matMenu" xPosition="before">
               <button mat-menu-item (click)="moveToCabinet()">My Cabinet</button>
               <button mat-menu-item *ngIf ='authService.isLogedIn()'(click)="authService.logout()">Logout</button>

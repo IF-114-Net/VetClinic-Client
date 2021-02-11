@@ -1,5 +1,5 @@
-<div class="animal_card">
-    <mat-card *ngIf="animal"     
+<div class="animal_card">    
+    <mat-card *ngIf="animal"       
     [@active]="activeAnimal ? 'active' : '*'" 
     (click)="selectAnimal()" matRipple>
         <div class="card" >
@@ -24,14 +24,16 @@
             </mat-card-content> 
         </div>        
     </mat-card>
-    <div *ngIf='closedInformation' class="settings" (click)="goToSettings()">
-        <button *ngIf='!activeAnimal' mat-mini-fab color="primary"
-            class="settings_btn" aria-label="Example icon button with a heart icon">
-            <mat-icon>settings</mat-icon>
-        </button>
-        <button *ngIf='activeAnimal' mat-mini-fab color="" class="settings_btn"
+    <div *ngIf='closedInformation' class="delete" (click)="openAssessDialog()">
+        <button mat-mini-fab color="" class="delete_btn"
             aria-label="Example icon button with a heart icon">
-            <mat-icon color="primary">settings</mat-icon>
+            <mat-icon>clear</mat-icon>
         </button>
+    </div>
+    <div *ngIf='closedInformation' class="settings" (click)="goToSettings()">
+        <button mat-mini-fab [color]="activeAnimal ? '' : 'primary'"
+            class="settings_btn" aria-label="Example icon button with a heart icon">
+            <mat-icon [color]="activeAnimal ? 'primary' : ''">settings</mat-icon>
+        </button>        
     </div>
 </div>
