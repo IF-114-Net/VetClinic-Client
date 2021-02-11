@@ -4,7 +4,7 @@ import { ApiService } from 'src/app/services/api.service';
 import {  FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { ClientService } from 'src/app/services/client.service' 
-
+import { EmailService} from 'src/app/services/email.service' 
 @Component({
   selector: 'app-client-register-form',
   templateUrl: './client-register-form.component.html',
@@ -36,7 +36,7 @@ export class ClientRegisterFormComponent implements OnInit {
   ]),
   })
   constructor(public apiService: ApiService, public http: HttpClient, public authService: AuthService,
-    public clientService: ClientService) {
+    public clientService: ClientService, private emailService: EmailService) {
     // let id = this.authService.userData.sub;  
     // //this.authService.userData.sub;
     // console.log("id: " + id);    
@@ -86,6 +86,7 @@ export class ClientRegisterFormComponent implements OnInit {
     this.apiService.addEntity('clients', client).subscribe(response =>
       {
         console.log(client);
+        this.emailService.sendRegistrationNotification(client.userName);
         alert('Registration is successful');
         this.clientService.mainAppPage();
       },

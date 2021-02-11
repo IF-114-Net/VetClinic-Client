@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Animal } from 'src/app/models/doctor/animal';
+import { AnimalType } from 'src/app/models/doctor/animalType';
 import { Filter } from 'src/app/models/queries/filter';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { AddAnimalComponent } from '../../../../modules/client/add-animal/add-animal.component';
+import { AddAnimalComponent } from '../add-animal/add-animal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PageResponse } from 'src/app/models/doctor/pageResponse';
+import { Client } from 'src/app/models/client/client';
 
 @Component({
     selector: 'app-client-cabinet',
@@ -16,19 +18,13 @@ export class ClientCabinetComponent implements OnInit {
 
   activeAnimal!:number;
   animals!:Animal[]  
-  animalTypeId!:number;    
+  animalTypeId!:number;
+  animalTypes!:AnimalType[];  
   id!:number;
 
     animalData!: Animal;
 
-    client: any = {
-        'id': null,
-        'userName': null,
-        'firstName': null,
-        'lastName': null,
-        'email': null,
-        'phoneNumber': null
-    };
+    client!: Client;
 
     constructor(public dialog: MatDialog, public authService: AuthService, public apiService: ApiService) {
         if (this.authService.isLogedIn()) {
@@ -45,11 +41,10 @@ export class ClientCabinetComponent implements OnInit {
         let params: Filter = { 'clientId': clientId.toString() };
 
         this.apiService.getEntity('animals', params).subscribe((data: PageResponse) => {
-            this.animals = data.data; 
+            this.animals = data.data;               
+            this.getAnimalTypeData();          
     }) 
     }
-
-  
 
   initializeClient()
   {
@@ -62,8 +57,15 @@ export class ClientCabinetComponent implements OnInit {
       },
       error =>
       console.log("error : " + error));    
-  }  
+  }
   
+  getAnimalTypeData(){
+  this.apiService.getEntity('animaltypes').subscribe((response)=>{
+    this.animalTypes=response.data;
+    //alert(this.animalTypes[0].animalTypeName);   
+   })
+    
+  }
     notActiveAnimal(active: any) {
         this.activeAnimal = active;
     }
@@ -83,7 +85,8 @@ export class ClientCabinetComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result === null || result === undefined) {
                 return;
-            }            
+            }
+            this.getAnimalTypeData();
             this.animals.push(result);
         });
     }
