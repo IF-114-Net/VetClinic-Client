@@ -36,16 +36,10 @@ export class ClientRegisterFormComponent implements OnInit {
   ]),
   })
   constructor(public apiService: ApiService, public http: HttpClient, public authService: AuthService,
-    public clientService: ClientService, private emailService: EmailService) {
-    // let id = this.authService.userData.sub;  
-    // //this.authService.userData.sub;
-    // console.log("id: " + id);    
+    public clientService: ClientService, private emailService: EmailService) {   
    }
 
-  ngOnInit(): void {
-    
-   
-  
+  ngOnInit(): void {  
 }
 
   isControlInvalid(controlName: string): boolean {
@@ -71,7 +65,6 @@ export class ClientRegisterFormComponent implements OnInit {
     }
    
   }
-
 
   register()
   {
