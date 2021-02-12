@@ -14,7 +14,8 @@ import { Filter } from 'src/app/models/queries/filter';
 })
 export class ClientEditFormComponent implements OnInit {
 
-  client!: Client
+  client!: Client;
+  id!: string;
   clientForm: FormGroup = new FormGroup({
     
     firstName: new FormControl('',
@@ -52,19 +53,15 @@ export class ClientEditFormComponent implements OnInit {
   }
   
    onSubmit() {
-
-    alert("before");
     const controls = this.clientForm.controls;
-
      if (this.clientForm.invalid) {
-       alert("invalid");
+      alert("invalid");
       Object.keys(controls)
        .forEach(controlName => controls[controlName].markAsTouched());
             return;
       }   
       else {
         alert("input successful")
-        console.log("");
         this.edit();
       }
      
@@ -79,34 +76,25 @@ export class ClientEditFormComponent implements OnInit {
         "email": this.clientForm.value.email,
         "phoneNumber": this.clientForm.value.phoneNumber,
         "password": this.clientForm.value.password,
-        "isDeleted": false
+        "userId" : this.id
       }
-      alert("this.client.id" + this.client.id);
-      this.apiService.updateEntity('clients', this.client.id, editedClient).subscribe(response =>
-        {
-          alert("this.client.id" + this.client.id);
-        });
-        // {       
-        //   this.clientService.mainAppPage();
-        // },
-        
-      //   error => {
-      //     console.log(error);
-      // }
-      //   );
-      
+      this.apiService.updateEntity('clients', this.client.id, editedClient).subscribe(
+        () => {
+          this.clientService.clientCabinetEnter();   
+        }
+      );
     }
   
     cancel()
     {
       console.log("cancelled");
-      this.clientService.mainAppPage();
+      this.clientService.clientCabinetEnter();
     }
 
     initializeClient()
   {
-    let id: string = this.authService.userData.sub;
-    let filter: Filter = {"UserId": id};
+    this.id = this.authService.userData.sub;
+    let filter: Filter = {"UserId": this.id};
     this.apiService.getEntity("clients", filter).subscribe((response) =>
       {
         this.client = response.data[0];
