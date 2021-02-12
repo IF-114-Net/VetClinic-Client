@@ -37,24 +37,25 @@
             <p>Phone number must have exactly 12 digits</p>
            </div>
         </div>
-        <div class="form-group">
-            <label>Password</label>
-        <input type="text" name="password" formControlName="password" type="password"/>
-        <div class="error" *ngIf="isControlInvalid('password')">
-            <p>Password cannot be empty</p>
-            <p>Password must contain at least one symbol in upper case,<br>
-            one digit and one special symbol</p>
-           </div>
-        </div>
         <div class="form-group">   
                  <label></label>     
                 <button id="register-button" class="form-button" mat-raised-button color="primary"  type="submit">Update</button>
                   
-                <button id="cancel-button" class="form-button"  mat-raised-button color="warn" (click)="cancel()" type="button">Cancel</button>      
+                <button id="cancel-button" class="form-button"  mat-raised-button color="warn" (click)="cancel()" type="button">Cancel</button>
+                
+
             <div class="error">
     
             </div>       
         </div>
+        <div class="form-group">   
+            <label></label>     
+            <button id="delete-button" class="form-button"  mat-raised-button color="warn" (click)="cancel()" type="button">Delete</button>      
+
+       <div class="error">
+
+       </div>       
+   </div>
     </form>
     </mat-card>
     </div> 

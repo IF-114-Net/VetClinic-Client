@@ -9,7 +9,6 @@ import { SharedModule } from '../shared/shared.module';
 import { ServicesListComponent } from '../../shared/components/services/services-list/services-list.component';
 import { HomeComponent } from 'src/app/shared/components/home/home.component';
 import { ClientComponent } from './client.component';
-import { ClientCabinetComponent } from 'src/app/modules/client/client-cabinet/client-cabinet.component';
 import { ClientMainInfoComponent } from 'src/app/modules/client/client-main-info/client-main-info.component';
 import { ClientRegisterFormComponent } from 'src/app/modules/client/client-register-form/client-register-form.component';
 import { CreateAnimalItemComponent } from './create-animal-item/create-animal-item.component';
@@ -36,7 +35,7 @@ const routes: Routes = [
         data: { roles: ['client'] }
     },
     { path: 'services', component: ServicesListComponent },
-    { path: 'client', component: ClientCabinetComponent },
+    { path: 'client', component: ClientComponent },
     { path: '', component: HomeComponent },
     { path: 'create-client', component: ClientRegisterFormComponent },
     { path: 'client/edit-client', component: ClientEditFormComponent}
@@ -47,7 +46,6 @@ const routes: Routes = [
         ClientComponent,
         ClientRegisterFormComponent,
         ClientMainInfoComponent,
-        ClientCabinetComponent,
         AnimalItemComponent,
         CreateAnimalItemComponent,
         ClientAppointmentComponent,

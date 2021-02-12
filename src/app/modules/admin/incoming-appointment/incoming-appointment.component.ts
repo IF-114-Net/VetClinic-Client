@@ -43,8 +43,9 @@ export class IncomingAppointmentComponent implements OnInit {
             treatmentDescription: appointment.treatmentDescription
         };
 
-        this.updateAppointment(index, appointment.id, appointmentPut);
-        this.emailService.sendAppointmentNotification(appointment.id);
+        this.updateAppointment(index, appointment.id, appointmentPut);     
+            
+        
     }
 
     public onDisapprove(index: number): void {
@@ -94,9 +95,15 @@ export class IncomingAppointmentComponent implements OnInit {
             .subscribe(res => {
                 this.appointments.splice(index, 1);
                 this.doctorsControlArray.controls.splice(index, 1);
+                this.sendEmailNotification(id);
                 console.log(res);
             }, error => {
                 console.log(error);
             });
+    }
+
+    private sendEmailNotification(id: number)
+    {
+        this.emailService.sendAppointmentNotification(id);
     }
 }
