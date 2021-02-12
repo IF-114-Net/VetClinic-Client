@@ -30,7 +30,7 @@
                 <div class="column">
                     <mat-form-field appearance="fill">
                         <mat-label>Choose date</mat-label>
-                        <input required [formControl]="dateControl" matInput [matDatepicker]="picker1">
+                        <input required [formControl]="dateControl" [min]="todayDate" matInput [matDatepicker]="picker1">
                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                         <mat-datepicker #picker1></mat-datepicker>
                     </mat-form-field>
