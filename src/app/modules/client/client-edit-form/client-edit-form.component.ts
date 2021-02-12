@@ -106,4 +106,23 @@ export class ClientEditFormComponent implements OnInit {
        phoneNumber: this.client.phoneNumber,
     }); 
   }
+
+  delete()
+  {
+    let editedClient ={
+      "userName": this.client.userName,
+      "firstName": this.client.firstName,
+      "lastName": this.client.lastName,
+      "email": this.client.email,
+      "phoneNumber": this.client.phoneNumber,
+      "userId" : this.id,
+      "isDeleted": true
+    };
+    this.apiService.updateEntity('clients', this.client.id, editedClient).subscribe(
+      () => {
+        this.authService.logout();
+        this.clientService.mainAppPage();   
+      }
+    );
+  }
 }
