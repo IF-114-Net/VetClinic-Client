@@ -7,6 +7,7 @@ import { ClientService } from 'src/app/services/client.service'
 import { EmailService} from 'src/app/services/email.service' 
 import { Client } from 'src/app/models/client/client';
 import { Filter } from 'src/app/models/queries/filter';
+import { DialogService } from 'src/app/services/dialog.service';
 @Component({
   selector: 'app-client-edit-form',
   templateUrl: './client-edit-form.component.html',
@@ -34,7 +35,8 @@ export class ClientEditFormComponent implements OnInit {
     ])
     })
     constructor(public apiService: ApiService, public http: HttpClient, public authService: AuthService,
-      public clientService: ClientService, private emailService: EmailService) {   
+      public clientService: ClientService, private emailService: EmailService, 
+      private dialogService: DialogService) {   
         this.initializeClient();        
      }
   
@@ -105,6 +107,17 @@ export class ClientEditFormComponent implements OnInit {
        email:       this.client.email,
        phoneNumber: this.client.phoneNumber,
     }); 
+  }
+   
+  ondelete()
+  {
+  this.dialogService.openConfirmDialog('Are you sure to delete this profile?')
+      .afterClosed().subscribe(res => {
+        if (res){
+              this.delete()
+              }         
+        }
+    );
   }
 
   delete()

@@ -1,0 +1,24 @@
+<p>procedures works!</p>
+<button mat-icon-button routerLink="/admin/procedures/create">
+<mat-icon>add</mat-icon>
+</button>
+<div id="mainDiv" *ngFor="let procedure of procedures">
+   <mat-expansion-panel>
+      <mat-expansion-panel-header>
+          <mat-panel-title>
+              {{procedure?.procedureName}}
+          </mat-panel-title>
+          <button mat-icon-button>
+          <mat-icon>settings</mat-icon>
+      </button>
+      <button mat-icon-button  (click)="deleteProcedure(procedure)">
+          <mat-icon  style="color: red;">delete</mat-icon>
+      </button>
+      </mat-expansion-panel-header>
+      <mat-label>Price</mat-label>
+      <h1>{{procedure?.price}}</h1>
+          {{procedure?.description}}
+   
+  </mat-expansion-panel>
+   <!-- <app-procedure [procedure] = 'procedure'></app-procedure> -->
+</div>
