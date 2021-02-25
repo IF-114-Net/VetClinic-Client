@@ -12,6 +12,8 @@ import { AdminComponent } from './admin.component';
 import { IncomingAppointmentComponent } from './incoming-appointment/incoming-appointment.component';
 import { ServicesComponent } from './services/services.component';
 import { CreateDoctorComponent } from './create-doctor/create-doctor.component';
+import { EditNewsItemComponent } from './edit-news-item/edit-news-item.component';
+import { AddNewsItemComponent } from './add-news-item/add-news-item.component';
 
 
 const routes: Routes = [
@@ -34,7 +36,9 @@ const routes: Routes = [
         CreateDoctorComponent,
         RoleListComponent,
         CreateRoleComponent,
-        IncomingAppointmentComponent
+        IncomingAppointmentComponent,
+        EditNewsItemComponent,
+        AddNewsItemComponent
     ],
     imports: [
         CommonModule,

@@ -26,6 +26,9 @@ import { MatConfirmDialogComponent } from './shared/components/mat-confirm-dialo
 import { ServicesListComponent } from './shared/components/services/services-list/services-list.component';
 import { MaterialModule } from './modules/material/material.module';
 import { ChangePasswordComponent } from './shared/components/account/change-password/change-password.component';
+import { NewsRibbonComponent } from './modules/client/news-ribbon/news-ribbon.component';
+import { NewsItemComponent } from './modules/client/news-item/news-item.component';
+import { AddNewsComponent } from './add-news/add-news.component';
 
 
 export function configureAuth(oidcConfigService: OidcConfigService) {
@@ -50,7 +53,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
 
 @NgModule({
   declarations: [AppComponent, MainNavComponent, HomeComponent, LandingMakeAppointmentComponent, FooterComponent, ForbiddenComponent,
-    NotFoundComponent, UnauthorizedComponent, ServicesComponent, ServiceComponent, MatConfirmDialogComponent, ServicesListComponent, ChangePasswordComponent],
+    NotFoundComponent, UnauthorizedComponent, ServicesComponent, ServiceComponent, MatConfirmDialogComponent, ServicesListComponent, ChangePasswordComponent, AddNewsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

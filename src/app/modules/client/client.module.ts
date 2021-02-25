@@ -20,6 +20,8 @@ import { AuthGuard } from '../../guards/auth-guard.service';
 import { RoleGuard } from '../../guards/role-guard.service';
 import { ClientEditFormComponent } from './client-edit-form/client-edit-form.component';
 import { EditAnimalComponent } from './edit-animal/edit-animal.component';
+import { NewsRibbonComponent } from './news-ribbon/news-ribbon.component';
+import { NewsItemComponent } from './news-item/news-item.component';
 
 const routes: Routes = [
     {
@@ -38,7 +40,8 @@ const routes: Routes = [
     { path: 'client', component: ClientComponent },
     { path: '', component: HomeComponent },
     { path: 'create-client', component: ClientRegisterFormComponent },
-    { path: 'client/edit-client', component: ClientEditFormComponent}
+    { path: 'client/edit-client', component: ClientEditFormComponent},
+    { path: 'news', component: NewsRibbonComponent}
 ];
 
 @NgModule({
@@ -52,7 +55,9 @@ const routes: Routes = [
         AddAnimalComponent,
         MakeAppointmentComponent,
         ClientEditFormComponent,
-        EditAnimalComponent
+        EditAnimalComponent,
+        NewsRibbonComponent,
+        NewsItemComponent
     ],
     imports: [
         CommonModule,

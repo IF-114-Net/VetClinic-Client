@@ -67,9 +67,7 @@ goToSettings(){
       this.animal.name=result.name;
       this.animal.animalTypeName = result.animalTypeName;
     }          
-  });
-
-  
+  }); 
 }
 
 deleteAnimal(){   
