@@ -1,16 +1,14 @@
 import { Component, Input, OnInit, NgModule } from '@angular/core';
-import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, Validators, ValidatorFn} from '@angular/forms';
 import { ApiService} from 'src/app/services/api.service'
-import { MaterialModule } from 'src/app/modules/material/material.module';
-import { MatInputModule } from '@angular/material/input';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field'; 
-import { Router } from '@angular/router';
+import { MaterialModule } from 'src/app/modules/material/material.module'; 
+import { Router, ActivatedRoute } from '@angular/router';
+import { Procedure } from 'src/app/models/appointments/procedure';
 
 @Component({
   selector: 'app-procedure',
-  templateUrl: './procedureForm.component.html',
-  styleUrls: ['./procedureForm.component.css']
+  templateUrl: './procedure-form.component.html',
+  styleUrls: ['./procedure-form.component.css']
 })
 export class ProcedureFormComponent implements OnInit {
   
@@ -22,7 +20,7 @@ export class ProcedureFormComponent implements OnInit {
     ]
     ),
     price: new FormControl('',[
-      Validators.required
+      Validators.required, Validators.pattern("^[0-9]*[.]?[0-9]{1,2}$")
     ]),
     description: new FormControl('',[
       Validators.required, Validators.maxLength(3000)
@@ -35,6 +33,19 @@ export class ProcedureFormComponent implements OnInit {
   ngOnInit(): void {
   }
   
+  
+  onSubmit()
+  {
+    const controls = this.procedureForm.controls;
+    if (this.procedureForm.invalid) {
+       Object.keys(controls)
+       .forEach(controlName => controls[controlName].markAsTouched());
+          return;
+    }
+    else {
+       this.createProcedure();
+    }
+  }
 
   createProcedure()
   {
@@ -60,5 +71,12 @@ export class ProcedureFormComponent implements OnInit {
   {
     this.router.navigate(['/admin/procedures']);
   }
+
+  isControlInvalid(controlName: string): boolean {
+    const control = this.procedureForm.controls[controlName];      
+    const result = control.invalid && control.touched;      
+    return result;
+  } 
+
 
 }

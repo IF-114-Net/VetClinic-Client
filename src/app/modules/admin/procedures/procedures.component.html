@@ -1,24 +1,30 @@
-<p>procedures works!</p>
-<button mat-icon-button routerLink="/admin/procedures/create">
-<mat-icon>add</mat-icon>
-</button>
-<div id="mainDiv" *ngFor="let procedure of procedures">
-   <mat-expansion-panel>
+
+<div id="mainDiv">
+    <button id="createButton" mat-raised-button routerLink="/admin/procedures/create">
+        <mat-icon>add</mat-icon>Create
+        </button>
+<div id="proceduresDiv" *ngFor="let procedure of procedures">
+   <mat-expansion-panel class="procedureItem">
       <mat-expansion-panel-header>
-          <mat-panel-title>
+          <mat-panel-title class="procedureTitle">
               {{procedure?.procedureName}}
           </mat-panel-title>
-          <button mat-icon-button>
+          <button mat-icon-button (click)="updateProcedure(procedure)">
           <mat-icon>settings</mat-icon>
       </button>
-      <button mat-icon-button  (click)="deleteProcedure(procedure)">
+      <button mat-icon-button class="deleteButton"  (click)="onDelete(procedure)">
           <mat-icon  style="color: red;">delete</mat-icon>
       </button>
       </mat-expansion-panel-header>
-      <mat-label>Price</mat-label>
-      <h1>{{procedure?.price}}</h1>
-          {{procedure?.description}}
-   
+      <mat-panel-description>
+           <mat-label>Price:</mat-label>
+           <p>{{procedure?.price}}$</p><br/>
+           
+        </mat-panel-description>
+        <mat-panel-description>
+            <mat-label>Description:</mat-label>
+            <p>{{procedure?.description}}</p>
+        </mat-panel-description>
   </mat-expansion-panel>
-   <!-- <app-procedure [procedure] = 'procedure'></app-procedure> -->
+ </div>
 </div>

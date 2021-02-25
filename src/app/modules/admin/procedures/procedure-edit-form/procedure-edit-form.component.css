@@ -50,5 +50,11 @@ mat-icon{
     margin-right: 0px;
   }
 
+  .error{
+    color: red;
+    font-weight: 400;
+    font-size: small;
+}
+
 
   
