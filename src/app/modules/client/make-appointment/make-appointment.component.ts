@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./make-appointment.component.css']
 })
 export class MakeAppointmentComponent implements OnInit {
+    public todayDate: Date = new Date();
     public services!: Service[];
     public animals!: Animal[];
 
