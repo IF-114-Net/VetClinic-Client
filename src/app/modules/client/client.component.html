@@ -1,6 +1,7 @@
 <div class="container" *ngIf='authService.isLogedIn()'>
     <mat-card>        
         <div id="maininfo-div">
+            <h2>Client's info</h2>
             <app-client-main-info
                     [client]='client'>
             </app-client-main-info>

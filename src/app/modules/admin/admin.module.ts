@@ -15,6 +15,8 @@ import { CreateDoctorComponent } from './create-doctor/create-doctor.component';
 import { ProceduresComponent } from './procedures/procedures.component';
 import { ProcedureFormComponent } from './procedures/procedure-form/procedure-form.component';
 import { ProcedureEditFormComponent } from './procedures/procedure-edit-form/procedure-edit-form.component';
+import { ClientsComponent } from './clients/clients.component';
+import { ClientComponent } from './clients/client/client.component';
 
 
 const routes: Routes = [
@@ -27,7 +29,8 @@ const routes: Routes = [
             { path: 'role', component: RoleListComponent },
             { path: 'procedures', component: ProceduresComponent},
             { path: 'procedures/create', component: ProcedureFormComponent},
-            { path: 'procedures/update', component: ProcedureEditFormComponent}
+            { path: 'procedures/update', component: ProcedureEditFormComponent},
+            { path: 'clients', component: ClientsComponent}
         ]
     },
     { path: 'role/create', component: CreateRoleComponent },
@@ -43,7 +46,9 @@ const routes: Routes = [
         IncomingAppointmentComponent,
         ProceduresComponent,
         ProcedureFormComponent,
-        ProcedureEditFormComponent
+        ProcedureEditFormComponent,
+        ClientsComponent,
+        ClientComponent
     ],
     imports: [
         CommonModule,
