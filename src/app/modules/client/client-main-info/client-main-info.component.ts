@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import {Client} from 'src/app/models/client/client';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./client-main-info.component.css']
 })
 export class ClientMainInfoComponent implements OnInit {
-  @Input() client: any
+  @Input() client?: Client;
   constructor(public authService: AuthService) {
     
    }
