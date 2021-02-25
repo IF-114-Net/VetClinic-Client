@@ -6,17 +6,17 @@
             <th scope="col"></th><th scope="col"></th><th scope="col"></th>
         </tr>
         <tr>
-            <td><h1>{{client.firstName}}</h1> </td>
-            <td><h1>{{client.lastName}}</h1></td>
+            <td><h1>{{client?.firstName}}</h1> </td>
+            <td><h1>{{client?.lastName}}</h1></td>
             <td id="tablecell-button" colspan="2">
                 <button [routerLink]='["edit-client"]' id="edit-button" mat-raised-button color="accent">Edit</button>
             </td>
         </tr>
         <tr>
-            <td><h3>{{client.email}}</h3></td>
+            <td><h3>{{client?.email}}</h3></td>
         </tr>
         <tr>
-            <td><h3>{{client.phoneNumber}}</h3></td>
+            <td><h3>{{client?.phoneNumber}}</h3></td>
         </tr>
     </table>
     </mat-card>

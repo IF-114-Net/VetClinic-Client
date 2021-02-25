@@ -53,7 +53,7 @@ export class ClientRegisterFormComponent implements OnInit {
  onSubmit() {
   const controls = this.clientForm.controls;
   
-   if (this.clientForm.invalid) {
+    if (this.clientForm.invalid) {
     Object.keys(controls)
      .forEach(controlName => controls[controlName].markAsTouched());
           return;
