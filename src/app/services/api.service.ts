@@ -39,10 +39,15 @@ export class ApiService {
   }
 
   sendMessageGet(routeAction: string, id?: number|string): Observable<any>{
-    return this.http.get(`${environment.BASEURL}/email/${routeAction}/${id}`);
+    return this.http.get(`${environment.BASEURL}/emailNotifications/${routeAction}/${id}`);
   }
 
-  // sendMessagePost(routeAction: string, messageBody: any): Observable<any>{
-  //   return this.http.post(`${environment.BASEURL}/email/${routeAction}`, messageBody);
-  // }
+  sendMessagePost(routeAction: string, messageBody: any): Observable<any>{
+    return this.http.post(`${environment.BASEURL}/emailNotifications/${routeAction}`, messageBody);
+  }
+
+  downloadFile(route: string, payload: any): Observable<Blob>{
+    return this.http.post(`${environment.BASEURL}/${route}`, payload,
+      { reportProgress: true, responseType: 'blob' });
+  }
 }

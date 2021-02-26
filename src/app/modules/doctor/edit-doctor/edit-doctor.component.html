@@ -1,4 +1,8 @@
-<div *ngIf="closedInformation" class="edit_card">
+<div *ngIf='doctor.isDeleted' class="container deleted">
+    <span class="mat-display-1">This doctor is deleted</span>
+</div>
+
+<div *ngIf="closedInformation&&!doctor.isDeleted" class="edit_card">
     <mat-card *ngIf="doctor">       
         <form [formGroup]="editDoctorForm">
             <app-doctor-validation-exception *ngIf="editDoctorForm.get(['firstName'])?.invalid 

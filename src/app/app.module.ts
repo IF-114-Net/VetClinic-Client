@@ -17,8 +17,8 @@ import { ForbiddenComponent } from './shared/components/forbidden/forbidden.comp
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { UnauthorizedComponent } from './shared/components/unauthorized/unauthorized.component';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
-import { ServicesComponent } from './shared/components/services/services.component';
-import { ServiceComponent } from './shared/components/services/service/service.component';
+import { ServicesComponent } from './modules/admin/services/services.component';
+import { ServiceComponent } from './modules/admin/services/service/service.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ServiceService} from './services/service.service';
 import { MatDialogRef} from '@angular/material/dialog';
@@ -26,6 +26,9 @@ import { MatConfirmDialogComponent } from './shared/components/mat-confirm-dialo
 import { ServicesListComponent } from './shared/components/services/services-list/services-list.component';
 import { MaterialModule } from './modules/material/material.module';
 import { ChangePasswordComponent } from './shared/components/account/change-password/change-password.component';
+import { NewsRibbonComponent } from './modules/client/news-ribbon/news-ribbon.component';
+import { NewsItemComponent } from './modules/client/news-item/news-item.component';
+import { AddNewsComponent } from './add-news/add-news.component';
 
 
 export function configureAuth(oidcConfigService: OidcConfigService) {
@@ -50,7 +53,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
 
 @NgModule({
   declarations: [AppComponent, MainNavComponent, HomeComponent, LandingMakeAppointmentComponent, FooterComponent, ForbiddenComponent,
-    NotFoundComponent, UnauthorizedComponent, ServicesComponent, ServiceComponent, MatConfirmDialogComponent, ServicesListComponent, ChangePasswordComponent],
+    NotFoundComponent, UnauthorizedComponent, ServicesComponent, ServiceComponent, MatConfirmDialogComponent, ServicesListComponent, ChangePasswordComponent, AddNewsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -4,7 +4,7 @@ export interface AppointmentPut {
     statusId: number;
     doctorId: number;
     proceduresIds: number[];
-    appointmentDate: Date;
+    appointmentDate: string;
     complaints: string;
     treatmentDescription: string;
 }
