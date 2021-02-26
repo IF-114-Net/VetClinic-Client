@@ -11,7 +11,7 @@ import { DialogService } from 'src/app/services/dialog.service';
 @Component({
   selector: 'app-client-edit-form',
   templateUrl: './client-edit-form.component.html',
-  styleUrls: ['./client-edit-form.component.css']
+  styleUrls: ['../client-register-form/client-register-form.component.css']
 })
 export class ClientEditFormComponent implements OnInit {
 

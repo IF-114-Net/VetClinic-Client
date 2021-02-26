@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import {  FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators , ValidatorFn, AbstractControl} from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { ClientService } from 'src/app/services/client.service' 
 import { EmailService} from 'src/app/services/email.service' 
@@ -33,6 +33,10 @@ export class ClientRegisterFormComponent implements OnInit {
   ]),
   password: new FormControl('',[
     Validators.required, Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")
+  ]),
+  repeatedPassword: new FormControl('',[
+    Validators.required, Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"),
+    this.repeatPasswordValidator()
   ]),
   })
   constructor(public apiService: ApiService, public http: HttpClient, public authService: AuthService,
@@ -95,6 +99,14 @@ export class ClientRegisterFormComponent implements OnInit {
   {
     console.log("cancelled");
     this.clientService.mainAppPage();
+  }
+
+  repeatPasswordValidator():ValidatorFn {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
+      let valid =
+       (control.value==this.clientForm?.get(['password'])?.value)     
+      return valid ? null : { wrongPassword: true };
+    }  
   }
 
 }

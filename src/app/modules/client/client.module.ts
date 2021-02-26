@@ -52,7 +52,7 @@ const routes: Routes = [
         AddAnimalComponent,
         MakeAppointmentComponent,
         ClientEditFormComponent,
-        EditAnimalComponent
+        EditAnimalComponent,
     ],
     imports: [
         CommonModule,
