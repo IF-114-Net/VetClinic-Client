@@ -17,6 +17,9 @@ import { ProcedureFormComponent } from './procedures/procedure-form/procedure-fo
 import { ProcedureEditFormComponent } from './procedures/procedure-edit-form/procedure-edit-form.component';
 import { ClientsComponent } from './clients/clients.component';
 import { ClientComponent } from './clients/client/client.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { EditNewsItemComponent } from './edit-news-item/edit-news-item.component';
+import { AddNewsItemComponent } from './add-news-item/add-news-item.component';
 
 
 const routes: Routes = [
@@ -30,7 +33,8 @@ const routes: Routes = [
             { path: 'procedures', component: ProceduresComponent},
             { path: 'procedures/create', component: ProcedureFormComponent},
             { path: 'procedures/update', component: ProcedureEditFormComponent},
-            { path: 'clients', component: ClientsComponent}
+            { path: 'clients', component: ClientsComponent},
+            { path: 'schedule', component: ScheduleComponent },
         ]
     },
     { path: 'role/create', component: CreateRoleComponent },
@@ -48,7 +52,10 @@ const routes: Routes = [
         ProcedureFormComponent,
         ProcedureEditFormComponent,
         ClientsComponent,
-        ClientComponent
+        ClientComponent,
+        ScheduleComponent,
+        EditNewsItemComponent,
+        AddNewsItemComponent
     ],
     imports: [
         CommonModule,
