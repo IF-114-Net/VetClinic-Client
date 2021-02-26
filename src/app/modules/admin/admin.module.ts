@@ -50,7 +50,7 @@ const routes: Routes = [
         ProcedureFormComponent,
         ProcedureEditFormComponent,
         ClientsComponent,
-        ClientComponent
+        ClientComponent,
         EditNewsItemComponent,
         AddNewsItemComponent
     ],
