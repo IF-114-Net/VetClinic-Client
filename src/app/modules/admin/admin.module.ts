@@ -17,6 +17,8 @@ import { ProcedureFormComponent } from './procedures/procedure-form/procedure-fo
 import { ProcedureEditFormComponent } from './procedures/procedure-edit-form/procedure-edit-form.component';
 import { ClientsComponent } from './clients/clients.component';
 import { ClientComponent } from './clients/client/client.component';
+import { EditNewsItemComponent } from './edit-news-item/edit-news-item.component';
+import { AddNewsItemComponent } from './add-news-item/add-news-item.component';
 
 
 const routes: Routes = [
@@ -48,7 +50,9 @@ const routes: Routes = [
         ProcedureFormComponent,
         ProcedureEditFormComponent,
         ClientsComponent,
-        ClientComponent
+        ClientComponent,
+        EditNewsItemComponent,
+        AddNewsItemComponent
     ],
     imports: [
         CommonModule,
