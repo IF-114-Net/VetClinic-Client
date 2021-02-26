@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   BASEURL: 'https://localhost:5001/api',
+  IDENTITY: 'https://localhost:5005'
 };
 
 /*

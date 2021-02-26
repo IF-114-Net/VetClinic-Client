@@ -1,14 +1,16 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { AuthModule, OidcConfigService } from 'angular-auth-oidc-client';
 
+import { environment } from '../../environments/environment';
+
 export function configureAuth(oidcConfigService: OidcConfigService): () => Promise<any> {
     return () =>
         oidcConfigService.withConfig({
-              stsServer: 'https://localhost:5005',
+              stsServer: environment.IDENTITY,
               redirectUrl: window.location.origin,
               postLogoutRedirectUri: window.location.origin,
               clientId: 'please-enter-clientId',
-              scope: 'please-enter-scopes', // 'openid profile offline_access ' + your scopes
+              scope: 'offline_access', // 'openid profile offline_access ' + your scopes
               responseType: 'code',
               silentRenew: true,
               useRefreshToken: true,
